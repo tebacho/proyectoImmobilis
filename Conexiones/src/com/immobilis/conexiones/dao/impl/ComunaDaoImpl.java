@@ -93,7 +93,7 @@ public class ComunaDaoImpl implements ComunaDao {
 			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
 			callableStatement.setInt(4, codigoComuna);
 			callableStatement.setInt(5, codigoRegion);
-			callableStatement.setInt(6, nombreComuna|);
+			callableStatement.setString(6, nombreComuna);
 			callableStatement.execute();
 			estado = callableStatement.getBigDecimal(1);
 			msgError = callableStatement.getString(2);

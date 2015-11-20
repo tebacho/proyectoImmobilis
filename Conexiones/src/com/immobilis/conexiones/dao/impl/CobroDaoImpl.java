@@ -13,7 +13,7 @@ import oracle.jdbc.OracleTypes;
 
 import com.immobilis.conexiones.connector.ConnectionDAO;
 import com.immobilis.conexiones.dao.CobroDao;
-import com.immobilis.conexiones.dao.CobroManagerDao;
+import com.immobilis.conexiones.dao.CobroDao;
 import com.immobilis.vo.PagoVO;
 
 /**
