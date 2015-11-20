@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="principalFB" type="com.immobilis.principal.form.PrincipalForm" />
+		<form-bean name="busquedaFB" type="com.immobilis.principal.form.BusquedaForm" />
+	</form-beans>
+	
+	<global-forwards></global-forwards>
+	
+	<action-mappings>
+		<action
+            name ="principalFB"
+            path="/principalAction"
+            type="com.immobilis.principal.action.PrincipalAction"
+            parameter="method"
+            input="/pages/index.jsp"
+            scope="request">
+            <forward name="index"        path="/pages/home.jsp"/>     
+            <forward name="principal"        path="/pages/principal.jsp"/>
+            <forward name="busqueda"        path="/pages/busqueda.jsp"/>
+        </action>
+        
+        <action
+            name ="busquedaFB"
+            path="/busquedaAction"
+            type="com.immobilis.principal.action.BusquedaAction"
+            parameter="method"
+            input="/pages/index.jsp"
+            scope="request">
+            <forward name="index"        path="/pages/home.jsp"/>     
+            <forward name="busqueda"        path="/pages/busqueda.jsp"/>
+            
+        </action>
+        
+        
+        <action
+            name ="loginEjecutivoFB"
+            path="/loginEjecutivoAction"
+            type="com.immobilis.principal.action.LoginEjecutivoAction"
+            parameter="method"
+            input="/pages/index.jsp"
+            scope="request">
+            <forward name="index"        path="/pages/Home.jsp"/>     
+            <forward name="loginEjecutivo"        path="/pages/loginEjecutivo.jsp"/>
+            
+        </action>
+        <action
+            name ="LoginUsuarioWebFB"
+            path="/loginUsuarioWebAction"
+            type="com.immobilis.principal.action.LoginUsuarioWebAction"
+            parameter="method"
+            input="/pages/index.jsp"
+            scope="request">
+            <forward name="index"        path="/pages/Home.jsp"/>     
+            <forward name="loginUsuarioWeb"        path="/pages/loginUsuarioWeb.jsp"/>
+            
+        </action>
+   
+	</action-mappings>
+	
+	
+</struts-config>

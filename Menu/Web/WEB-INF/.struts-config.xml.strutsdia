@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM ID="#busquedaAction" NAME="action0"
+  PATH="/busquedaAction" SHAPE="32,17,0,0" TITLE="busquedaFB"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="busqueda" NAME="forward0"
+   PATH="/pages/busqueda.jsp" TARGET="page0" TITLE="busqueda"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="index" NAME="forward1" PATH="/pages/home.jsp"
+   TARGET="page1" TITLE="index" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#loginEjecutivoAction" NAME="action1"
+  PATH="/loginEjecutivoAction" SHAPE="32,417,0,0"
+  TITLE="loginEjecutivoFB" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="loginEjecutivo" NAME="forward0"
+   PATH="/pages/loginEjecutivo.jsp" TARGET="page2"
+   TITLE="loginEjecutivo" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="index" NAME="forward1" PATH="/pages/Home.jsp"
+   TARGET="page3" TITLE="index" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#loginUsuarioWebAction" NAME="action2"
+  PATH="/loginUsuarioWebAction" SHAPE="32,561,0,0"
+  TITLE="LoginUsuarioWebFB" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="loginUsuarioWeb" NAME="forward0"
+   PATH="/pages/loginUsuarioWeb.jsp" TARGET="page4"
+   TITLE="loginUsuarioWeb" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="index" NAME="forward1" PATH="/pages/Home.jsp"
+   TARGET="page3" TITLE="index" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#principalAction" NAME="action3"
+  PATH="/principalAction" SHAPE="32,161,0,0" TITLE="principalFB"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="principal" NAME="forward0"
+   PATH="/pages/principal.jsp" TARGET="page5" TITLE="principal"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="index" NAME="forward1" PATH="/pages/home.jsp"
+   TARGET="page1" TITLE="index" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="busqueda" NAME="forward2"
+   PATH="/pages/busqueda.jsp" TARGET="page0" TITLE="busqueda"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page0" PATH="/pages/busqueda.jsp"
+  SHAPE="256,34,0,0" SUBTYPE="jsp" TITLE="busqueda.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page1" PATH="/pages/home.jsp" SHAPE="256,178,0,0"
+  SUBTYPE="jsp" TITLE="home.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page2" PATH="/pages/loginEjecutivo.jsp"
+  SHAPE="256,434,0,0" SUBTYPE="jsp" TITLE="loginEjecutivo.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page3" PATH="/pages/Home.jsp" SHAPE="256,578,0,0"
+  SUBTYPE="jsp" TITLE="Home.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page4" PATH="/pages/loginUsuarioWeb.jsp"
+  SHAPE="256,722,0,0" SUBTYPE="jsp" TITLE="loginUsuarioWeb.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page5" PATH="/pages/principal.jsp"
+  SHAPE="256,322,0,0" SUBTYPE="jsp" TITLE="principal.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+</PROCESS>

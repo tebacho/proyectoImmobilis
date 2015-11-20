@@ -1,0 +1,20 @@
+.Estilo1 {font-size: 16px}
+.Estilo2 {font-size: 33%}
+.TabStyleSel {padding: 1px;border: outset 1.5pt;background:#CCCCCC;};
+.TabStyleNoSel{padding: 1px;border: outset 1.5pt;background: #EFEFEF; }
+.TdUnderLine{border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:#000000;"} 
+.TabStyleNoSel{padding: 1px;border: outset 1.5pt;background: #EFEFEF; }
+#scrolltable {margin: 0pt auto; overflow: auto; height: 200px; width: 860px;} 
+
+.resultadoBusqueda{
+	border-color: black
+	
+}
+.classImgProyecto
+	{
+    display: inline;
+    width: 250px;
+    height: 250px;
+}
+	
+	
