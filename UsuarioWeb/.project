@@ -37,12 +37,12 @@
 		<link>
 			<name>conexiones</name>
 			<type>2</type>
-			<location>C:/Users/Rodolfo/PortafolioWorkspace/Conexiones/src</location>
+			<location>C:/Users/rodolfo/PortafolioWorkspace/Conexiones/src</location>
 		</link>
 		<link>
 			<name>entidades</name>
 			<type>2</type>
-			<location>C:/Users/Rodolfo/PortafolioWorkspace/Common/src</location>
+			<location>C:/Users/rodolfo/PortafolioWorkspace/Common/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>
