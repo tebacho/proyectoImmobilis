@@ -8,6 +8,10 @@
 </head>
 <body>
 	<form>
+	<div align="center">
+	<h1>Registro</h1>
+	<hr>
+	</div>
 		<table align="center">
 			<tr>
 				<td>
