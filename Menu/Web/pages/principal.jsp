@@ -131,7 +131,7 @@
 		<iframe id="frameCentral"
 			src="<%=request.getContextPath()%>/busquedaAction.do?method=iniciarPagina"
 			width="75%" height="500px"
-			style="display: inline-block; scrollable: true;"> 
+			style="display: inline-block; scrollable: true;" align="right"> 
 		</iframe>
 		
 		<div class="contenedor_3" style="width:100%">
