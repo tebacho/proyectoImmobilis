@@ -16,6 +16,8 @@ import org.apache.struts.actions.DispatchAction;
 import com.immobilis.usuarioweb.form.RegistroForm;
 import com.immobilis.usuarioweb.manager.UsuarioWebManager;
 import com.immobilis.vo.ClienteVO;
+import com.immobilis.vo.ComunaVO;
+import com.immobilis.vo.RegionVO;
 
 public class RegistroAction extends DispatchAction {
 	
@@ -35,7 +37,6 @@ public class RegistroAction extends DispatchAction {
 			UsuarioWebManager manager = new UsuarioWebManager();
 			ClienteVO cliente= recibirParametros(request);
 			result= manager.registrarCliente(cliente);
-			
 		}
 
 		return mapping.findForward("success");
@@ -49,23 +50,22 @@ public class RegistroAction extends DispatchAction {
 		 String materno= request.getParameter("materno");
 		 cliente.setMaterno(materno);
 		 Date fechaNacimiento= stringIntoDate(request.getParameter("fechaNacimiento"));
-		 
-		 String rut= request.getParameter("");
+		 cliente.setFechaNacimiento(fechaNacimiento);
+		 String rut= request.getParameter("rut");
 		 cliente.setRut(rut);
-		 String sexo= request.getParameter("");
+		 String sexo= request.getParameter("sexo");
 		 cliente.setSexo(sexo);
-		 String eMail= request.getParameter("");
+		 String eMail= request.getParameter("eMail");
 		 cliente.seteMail(eMail);
-		 String password= request.getParameter("");
+		 String password= request.getParameter("pass");
 		 cliente.setPassword(password);
-		 String telefono= request.getParameter("");
+		 String telefono= request.getParameter("telefono");
 		 cliente.setTelefono(telefono);
-		 String comuna= request.getParameter("");
-//		 cliente.setComuna(comuna);
-		 String region= request.getParameter("");
-		 String passIngreso= request.getParameter("");
-		 String rutIngreso= request.getParameter("");
-
+		 int codigoComuna= Integer.parseInt(request.getParameter("idComuna"));
+		 ComunaVO comuna = new ComunaVO(); 	
+		 comuna.setCodigoComuna(codigoComuna);
+		 comuna.setCodigoRegion(Integer.parseInt(request.getParameter("idRegion")));
+		 cliente.setComuna(comuna);
 		 return cliente;
 	}
 	private Date stringIntoDate(String stringDate){
