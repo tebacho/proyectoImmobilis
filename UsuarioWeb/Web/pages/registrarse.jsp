@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>registrase</title>
+<style type="text/css">
+body{background-color: #d6d6c2;}
+</style>
 </head>
 <body>
 	<form>
@@ -84,7 +87,7 @@
 				<tr>
 					<td>
 						<p class="change_link">
-							¿Ya estas registrado? <a href="#">Ir a Ingreso</a>
+							¿Ya estas registrado? <a href="http://localhost:8080/UsuarioWeb/loginAction.do?method=mostrarFormulario">Ir a Ingreso</a>
 						</p>
 					<td>
 				</tr>

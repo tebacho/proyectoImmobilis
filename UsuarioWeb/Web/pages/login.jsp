@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>login</title>
+<style type="text/css">
+body{background-color: #d6d6c2;}
+</style>
 </head>
 <body>
 	<form align="center" action="#" autocomplete="on">
@@ -27,8 +30,8 @@
 				conectado</label>
 		</p>
 		<p class="login button">
-			<input type="submit" value="Iniciar Sesión" /> <input type='button'
-				value='Salir' onclick='CLOSE();' />
+			<input type="submit" value="Iniciar Sesión" style="width: 100px"/> <input type='button'
+				value='Salir' style="width: 100px" />
 
 		</p>
 		<p class="change_link">
