@@ -7,7 +7,9 @@
 
   CREATE OR REPLACE PACKAGE BODY "IMMOBILIS"."PKG_CLIENTE" AS
 
-procedure SP_INGRESA_NUEVO_CLIENTE( 
+procedure SP_INGRESA_NUEVO_CLIENTE(cod_resultado out number,
+                              msg_error out varchar2,
+                              cursorUsuario out PKG_CLIENTE.RefCursor, 
                               sp_rut in varchar2,
                               sp_nombre in varchar2,
                               sp_paterno in varchar2,
@@ -18,9 +20,7 @@ procedure SP_INGRESA_NUEVO_CLIENTE(
                               sp_telefono in varchar2,
                               sp_email in varchar2,
                               sp_comuna in number,
-                              sp_password in varchar2,
-                              cod_resultado out number,
-                              msg_error out varchar2
+                              sp_password in varchar2
                               )
 IS
   coincidencias number(9);
@@ -79,7 +79,10 @@ INTO PERSONA
   msg_error := 'ERROR: ' || SQLERRM || ' (' || SQLCODE  || ')';
 END;
 
-procedure SP_ACTUALIZA_CLIENTE(  sp_rut in varchar2,
+procedure SP_ACTUALIZA_CLIENTE( 
+                              cod_resultado out number,
+                              msg_error out varchar2,
+                              cursorUsuario out PKG_CLIENTE.RefCursor,sp_rut in varchar2,
                               sp_nombre in varchar2,
                               sp_paterno in varchar2,
                               sp_materno in varchar2,
@@ -89,9 +92,7 @@ procedure SP_ACTUALIZA_CLIENTE(  sp_rut in varchar2,
                               sp_telefono in varchar2,
                               sp_email in varchar2,
                               sp_comuna in number,
-                              sp_password in varchar2,
-                              cod_resultado out number,
-                              msg_error out varchar2
+                              sp_password in varchar2
                               )
 IS
  coincidencias number(9);
@@ -141,10 +142,10 @@ INSERT INTO CLIENTE
   msg_error := 'ERROR: ' || SQLERRM || ' (' || SQLCODE  || ')';
 END;
                               
-procedure SP_BUSCAR_CLIENTE ( sp_rut varchar2,
-                              cod_resultado out number,
+procedure SP_BUSCAR_CLIENTE(  cod_resultado out number,
                               msg_error out varchar2,
-                              cursorUsuario out PKG_CLIENTE.RefCursor
+                              cursorUsuario out PKG_CLIENTE.RefCursor,
+                              sp_rut varchar2
                               )
 IS
 BEGIN
@@ -180,11 +181,11 @@ AND
   
 END;
 
-procedure SP_VALIDAR_CLIENTE( sp_rut varchar2,
-                              sp_password varchar2,
-                              cod_resultado out number,
+procedure SP_VALIDAR_CLIENTE( cod_resultado out number,
                               msg_error out varchar2,
-                              cursorUsuario out PKG_CLIENTE.RefCursor
+                              cursorUsuario out PKG_CLIENTE.RefCursor,
+                              sp_rut varchar2,
+                              sp_password varchar2
                               )
  IS
 BEGIN

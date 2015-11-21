@@ -92,7 +92,7 @@ as
     MSG_ERROR:='Error al Buscar comunas';  
   end;
   
-procedure Listar_comunas(					
+procedure FILTRAR_COMUNAS(					
 		COD_RESULTADO	OUT	NUMBER	,	
 		MSG_ERROR	OUT	varchar2	,	
 		CURSOR_COMUNA	OUT	PKG_COMUNA.REFCURSOR	,	
@@ -109,7 +109,10 @@ as
     ID_COMUNA, NOMBRE_COMUNA, ID_REGION 
   FROM 
     COMUNA
-  WHERE ID_REGION like NVL(SP_ID_REGION,'%');
+  WHERE ID_REGION like NVL(SP_ID_REGION,'%')
+  AND 
+  NOMBRE_COMUNA LIKE NVL(SP_NOMBRE_COMUNA,'%')
+  ;
   COD_RESULTADO:=0;
   exception
   when others then

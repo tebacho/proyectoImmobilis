@@ -12,8 +12,6 @@ import oracle.jdbc.OracleTypes;
 import com.immobilis.conexiones.connector.ConnectionDAO;
 import com.immobilis.conexiones.dao.ClienteDao;
 import com.immobilis.vo.ClienteVO;
-import com.immobilis.vo.ComunaVO;
-import com.immobilis.vo.DireccionVO;
 
 public class ClienteDaoImpl implements ClienteDao {
 
@@ -200,11 +198,12 @@ public class ClienteDaoImpl implements ClienteDao {
 			con = ConnectionDAO.establecerConexion();
 			CallableStatement callableStatement = con
 					.prepareCall(cifSpActEstadoMacQuery);
-			callableStatement.setString(1, rut);
-			callableStatement.setString(2, pass);
-			callableStatement.registerOutParameter(3, java.sql.Types.NUMERIC);
-			callableStatement.registerOutParameter(4, java.sql.Types.VARCHAR);
-			callableStatement.registerOutParameter(5, OracleTypes.CURSOR);
+			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
+			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
+			callableStatement.setString(4, rut);
+			callableStatement.setString(5, pass);
+			
 			callableStatement.execute();
 			String msg = callableStatement.getString(4);
 			BigDecimal dm = callableStatement.getBigDecimal(3);

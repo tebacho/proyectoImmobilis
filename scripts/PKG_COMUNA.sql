@@ -28,7 +28,7 @@ ACTUALIZAR_COMUNA	(
 		SP_ID_REGION	IN	NUMBER);
     
     procedure						
-Buscar_COMUNA	(					
+BUSCAR_COMUNA	(					
 		COD_RESULTADO	OUT	NUMBER	,	
 		MSG_ERROR	OUT	varchar2	,	
 		CURSOR_COMUNA	OUT	PKG_COMUNA.REFCURSOR	,	
@@ -37,7 +37,7 @@ Buscar_COMUNA	(
 		SP_ID_REGION	IN	NUMBER		
 );
 
-procedure Listar_comunas(					
+procedure FILTRAR_COMUNAS(					
 		COD_RESULTADO	OUT	NUMBER	,	
 		MSG_ERROR	OUT	varchar2	,	
 		CURSOR_COMUNA	OUT	PKG_COMUNA.REFCURSOR	,	

@@ -1,5 +1,10 @@
 package com.immobilis.usuarioweb.action;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -37,13 +42,14 @@ public class RegistroAction extends DispatchAction {
 	}
 	public ClienteVO recibirParametros(HttpServletRequest request){
 		 ClienteVO cliente = new ClienteVO();
-		 String nombre = request.getParameter("");
+		 String nombre = request.getParameter("nombres");
 		 cliente.setNombre(nombre);
-		 String paterno= request.getParameter("");
+		 String paterno= request.getParameter("paterno");
 		 cliente.setPaterno(paterno);
-		 String materno= request.getParameter("");
+		 String materno= request.getParameter("materno");
 		 cliente.setMaterno(materno);
-//		 Date fechaNacimiento= Date.parse(request.getParameter(""));
+		 Date fechaNacimiento= stringIntoDate(request.getParameter("fechaNacimiento"));
+		 
 		 String rut= request.getParameter("");
 		 cliente.setRut(rut);
 		 String sexo= request.getParameter("");
@@ -62,7 +68,18 @@ public class RegistroAction extends DispatchAction {
 
 		 return cliente;
 	}
-	
+	private Date stringIntoDate(String stringDate){
+		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		Date fecha = null;
+		try {
+			fecha = format.parse(stringDate);
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return fecha;
+	}
 	
 	
 }
