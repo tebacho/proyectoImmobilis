@@ -29,7 +29,7 @@
 		        content:    "http://localhost:8080/UsuarioWeb/loginAction.do?method=mostrarFormulario",
 		        player:     "iframe",
 		        height:     500,
-		        width:      400
+		        width:      650
 		    });
 		
 	}
