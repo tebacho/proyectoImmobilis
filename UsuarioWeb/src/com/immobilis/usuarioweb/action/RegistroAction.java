@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,55 +22,75 @@ import com.immobilis.vo.ComunaVO;
 import com.immobilis.vo.RegionVO;
 
 public class RegistroAction extends DispatchAction {
-	
+
 	public ActionForward mostrarFormulario(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
-		return mapping.findForward("registro");
-	}
-	
-	public ActionForward registroUsuario(ActionMapping mapping,
-			ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-			String result="";
 		if (form instanceof RegistroForm) {
 			RegistroForm formulario = (RegistroForm)form;
 			UsuarioWebManager manager = new UsuarioWebManager();
-			ClienteVO cliente= recibirParametros(request);
-			result= manager.registrarCliente(cliente);
+			Map<Integer, ComunaVO> comunas = manager.listarComunas();
+			Map<Integer, RegionVO> regiones = manager.listarRegiones();
+			
+			
+			if(comunas==null || regiones==null){
+			formulario.setComunas(new HashMap<Integer, ComunaVO>() );
+			formulario.setRegiones(new HashMap<Integer, RegionVO>());
+			}else{
+				formulario.setComunas(comunas);
+				formulario.setRegiones(regiones);
+			}
+		
+		}
+
+		return mapping.findForward("registro");
+	}
+
+	public ActionForward registroUsuario(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String result = "";
+		if (form instanceof RegistroForm) {
+			RegistroForm formulario = (RegistroForm) form;
+			UsuarioWebManager manager = new UsuarioWebManager();
+			ClienteVO cliente = recibirParametros(request);
+			result = manager.registrarCliente(cliente);
 		}
 
 		return mapping.findForward("success");
 	}
-	public ClienteVO recibirParametros(HttpServletRequest request){
-		 ClienteVO cliente = new ClienteVO();
-		 String nombre = request.getParameter("nombres");
-		 cliente.setNombre(nombre);
-		 String paterno= request.getParameter("paterno");
-		 cliente.setPaterno(paterno);
-		 String materno= request.getParameter("materno");
-		 cliente.setMaterno(materno);
-		 Date fechaNacimiento= stringIntoDate(request.getParameter("fechaNacimiento"));
-		 cliente.setFechaNacimiento(fechaNacimiento);
-		 String rut= request.getParameter("rut");
-		 cliente.setRut(rut);
-		 String sexo= request.getParameter("sexo");
-		 cliente.setSexo(sexo);
-		 String eMail= request.getParameter("eMail");
-		 cliente.seteMail(eMail);
-		 String password= request.getParameter("pass");
-		 cliente.setPassword(password);
-		 String telefono= request.getParameter("telefono");
-		 cliente.setTelefono(telefono);
-		 int codigoComuna= Integer.parseInt(request.getParameter("idComuna"));
-		 ComunaVO comuna = new ComunaVO(); 	
-		 comuna.setCodigoComuna(codigoComuna);
-		 comuna.setCodigoRegion(Integer.parseInt(request.getParameter("idRegion")));
-		 cliente.setComuna(comuna);
-		 return cliente;
+
+	public ClienteVO recibirParametros(HttpServletRequest request) {
+		ClienteVO cliente = new ClienteVO();
+		String nombre = request.getParameter("nombres");
+		cliente.setNombre(nombre);
+		String paterno = request.getParameter("paterno");
+		cliente.setPaterno(paterno);
+		String materno = request.getParameter("materno");
+		cliente.setMaterno(materno);
+		Date fechaNacimiento = stringIntoDate(request
+				.getParameter("fechaNacimiento"));
+		cliente.setFechaNacimiento(fechaNacimiento);
+		String rut = request.getParameter("rut");
+		cliente.setRut(rut);
+		String sexo = request.getParameter("sexo");
+		cliente.setSexo(sexo);
+		String eMail = request.getParameter("eMail");
+		cliente.seteMail(eMail);
+		String password = request.getParameter("pass");
+		cliente.setPassword(password);
+		String telefono = request.getParameter("telefono");
+		cliente.setTelefono(telefono);
+		int codigoComuna = Integer.parseInt(request.getParameter("idComuna"));
+		ComunaVO comuna = new ComunaVO();
+		comuna.setCodigoComuna(codigoComuna);
+		comuna.setCodigoRegion(Integer.parseInt(request
+				.getParameter("idRegion")));
+		cliente.setComuna(comuna);
+		return cliente;
 	}
-	private Date stringIntoDate(String stringDate){
+
+	private Date stringIntoDate(String stringDate) {
 		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		Date fecha = null;
 		try {
@@ -80,6 +102,5 @@ public class RegistroAction extends DispatchAction {
 		}
 		return fecha;
 	}
-	
-	
+
 }

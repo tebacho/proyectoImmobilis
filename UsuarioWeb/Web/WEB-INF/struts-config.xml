@@ -4,7 +4,7 @@
 <struts-config>
 	<form-beans>
 		<form-bean name="loginFB" type="com.immobilis.usuarioweb.form.LoginForm" />
-		<form-bean name="registroFB" type="com.immobilis.usuarioweb.form.registroForm" />
+		<form-bean name="registroFB" type="com.immobilis.usuarioweb.form.RegistroForm" />
 	</form-beans>
 	
 	<global-forwards></global-forwards>

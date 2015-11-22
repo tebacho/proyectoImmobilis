@@ -1,8 +1,16 @@
 package com.immobilis.usuarioweb.manager;
 
+import java.util.Map;
+
 import com.immobilis.conexiones.dao.ClienteDao;
+import com.immobilis.conexiones.dao.ComunaDao;
+import com.immobilis.conexiones.dao.RegionDao;
 import com.immobilis.conexiones.dao.impl.ClienteDaoImpl;
+import com.immobilis.conexiones.dao.impl.ComunaDaoImpl;
+import com.immobilis.conexiones.dao.impl.RegionDaoImpl;
 import com.immobilis.vo.ClienteVO;
+import com.immobilis.vo.ComunaVO;
+import com.immobilis.vo.RegionVO;
 
 public class UsuarioWebManager {
 
@@ -26,6 +34,14 @@ public class UsuarioWebManager {
 		ClienteDao clienteDao = new ClienteDaoImpl();
 		clienteEncontrado = clienteDao.loginCliente(ClienteBuscado);
 		return clienteEncontrado;
+	}
+	public Map<Integer, ComunaVO> listarComunas(){
+		ComunaDao comunaDao = new ComunaDaoImpl();
+		return comunaDao.listarComunas();
+	}
+	public Map<Integer, RegionVO> listarRegiones(){
+		RegionDao comunaDao = new RegionDaoImpl();
+		return comunaDao.listaRegiones();
 	}
 
 }

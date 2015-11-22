@@ -1,12 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@page import="java.util.Iterator"%>
+
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registrarse</title>
 <style type="text/css">
-body{background-color: #d6d6c2;}
+body {
+	background-color: #d6d6c2;
+}
 h1{
 font-family: "Comic Sans MS", cursive, sans-serif;
 text-shadow: 2px 2px 4px #000000;
@@ -18,37 +24,47 @@ select:hover{background-color: #ffff99;}
 </head>
 <body>
 	<form>
-	<div align="center">
-	<h1>Registro</h1>
-	<hr>
-	</div>
+		<div align="center">
+			<h1>Registro</h1>
+			<hr>
+		</div>
 		<table align="center">
 			<tr>
 				<td>
 					<table align="left">
 						<tr>
 							<td>Rut</td>
-							<td><input required="required"/></td>
+							<td><input required="required" /></td>
 						<tr>
 						<tr>
 							<td>Apellido Paterno</td>
-							<td><input required="required"/></td>
+							<td><input required="required" /></td>
 						</tr>
 						<tr>
 							<td>Telefono</td>
-							<td><input required="required"/></td>
+							<td><input required="required" /></td>
 						</tr>
 						<tr>
 							<td>Fecha Nacimiento</td>
-							<td><input required="required" placeholder="22-04-1985"/></td>
+							<td><input required="required" placeholder="22-04-1985" /></td>
 						</tr>
 						<tr>
 							<td>Region</td>
-							<td><select></select></td>
+							<td><select name="cbxRegion" class="field" id="region">
+									<logic:iterate name="registroFB" property="regiones"
+										id="regiones">
+										<bean:define id="nRegion" name="regiones" property="value">
+											<option value='<bean:write name="nRegion" property="idRegion" />'>
+												<bean:write name="nRegion" property="nombreRegion" />
+											</option>
+										</bean:define>
+										<option value='<bean:write name="regiones" property="key" />'>2</option>
+									</logic:iterate>
+							</select></td>
 						</tr>
 						<tr>
 							<td>Contraseña</td>
-							<td><input type="password" required="required"/></td>
+							<td><input type="password" required="required" /></td>
 						</tr>
 					</table>
 				</td>
@@ -56,19 +72,23 @@ select:hover{background-color: #ffff99;}
 					<table align="right">
 						<tr>
 							<td>Nombres</td>
-							<td><input required="required"/></td>
+							<td><input required="required" /></td>
 						</tr>
 						<tr>
 							<td>Apellido Materno</td>
-							<td><input required="required"/></td>
+							<td><input required="required" /></td>
 						</tr>
 						<tr>
 							<td>Correo</td>
-							<td><input type="text" required="required" placeholder="correo@gmail.com"/></td>
+							<td><input type="text" required="required"
+								placeholder="correo@gmail.com" /></td>
 						</tr>
 						<tr>
-							<td>Sexo</td>
-							<td><select></select></td>
+							<td>Sexo:</td>
+							<td><select>
+									<option value='H'>Hombre</option>
+									<option value='M'>Mujer</option>
+							</select></td>
 						<tr>
 						<tr>
 							<td>Comuna</td>
@@ -76,7 +96,7 @@ select:hover{background-color: #ffff99;}
 						</tr>
 						<tr>
 							<td>Repita Contraseña</td>
-							<td><input type="password" required="required"/></td>
+							<td><input type="password" required="required" /></td>
 						</tr>
 					</table>
 				</td>
@@ -94,7 +114,9 @@ select:hover{background-color: #ffff99;}
 				<tr>
 					<td>
 						<p class="change_link">
-							¿Ya estas registrado? <a href="http://localhost:8080/UsuarioWeb/loginAction.do?method=mostrarFormulario">Ir a Ingreso</a>
+							¿Ya estas registrado? <a
+								href="http://localhost:8080/UsuarioWeb/loginAction.do?method=mostrarFormulario">Ir
+								a Ingreso</a>
 						</p>
 					<td>
 				</tr>
