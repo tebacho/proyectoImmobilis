@@ -7,6 +7,11 @@
 <title>registrase</title>
 <style type="text/css">
 body{background-color: #d6d6c2;}
+h1{
+font-family: "Comic Sans MS", cursive, sans-serif;
+text-shadow: 2px 2px 4px #000000;
+color:white;
+}
 </style>
 </head>
 <body>

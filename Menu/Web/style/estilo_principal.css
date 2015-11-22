@@ -21,6 +21,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /*============================
     CONTENEDOR PRINCIPAL
 ============================*/
@@ -28,6 +29,11 @@ time, mark, audio, video {
 	background-color: #f5f5f0;
 	height: 100%;
 	width: 100%;
+}
+h1{
+font-family: "Comic Sans MS", cursive, sans-serif;
+text-shadow: 2px 2px 4px #000000;
+color:white;
 }
 /*=============
    CABECERA
@@ -53,7 +59,10 @@ time, mark, audio, video {
 .contenedor_4{width: 100%;}
 .menu{
 	text-align: center;
+	margin: 30px 0px 0px 0px;
+	background-color: #d6d6c2;
 }
+.menu_boton, input{margin: 10px;}
 .menu_usuario{
 	width: 20%;
 	float: left;

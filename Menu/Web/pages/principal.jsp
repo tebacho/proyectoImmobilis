@@ -61,8 +61,7 @@
 		window.location.reload();
 	}
 </script>
-<style>
-</style>
+
 </head>
 <body>
 	<div class="contenedor_principal">
@@ -121,35 +120,45 @@
 			</div>
 		</div>
 
- 
+
 
 
 		<div class="contenedor_4">
 			<div class="menu_usuario">
 				<div class="menu">
 					<h1>Menu Cliente</h1>
-					<input type="button" value="Actualizar Datos" style="width: 150px; height: 25px"/><br> 
-					<input type="button" value="Historial de Pagos" style="width: 150px; height: 25px" /><br> 
-					<input type="button" value="Contrato Activos" style="width: 150px; height: 25px" />
+					<hr>
+					<div class="menu_boton">
+						<input type="button" value="Actualizar Datos"
+							style="width: 150px; height: 25px" /><br> <input
+							type="button" value="Historial de Pagos"
+							style="width: 150px; height: 25px" /><br> <input
+							type="button" value="Contrato Activos"
+							style="width: 150px; height: 25px" />
+					</div>
 				</div>
 			</div>
-			
+
 			<div class="menu_empleado">
-			<div class="menu">
-			<h1>Menu Empleado</h1>
-			<input type="button" value="Actualizar Datos" style="width: 150px; height: 25px" />
-			<input type="button" value="Generar Contrato" style="width: 150px; height: 25px" />
-			<input type="button" value="Listado Cobranza" style="width: 150px; height: 25px" />
-			<input type="button" value="Ingreso Pago" style="width: 150px; height: 25px" />
+				<div class="menu">
+					<h1>Menu Empleado</h1>
+					<hr>
+					<div class="menu_boton">
+						<input type="button" value="Actualizar Datos"
+							style="width: 150px; height: 25px" /> <input type="button"
+							value="Generar Contrato" style="width: 150px; height: 25px" /> <input
+							type="button" value="Listado Cobranza"
+							style="width: 150px; height: 25px" /> <input type="button"
+							value="Ingreso Pago" style="width: 150px; height: 25px" />
+					</div>
+				</div>
 			</div>
-			</div>
-			
+
 			<div class="frame">
 				<iframe id="frameCentral"
 					src="<%=request.getContextPath()%>/busquedaAction.do?method=iniciarPagina"
 					width="80%" height="500px"
-					style="display: inline-block; scrollable: true;">
-				</iframe>
+					style="display: inline-block; scrollable: true;"> </iframe>
 			</div>
 		</div>
 
