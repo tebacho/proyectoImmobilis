@@ -54,6 +54,7 @@ color:white;
 	border-color:#c2c2a3;
 	border-style: solid;
 	border-width: 2px;
+	margin-bottom: 10px;
 }
 /*====================
         MENU
@@ -62,7 +63,7 @@ color:white;
 .contenedor_4{width: 100%;}
 .menu{
 	text-align: center;
-	margin: 30px 0px 0px 0px;
+	margin: 30px 10px 0px 10px;
 	background-color: #d6d6c2;
 	border-color: #c2c2a3;
 	border-style: solid;
