@@ -18,7 +18,7 @@ public class LoginAction extends DispatchAction {
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		return mapping.findForward("mostrarFormulario");
+		return mapping.findForward("login");
 	}
 	
 	public ActionForward login(ActionMapping mapping,

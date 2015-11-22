@@ -3,25 +3,41 @@
 
 <struts-config>
 	<form-beans>
-		<form-bean name="usuarioWebFB" type="com.immobilis.usuarioweb.form.UsuarioWebForm" />
+		<form-bean name="loginFB" type="com.immobilis.usuarioweb.form.LoginForm" />
+		<form-bean name="registroFB" type="com.immobilis.usuarioweb.form.registroForm" />
 	</form-beans>
 	
 	<global-forwards></global-forwards>
 	
 	<action-mappings>
 		<action
-            name ="usuarioWebFB"
-            path="/usuarioWebAction"
-            type="com.immobilis.usuarioweb.action.UsuarioWebAction"
+            name ="loginFB"
+            path="/loginAction"
+            type="com.immobilis.usuarioweb.action.LoginAction"
             parameter="method"
             input="/pages/index.jsp"
             scope="request">
             <forward name="index"        path="/pages/home.jsp"/>     
-            <forward name="usuarioWeb"        path="/pages/usuarioWeb.jsp"/>
+            <forward name="login"        path="/pages/login.jsp"/>
+            
+        </action>
+        
+        		<action
+            name ="registroFB"
+            path="/registroAction"
+            type="com.immobilis.usuarioweb.action.RegistroAction"
+            parameter="method"
+            input="/pages/index.jsp"
+            scope="request">
+            <forward name="index"        path="/pages/home.jsp"/>     
+            <forward name="registro"        path="/pages/registrarse.jsp"/>
             
         </action>
         
 	</action-mappings>
+	
+	
+	
 	
 	
 </struts-config>

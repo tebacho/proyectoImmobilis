@@ -25,7 +25,7 @@ public class RegistroAction extends DispatchAction {
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		return mapping.findForward("registroUsuario");
+		return mapping.findForward("registro");
 	}
 	
 	public ActionForward registroUsuario(ActionMapping mapping,
