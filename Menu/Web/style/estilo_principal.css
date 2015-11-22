@@ -51,6 +51,9 @@ color:white;
 .buscador{
 	padding: 10px 0px 10px 0px;
 	background-color: #d6d6c2;
+	border-color:#c2c2a3;
+	border-style: solid;
+	border-width: 2px;
 }
 /*====================
         MENU
@@ -61,16 +64,20 @@ color:white;
 	text-align: center;
 	margin: 30px 0px 0px 0px;
 	background-color: #d6d6c2;
+	border-color: #c2c2a3;
+	border-style: solid;
+	border-width: 2px;
 }
 .menu_boton, input{margin: 10px;}
 .menu_usuario{
 	width: 20%;
 	float: left;
+	display: none;
 }
 .menu_empleado{
 	width: 20%;
 	float: left;
-	display: none;
+	/*display: none;*/
 }
 .frame{
 	width: 80%;
