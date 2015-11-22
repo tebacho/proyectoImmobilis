@@ -6,26 +6,36 @@
 
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
+
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registrarse</title>
+<title>Actualizar Datos Usuario</title>
 <style type="text/css">
 body {
 	background-color: #d6d6c2;
 }
-h1{
-font-family: "Comic Sans MS", cursive, sans-serif;
-text-shadow: 2px 2px 4px #000000;
-color:white;
+
+h1 {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	text-shadow: 2px 2px 4px #000000;
+	color: white;
 }
-input:focus {background-color:#ffff99;}
-select:hover{background-color: #ffff99;}
+
+input:focus {
+	background-color: #ffff99;
+}
+
+select:hover {
+	background-color: #ffff99;
+}
 </style>
 </head>
 <body>
+
 	<form>
 		<div align="center">
-			<h1>Registro</h1>
+			<h1>Actualizar Datos</h1>
 			<hr>
 		</div>
 		<table align="center">
@@ -51,12 +61,13 @@ select:hover{background-color: #ffff99;}
 						<tr>
 							<td>Region</td>
 							<td><select name="cbxRegion" class="field" id="region">
-									<logic:iterate name="registroFB" property="regiones" id="regiones">
-										<bean:define name="regiones" id="nRegion" property="value"/>
+									<logic:iterate name="registroFB" property="regiones"
+										id="regiones">
+										<bean:define name="regiones" id="nRegion" property="value" />
 										<option value='<bean:write name="regiones" property="key" />'>
 											<bean:write name="nRegion" property="nombreRegion" />
 										</option>
-										
+
 									</logic:iterate>
 							</select></td>
 						</tr>
@@ -82,17 +93,15 @@ select:hover{background-color: #ffff99;}
 								placeholder="correo@gmail.com" /></td>
 						</tr>
 						<tr>
-							<td>Sexo:</td>
-							<td><select>
-									<option value='H'>Hombre</option>
-									<option value='M'>Mujer</option>
-							</select></td>
+							<td>Sexo</td>
+							<td><select></select></td>
 						<tr>
 						<tr>
 							<td>Comuna</td>
 							<td><select name="cbxRegion" class="field" id="region">
-									<logic:iterate name="registroFB" property="comunas" id="comunas">
-										<bean:define name="comunas" id="nComuna" property="value"/>
+									<logic:iterate name="registroFB" property="comunas"
+										id="comunas">
+										<bean:define name="comunas" id="nComuna" property="value" />
 										<option value='<bean:write name="comunas" property="key" />'>
 											<bean:write name="nComuna" property="nombreComuna" />
 										</option>
@@ -110,23 +119,13 @@ select:hover{background-color: #ffff99;}
 				<br>
 				<br>
 				<tr>
-					<td><input type="submit" value="Registrar"
+					<td><input type="submit" value="Actualizar"
 						style="width: 100px" /></td>
-					<td><input type="button" style="width: 100px" value="Salir" /></td>
-				</tr>
-			</table>
-			<table align="center">
-				<tr>
-					<td>
-						<p class="change_link">
-							¿Ya estas registrado? <a
-								href="http://localhost:8080/UsuarioWeb/loginAction.do?method=mostrarFormulario">Ir
-								a Ingreso</a>
-						</p>
-					<td>
+					<td><input type="button" style="width: 100px" value="Cancelar" /></td>
 				</tr>
 			</table>
 		</table>
 	</form>
+
 </body>
 </html>
