@@ -61,7 +61,6 @@
 		window.location.reload();
 	}
 </script>
-
 </head>
 <body>
 	<div class="contenedor_principal">

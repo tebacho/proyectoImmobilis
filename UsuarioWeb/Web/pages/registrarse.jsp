@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>registrase</title>
+<title>Registrarse</title>
 <style type="text/css">
 body{background-color: #d6d6c2;}
 h1{
@@ -12,6 +12,8 @@ font-family: "Comic Sans MS", cursive, sans-serif;
 text-shadow: 2px 2px 4px #000000;
 color:white;
 }
+input:focus {background-color:#ffff99;}
+select:hover{background-color: #ffff99;}
 </style>
 </head>
 <body>

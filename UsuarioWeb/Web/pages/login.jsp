@@ -12,6 +12,8 @@ font-family: "Comic Sans MS", cursive, sans-serif;
 text-shadow: 2px 2px 4px #000000;
 color:white;
 }
+input:focus {background-color:#ffff99;}
+select:hover{background-color: #ffff99;}
 </style>
 </head>
 <body>

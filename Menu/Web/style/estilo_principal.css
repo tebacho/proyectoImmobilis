@@ -56,6 +56,8 @@ color:white;
 	border-width: 2px;
 	margin-bottom: 10px;
 }
+input:focus {background-color:#ffff99;}
+select:hover{background-color: #ffff99;}
 /*====================
         MENU
 ====================*/ 
@@ -73,12 +75,12 @@ color:white;
 .menu_usuario{
 	width: 20%;
 	float: left;
-	display: none;
+	/*display: none;*/
 }
 .menu_empleado{
 	width: 20%;
 	float: left;
-	/*display: none;*/
+	display: none;
 }
 .frame{
 	width: 80%;
