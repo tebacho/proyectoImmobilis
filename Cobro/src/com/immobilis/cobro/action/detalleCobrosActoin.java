@@ -6,9 +6,9 @@ import org.apache.struts.action.ActionForward;
  * @version 1.0
  * @created 20-sep.-2015 20:13:32
  */
-public class detalleCobrosActoin {
+public class DetalleCobrosActoin {
 
-	public detalleCobrosActoin(){
+	public DetalleCobrosActoin(){
 
 	}
 

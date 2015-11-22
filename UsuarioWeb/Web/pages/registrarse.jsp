@@ -51,14 +51,12 @@ select:hover{background-color: #ffff99;}
 						<tr>
 							<td>Region</td>
 							<td><select name="cbxRegion" class="field" id="region">
-									<logic:iterate name="registroFB" property="regiones"
-										id="regiones">
-										<bean:define id="nRegion" name="regiones" property="value">
-											<option value='<bean:write name="nRegion" property="idRegion" />'>
-												<bean:write name="nRegion" property="nombreRegion" />
-											</option>
-										</bean:define>
-										<option value='<bean:write name="regiones" property="key" />'>2</option>
+									<logic:iterate name="registroFB" property="regiones" id="regiones">
+										<bean:define name="regiones" id="nRegion" property="value"/>
+										<option value='<bean:write name="regiones" property="key" />'>
+											<bean:write name="nRegion" property="nombreRegion" />
+										</option>
+										
 									</logic:iterate>
 							</select></td>
 						</tr>
@@ -92,7 +90,15 @@ select:hover{background-color: #ffff99;}
 						<tr>
 						<tr>
 							<td>Comuna</td>
-							<td><select></select></td>
+							<td><select name="cbxRegion" class="field" id="region">
+									<logic:iterate name="registroFB" property="comunas" id="comunas">
+										<bean:define name="comunas" id="nComuna" property="value"/>
+										<option value='<bean:write name="comunas" property="key" />'>
+											<bean:write name="nComuna" property="nombreComuna" />
+										</option>
+										
+									</logic:iterate>
+							</select></td>
 						</tr>
 						<tr>
 							<td>Repita Contraseña</td>

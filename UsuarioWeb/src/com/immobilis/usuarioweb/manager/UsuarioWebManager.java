@@ -35,13 +35,13 @@ public class UsuarioWebManager {
 		clienteEncontrado = clienteDao.loginCliente(ClienteBuscado);
 		return clienteEncontrado;
 	}
-	public Map<Integer, ComunaVO> listarComunas(){
+	public Map<String, ComunaVO> listarComunas(){
 		ComunaDao comunaDao = new ComunaDaoImpl();
 		return comunaDao.listarComunas();
 	}
-	public Map<Integer, RegionVO> listarRegiones(){
-		RegionDao comunaDao = new RegionDaoImpl();
-		return comunaDao.listaRegiones();
+	public Map<String, RegionVO> listarRegiones(){
+		RegionDao regionDao = new RegionDaoImpl();
+		return regionDao.listaRegiones();
 	}
 
 }

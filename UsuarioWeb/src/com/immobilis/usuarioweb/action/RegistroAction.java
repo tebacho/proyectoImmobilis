@@ -29,8 +29,8 @@ public class RegistroAction extends DispatchAction {
 		if (form instanceof RegistroForm) {
 			RegistroForm formulario = (RegistroForm)form;
 			UsuarioWebManager manager = new UsuarioWebManager();
-			Map<Integer, ComunaVO> comunas = manager.listarComunas();
-			Map<Integer, RegionVO> regiones = manager.listarRegiones();
+			Map<String, ComunaVO> comunas = manager.listarComunas();
+			Map<String, RegionVO> regiones = manager.listarRegiones();
 			
 			
 			if(comunas==null || regiones==null){

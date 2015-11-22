@@ -17,19 +17,18 @@ import com.immobilis.vo.ComunaVO;
 public class ComunaDaoImpl implements ComunaDao {
 
 	@Override
-	public Map<Integer, ComunaVO> listarComunas() {
+	public Map<String, ComunaVO> listarComunas() {
 		long t1 = System.currentTimeMillis();
 		BigDecimal estado =null;
 		String msgError = null;
 		Connection con = null;
 		ResultSet rs = null;
-		Map<Integer, ComunaVO> comunas = null;
+		Map<String, ComunaVO> comunas = null;
 
 		try {
 			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_COMUNA.SP_LISTAR_COMUNAS(?,?,?)}";
 			con = ConnectionDAO.establecerConexion();
-			CallableStatement callableStatement = con
-					.prepareCall(cifSpActEstadoMacQuery);
+			CallableStatement callableStatement = con.prepareCall(cifSpActEstadoMacQuery);
 
 			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
 			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
@@ -37,7 +36,8 @@ public class ComunaDaoImpl implements ComunaDao {
 			callableStatement.execute();
 			estado = callableStatement.getBigDecimal(1);
 			msgError = callableStatement.getString(2);
-			comunas = listarComunas(rs);
+			rs = (ResultSet)callableStatement.getObject(3);
+			comunas = rsIntoComunas(rs);
 
 		} catch (SQLException sqle) {
 			estado = new BigDecimal(1);
@@ -57,21 +57,21 @@ public class ComunaDaoImpl implements ComunaDao {
 		return comunas;
 	}
 
-	private Map<Integer, ComunaVO> listarComunas(ResultSet rs)
+	private Map<String, ComunaVO> rsIntoComunas(ResultSet rs)
 			throws SQLException {
-		Map<Integer, ComunaVO> comunas = new HashMap<>();
+		Map<String, ComunaVO> comunas = new HashMap<>();
 		while (rs.next()) {
 			ComunaVO comuna = new ComunaVO();
 			comuna.setCodigoComuna(rs.getInt("ID_COMUNA"));
 			comuna.setNombreComuna(rs.getString("NOMBRE_COMUNA"));
-			comuna.setCodigoRegion(rs.getInt("CODIGO_REGION"));
-			comunas.put(comuna.getCodigoComuna(), comuna);
+			comuna.setCodigoRegion(rs.getInt("ID_REGION"));
+			comunas.put(comuna.getCodigoComuna()+"", comuna);
 		}
 		return comunas;
 	}
 
 	@Override
-	public Map<Integer, ComunaVO> fetchComunas(ComunaVO comuna) {
+	public Map<String, ComunaVO> fetchComunas(ComunaVO comuna) {
 		long t1 = System.currentTimeMillis();
 		BigDecimal estado =null;
 		String msgError = null;
@@ -80,10 +80,10 @@ public class ComunaDaoImpl implements ComunaDao {
 		int codigoRegion = comuna.getCodigoRegion();
 		String nombreComuna = comuna.getNombreComuna();
 		ResultSet rs = null;
-		Map<Integer, ComunaVO> comunas = null;
+		Map<String, ComunaVO> comunas = null;
 
 		try {
-			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_COMUNA.SP_LISTAR_COMUNAS(?,?,?,?,?,?)}";
+			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_COMUNA.SP_FILTRAR_COMUNAS(?,?,?,?,?,?)}";
 			con = ConnectionDAO.establecerConexion();
 			CallableStatement callableStatement = con
 					.prepareCall(cifSpActEstadoMacQuery);
@@ -97,7 +97,7 @@ public class ComunaDaoImpl implements ComunaDao {
 			callableStatement.execute();
 			estado = callableStatement.getBigDecimal(1);
 			msgError = callableStatement.getString(2);
-			comunas = listarComunas(rs);
+			comunas = rsIntoComunas(rs);
 
 		} catch (SQLException sqle) {
 			estado = new BigDecimal(1);

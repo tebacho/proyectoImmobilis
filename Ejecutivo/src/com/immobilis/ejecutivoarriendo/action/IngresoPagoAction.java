@@ -9,10 +9,7 @@ import org.apache.struts.action.ActionForward;
  */
 public class IngresoPagoAction {
 
-	public IngresoPagoAction(){
-
-	}
-
+	
 	public void finalize() throws Throwable {
 
 	}

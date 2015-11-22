@@ -12,21 +12,20 @@ import oracle.jdbc.internal.OracleTypes;
 
 import com.immobilis.conexiones.connector.ConnectionDAO;
 import com.immobilis.conexiones.dao.RegionDao;
-import com.immobilis.vo.ComunaVO;
 import com.immobilis.vo.RegionVO;
 
 
 public class RegionDaoImpl implements RegionDao {
 
 	@Override
-	public Map<Integer, RegionVO> listaRegiones() {
+	public Map<String,RegionVO> listaRegiones() {
 
 		long t1 = System.currentTimeMillis();
 		BigDecimal estado =null;
 		String msgError = null;
 		Connection con = null;
 		ResultSet rs = null;
-		Map<Integer, RegionVO> regiones = null;
+		Map<String,RegionVO> regiones = null;
 
 		try {
 			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_REGION.SP_LISTAR_REGIONES(?,?,?)}";
@@ -40,6 +39,7 @@ public class RegionDaoImpl implements RegionDao {
 			callableStatement.execute();
 			estado = callableStatement.getBigDecimal(1);
 			msgError = callableStatement.getString(2);
+			rs = (ResultSet)callableStatement.getObject(3);
 			regiones = listarRegiones(rs);
 
 		} catch (SQLException sqle) {
@@ -47,7 +47,7 @@ public class RegionDaoImpl implements RegionDao {
 			sqle.printStackTrace();
 		} finally {
 			long t2 = System.currentTimeMillis();
-			System.out.println("[listarComunas] TIEMPO EJECUCION " + (t2 - t1)
+			System.out.println("[listarRegiones] TIEMPO EJECUCION " + (t2 - t1)
 					+ " miliseg");
 			if (con != null) {
 				try {
@@ -59,14 +59,14 @@ public class RegionDaoImpl implements RegionDao {
 		}
 		return regiones;
 	}
-	private Map<Integer, RegionVO> listarRegiones(ResultSet rs)
+	private Map<String,RegionVO> listarRegiones(ResultSet rs)
 			throws SQLException {
-		Map<Integer, RegionVO> regiones= new HashMap<>();
+		Map<String,RegionVO> regiones= new HashMap();
 		while (rs.next()) {
 			RegionVO region = new RegionVO();
 			region.setCodigoRegion(rs.getInt("ID_REGION"));
 			region.setNombreRegion(rs.getString("NOMBRE_REGION"));
-			regiones.put(region.getCodigoRegion(), region);
+			regiones.put(region.getCodigoRegion()+"",region);
 		}
 		return regiones;
 	}

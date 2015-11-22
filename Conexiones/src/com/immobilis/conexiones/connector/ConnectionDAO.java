@@ -8,7 +8,6 @@ import java.util.Map;
 public class ConnectionDAO {
 
 	private static Connection con = null;
-//	private static String BD_TURBINE = "memo";
 	//private static String BD_NO_TURBINE = "jdbc:oracle:thin:@10.110.1.54:1523:ORALDES1";
 	private static String BD_NO_TURBINE = "jdbc:oracle:thin:@localhost:1521:xe";
 	public static Map<String, Object> getConection() throws Exception {
@@ -27,8 +26,8 @@ public class ConnectionDAO {
 //				return resp;
 //			} else {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				con = DriverManager.getConnection(BD_NO_TURBINE, "cif_admin",
-						"cif_admin");
+				con = DriverManager.getConnection(BD_NO_TURBINE, "immobilis",
+						"immobilis");
 				resp.put("no.turbine", con);
 				return resp;
 //			}
