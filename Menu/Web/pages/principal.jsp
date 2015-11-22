@@ -86,64 +86,92 @@
 
 		</div>
 
-		<div class="buscador">
-			<div align="center" style="display: inline; widht: 100%;">
-				<p align="center">
-					<span> <select name="tipoBusqueda" class="field"
-						id="tipoBusquedaFiltro">
-							<logic:iterate name="principalFB" property="tipoBusqueda"
-								id="tipoBusqueda">
-								<option
-									value='<bean:write name="tipoBusqueda" property="key" />'>
-									<bean:write name="tipoBusqueda" property="value" />
-								</option>
-							</logic:iterate>
-					</select>
-					</span> <span> <select name="tipoPropiedad" class="field"
-						id="tipoPropiedadFiltro">
-							<logic:iterate name="principalFB" property="tipoPropiedad"
-								id="tipoPropiedad">
-								<option
-									value='<bean:write name="tipoPropiedad" property="key" />'>
-									<bean:write name="tipoPropiedad" property="value" />
-								</option>
-							</logic:iterate>
-					</select>
 
-					</span> <span> <input type="text" placeholder="Ingrese comuna"
-						id="txtComuna">
-					</span> <span><input type="button" value="Buscar"
-						onclick="filtrarPropiedades()" /></span>
-				</p>
+		<div class="contenedor_2">
+			<div class="buscador">
+				<div align="center" style="display: inline; widht: 100%;">
+					<p align="center">
+						<span> <select name="tipoBusqueda" class="field"
+							id="tipoBusquedaFiltro">
+								<logic:iterate name="principalFB" property="tipoBusqueda"
+									id="tipoBusqueda">
+									<option
+										value='<bean:write name="tipoBusqueda" property="key" />'>
+										<bean:write name="tipoBusqueda" property="value" />
+									</option>
+								</logic:iterate>
+						</select>
+						</span> <span> <select name="tipoPropiedad" class="field"
+							id="tipoPropiedadFiltro">
+								<logic:iterate name="principalFB" property="tipoPropiedad"
+									id="tipoPropiedad">
+									<option
+										value='<bean:write name="tipoPropiedad" property="key" />'>
+										<bean:write name="tipoPropiedad" property="value" />
+									</option>
+								</logic:iterate>
+						</select>
+
+						</span> <span> <input type="text" placeholder="Ingrese comuna"
+							id="txtComuna">
+						</span> <span><input type="button" value="Buscar"
+							onclick="filtrarPropiedades()" /></span>
+					</p>
+				</div>
 			</div>
 		</div>
 
-		<logic:notEmpty name="nombreUsuario">
-			<ul id="ulUsuario"
-				style="display: inline-block; width: 20%; vertical-align: top; height: 500px">
-				<li><span><button>Actualizar Datos Personales</button></span></li>
-				<li>&nbsp;</li>
-				<li><span><button>Ver Historial de Pagos</button></span></li>
-				<li>&nbsp;</li>
-				<li><span><button>Ver Contratos Activos</button></span></li>
-			</ul>
-		</logic:notEmpty>
-		<iframe id="frameCentral"
-			src="<%=request.getContextPath()%>/busquedaAction.do?method=iniciarPagina"
-			width="75%" height="500px"
-			style="display: inline-block; scrollable: true;" align="right"> 
-		</iframe>
-		
-		<div class="contenedor_3" style="width:100%">
-		<div class="pie_1" style="width:100%"><img src="images/pie.png"/></div>
-		<div class="pie_2" style="width:100%">
-		<strong>INMOBILIARIA IMMOBILIS LTDA</strong><br>
-		<p>AV. SIEMPRE VIVA 742, SANTIAGO - CHILE (+560)0000000</p>
+ 
+
+
+		<div class="contenedor_4">
+			<div class="menu_usuario">
+				<div class="menu">
+					<h1>Menu Cliente</h1>
+					<input type="button" value="Actualizar Datos" style="width: 150px; height: 25px"/><br> 
+					<input type="button" value="Historial de Pagos" style="width: 150px; height: 25px" /><br> 
+					<input type="button" value="Contrato Activos" style="width: 150px; height: 25px" />
+				</div>
+			</div>
+			
+			<div class="menu_empleado">
+			<div class="menu">
+			<h1>Menu Empleado</h1>
+			<input type="button" value="Actualizar Datos" style="width: 150px; height: 25px" />
+			<input type="button" value="Generar Contrato" style="width: 150px; height: 25px" />
+			<input type="button" value="Listado Cobranza" style="width: 150px; height: 25px" />
+			<input type="button" value="Ingreso Pago" style="width: 150px; height: 25px" />
+			</div>
+			</div>
+			
+			<div class="frame">
+				<iframe id="frameCentral"
+					src="<%=request.getContextPath()%>/busquedaAction.do?method=iniciarPagina"
+					width="80%" height="500px"
+					style="display: inline-block; scrollable: true;">
+				</iframe>
+			</div>
 		</div>
-		<div class="pie_3" style="width:100%">
-		<p>Copyright &copy; 2015 - Todos los derechos reservados.</p>
+
+
+
+
+
+
+
+
+		<div class="contenedor_3" style="width: 100%">
+			<div class="pie_1" style="width: 100%">
+				<img src="images/pie.png" />
+			</div>
+			<div class="pie_2" style="width: 100%">
+				<strong>INMOBILIARIA IMMOBILIS LTDA</strong><br>
+				<p>AV. SIEMPRE VIVA 742, SANTIAGO - CHILE (+560)0000000</p>
+			</div>
+			<div class="pie_3" style="width: 100%">
+				<p>Copyright &copy; 2015 - Todos los derechos reservados.</p>
+			</div>
 		</div>
-		</div>
-		
+
 	</div>
 </body>

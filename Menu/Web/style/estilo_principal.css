@@ -46,6 +46,29 @@ time, mark, audio, video {
 	padding: 10px 0px 10px 0px;
 	background-color: #d6d6c2;
 }
+/*====================
+        MENU
+====================*/ 
+
+.contenedor_4{width: 100%;}
+.menu{
+	text-align: center;
+}
+.menu_usuario{
+	width: 20%;
+	float: left;
+}
+.menu_empleado{
+	width: 20%;
+	float: left;
+	display: none;
+}
+.frame{
+	width: 80%;
+	float: right;
+}
+
+       
 .contenedor_3{
 	text-align: center;
 	font-size: 15px;
