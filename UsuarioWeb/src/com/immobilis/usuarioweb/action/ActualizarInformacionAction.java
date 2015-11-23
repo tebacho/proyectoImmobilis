@@ -1,5 +1,8 @@
 package com.immobilis.usuarioweb.action;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,6 +14,9 @@ import org.apache.struts.actions.DispatchAction;
 import com.immobilis.usuarioweb.form.ActualizaInformacionForm;
 import com.immobilis.usuarioweb.manager.UsuarioWebManager;
 import com.immobilis.vo.ClienteVO;
+import com.immobilis.vo.ComunaVO;
+import com.immobilis.vo.RegionVO;
+
 
 public class ActualizarInformacionAction extends DispatchAction {
 	
@@ -23,6 +29,19 @@ public class ActualizarInformacionAction extends DispatchAction {
 			ClienteVO cliente= recibirParametros(request);
 			cliente= manager.buscarUsuarioWeb(cliente);
 			formulario.llenarDatos(cliente);
+			Map<String, ComunaVO> comunas = manager.listarComunas();
+			Map<String, RegionVO> regiones = manager.listarRegiones();
+			
+			
+			if(comunas==null || regiones==null){
+			formulario.setComunas(new HashMap<Integer, ComunaVO>() );
+			formulario.setRegiones(new HashMap<Integer, RegionVO>());
+			}else{
+				formulario.setComunas(comunas);
+				formulario.setRegiones(regiones);
+			}
+		
+			
 		}
 
 		return mapping.findForward("actualizaInformacion");

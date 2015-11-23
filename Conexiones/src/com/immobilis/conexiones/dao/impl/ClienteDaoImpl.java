@@ -156,10 +156,11 @@ public class ClienteDaoImpl implements ClienteDao {
 			con = ConnectionDAO.establecerConexion();
 			CallableStatement callableStatement = con
 					.prepareCall(cifSpActEstadoMacQuery);
-			callableStatement.setString(1, rut);
-			callableStatement.registerOutParameter(2, java.sql.Types.NUMERIC);
-			callableStatement.registerOutParameter(3, java.sql.Types.VARCHAR);
-			callableStatement.registerOutParameter(4, OracleTypes.CURSOR);
+			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
+			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
+			callableStatement.setString(4, rut);
+			
 			callableStatement.execute();
 			String msg = callableStatement.getString(3);
 			BigDecimal dm = callableStatement.getBigDecimal(2);

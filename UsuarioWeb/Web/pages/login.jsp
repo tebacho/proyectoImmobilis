@@ -37,12 +37,12 @@ select:hover{background-color: #ffff99;}
 				conectado</label>
 		</p>
 		<p class="login button">
-			<input type="submit" value="Iniciar Sesión" style="width: 100px"/> <input type='button'
-				value='Salir' style="width: 100px" />
+			<input type="submit" value="Iniciar Sesión" style="width: 100px"/> 
+			<input type='button' value='Salir' style="width: 100px" onclick="window.parent.Shadowbox.close();" />
 
 		</p>
 		<p class="change_link">
-			¿No esta registrado? <a href="http://localhost:8080/UsuarioWeb/registroAction.do?method=mostrarFormulario" class="to_register">Registrarse</a>
+			¿No esta registrado? <a href=<%=request.getContextPath()%>/registroAction.do?method=mostrarFormulario class="to_register">Registrarse</a>
 		</p>
 	</form>
 </body>

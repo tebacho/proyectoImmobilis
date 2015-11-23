@@ -23,14 +23,21 @@
 	});
 	
 	function abrirLoginUsuarioWeb(){
-		
+		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
 		var sbx = window.Shadowbox;
 		sbx.open({
-		        content:    "http://localhost:8080/UsuarioWeb/loginAction.do?method=mostrarFormulario",
+		        content:    serverPort+"/UsuarioWeb/loginAction.do?method=mostrarFormulario",
 		        player:     "iframe",
 		        height:     500,
 		        width:      650
 		    });
+		
+	}
+	function cargarActualizacionDatos(){
+		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+		var pagina= "/usuarioWeb/actualizarInformacionAction.do?method=mostrarFormulario";
+		alert(serverPort+pagina);
+		window.frames.frameCentral.location = serverPort+pagina;
 		
 	}
 	
@@ -129,7 +136,7 @@
 					<hr>
 					<div class="menu_boton">
 						<input type="button" value="Actualizar Datos"
-							style="width: 150px; height: 25px" /><br> <input
+							style="width: 150px; height: 25px" onclick="cargarActualizacionDatos();" /><br> <input
 							type="button" value="Historial de Pagos"
 							style="width: 150px; height: 25px" /><br> <input
 							type="button" value="Contrato Activos"
