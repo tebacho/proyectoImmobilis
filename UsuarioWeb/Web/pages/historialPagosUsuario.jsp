@@ -33,7 +33,6 @@ table {
 }
 
 .cabeza_grilla {
-	background-color: pink;
 	font-weight: bold;
 	font-style: italic;
 }

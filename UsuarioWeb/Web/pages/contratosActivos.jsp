@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Historial de Pagos Usuario</title>
+<title>Contratos Activos</title>
 <style type="text/css">
 body {
 	background-color: #d6d6c2;
@@ -24,53 +24,23 @@ input:focus {
 select:hover {
 	background-color: #ffff99;
 }
-
-table {
-	border-spacing: 25px;
-	border-style: solid;
-	border-color: #c2c2a3;
-}
-#cabeza_grilla{background-color: pink;}
 </style>
 </head>
 <body>
-
-	<form align="center" action="#" autocomplete="on">
+	<form action="" autocomplete="on">
 		<h1>Contratos Activos</h1>
 		<hr>
 		<br>
 		<div>
-			<label>Desde</label> <input type="text" placeholder="02-12-2014" />
-			<label>Hasta</label> <input type="text" placeholder="02-12-2015" />
-			<input type="button" value="Buscar" style="width: 100px" /> <input
-				type="button" value="Cancelar" style="width: 100px" />
-		</div>
-		<br>
-		<hr>
-		<table classe="grilla" align="center" width="600px" style="background:url(../images/libreta.png) no-repeat">
-			<tr id="cabeza_grilla">
-				<td>N°Contrato</td>
-				<td>Fecha Contrato</td>
-				<td>Cuota</td>
-				<td>Fecha Vencimiento</td>
-				<td>Monto Cuota</td>
-				<td>Estado</td>
-			</tr>
-			<tr>
-				<td>0001</td>
-				<td>22-11-2015</td>
-				<td>12</td>
-				<td>22-12-2015</td>
-				<td>$400.000</td>
-				<td>Pagado</td>
-			</tr>
-		</table>
-		<div>
-		<br>
-			<input type="button" value="Imprimir" style="width: 100px" /> <input
-				type="button" value="Cerrar" style="width: 100px" />
+			<label>Numero Contrato</label><input type="text" /> 
+			<label>Fecha Contrato</label><input type="text" /> 
+			<br><br> 
+			<input type="button" value="Buscar" style="width: 100px;" /> 
+			<input type="button" value="Cancelar" style="width: 100px;" />
+			<br><br>
+			<hr>
+			No entiendo este modulo consultar a <strong>Rodolfo</strong>
 		</div>
 	</form>
-
 </body>
 </html>

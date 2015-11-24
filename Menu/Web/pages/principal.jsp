@@ -151,7 +151,7 @@
 							style="width: 150px; height: 25px" onclick="cargarActualizacionDatos();" /><br> <input
 							type="button" value="Historial de Pagos"
 							style="width: 150px; height: 25px" onclick="cargaHistorialPagos();"/><br> <input
-							type="button" value="Contrato Activos"
+							type="button" value="Ver Contratos"
 							style="width: 150px; height: 25px" onclick="cargaContratosActivos();"/>
 					</div>
 				</div>
