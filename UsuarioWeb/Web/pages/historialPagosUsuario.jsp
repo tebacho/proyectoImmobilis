@@ -29,8 +29,15 @@ table {
 	border-spacing: 25px;
 	border-style: solid;
 	border-color: #c2c2a3;
+	background-color: #fff;
 }
-#cabeza_grilla{background-color: pink;}
+
+.cabeza_grilla {
+	background-color: pink;
+	font-weight: bold;
+	font-style: italic;
+}
+.contenido_grilla{font-family: "Courier New", Courier, monospace;}
 </style>
 </head>
 <body>
@@ -47,8 +54,8 @@ table {
 		</div>
 		<br>
 		<hr>
-		<table classe="grilla" align="center" width="600px" style="background:url(../images/libreta.png) no-repeat">
-			<tr id="cabeza_grilla">
+		<table align="center">
+			<tr class="cabeza_grilla">
 				<td>N°Contrato</td>
 				<td>Fecha Contrato</td>
 				<td>Cuota</td>
@@ -56,7 +63,7 @@ table {
 				<td>Monto Cuota</td>
 				<td>Estado</td>
 			</tr>
-			<tr>
+			<tr class="contenido_grilla">
 				<td>0001</td>
 				<td>22-11-2015</td>
 				<td>12</td>
@@ -66,9 +73,8 @@ table {
 			</tr>
 		</table>
 		<div>
-		<br>
-			<input type="button" value="Imprimir" style="width: 100px" /> <input
-				type="button" value="Cerrar" style="width: 100px" />
+			<br> <input type="button" value="Imprimir" style="width: 100px" />
+			<input type="button" value="Cerrar" style="width: 100px" />
 		</div>
 	</form>
 
