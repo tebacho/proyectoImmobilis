@@ -12,7 +12,7 @@ import com.immobilis.vo.ClienteVO;
  * @version 1.0
  * @created 20-sep.-2015 20:13:28
  */
-public class ActualizaInformacionForm extends ActionForm {
+public class ActualizarInformacionForm extends ActionForm {
 
 
 	/**
@@ -121,9 +121,5 @@ public class ActualizaInformacionForm extends ActionForm {
 		setPassword(cliente.getPassword());;
 		setTelefono(cliente.getTelefono());
 	}
-	private void ordenarComuna(){
-		
-	}
-	
-	
+
 }//end ActualizaInformacionPersonalForm
