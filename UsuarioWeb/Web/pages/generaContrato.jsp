@@ -32,6 +32,14 @@ select:hover {
 	font-style: italic;
 	font-size: 20px;
 }
+
+textarea:focus {
+	background-color: #ffff99;
+}
+
+textarea {
+	resize: none;
+}
 </style>
 
 </head>
@@ -116,79 +124,126 @@ select:hover {
 			<tr>
 				<td>
 					<table align="left">
-					<tr>
-					<td>ID Propiedad</td>
-					<td><input id="txtIdPropiedad"/></td>
-					</tr>
-					<tr>
-					<td>Nombre Región</td>
-					<td><input id="txtNombreRegion"/></td>
-					</tr>
-					<tr>
-					<td>Tipo Propiedad</td>
-					<td><input id="txtTipoPropiedad"/></td>
-					</tr>
-					<tr>
-					<td>Precio</td>
-					<td><input id="txtPrecio"/></td>
-					</tr>
-					<tr>
-					<td>Disponible</td>
-					<td><input id="txtDisponible"/></td>
-					</tr>
-					<tr>
-					<td>Baño</td>
-					<td><input id="txtBano"/></td>
-					</tr>
-					<tr>
-					<td>Conjunto</td>
-					<td><input id="txtConjunto"/></td>
-					</tr>
-					<tr>
-					<td>Nivel</td>
-					<td><input id="txtNivel"/></td>
-					</tr>
+						<tr>
+							<td>ID Propiedad</td>
+							<td><input id="txtIdPropiedad" /></td>
+						</tr>
+						<tr>
+							<td>Nombre Región</td>
+							<td><input id="txtNombreRegion" /></td>
+						</tr>
+						<tr>
+							<td>Tipo Propiedad</td>
+							<td><input id="txtTipoPropiedad" /></td>
+						</tr>
+						<tr>
+							<td>Precio</td>
+							<td><input id="txtPrecio" /></td>
+						</tr>
+						<tr>
+							<td>Disponible</td>
+							<td><input id="txtDisponible" /></td>
+						</tr>
+						<tr>
+							<td>Baño</td>
+							<td><input id="txtBano" /></td>
+						</tr>
+						<tr>
+							<td>Conjunto</td>
+							<td><input id="txtConjunto" /></td>
+						</tr>
+						<tr>
+							<td>Nivel</td>
+							<td><input id="txtNivel" /></td>
+						</tr>
 					</table>
 				</td>
 				<td>
 					<table align="right">
-					<tr>
-					<td>Nombre Comuna</td>
-					<td><input id="txtNombreComuna"/></td>
-					</tr>
-					<tr>
-					<td>Nombre Constructora</td>
-					<td><input id="txtNombreConstructora"/></td>
-					</tr>
-					<tr>
-					<td>Descripción</td>
-					<td><input id="txtDescripcion"/></td>
-					</tr>
-					<tr>
-					<td>Operación</td>
-					<td><input id="txtOperacion"/></td>
-					</tr>
-					<tr>
-					<td>Altura</td>
-					<td><input id="txtAltura"/></td>
-					</tr>
-					<tr>
-					<td>Dormitorio</td>
-					<td><input id="txtDormitorio"/></td>
-					</tr>
-					<tr>
-					<td>Edificio</td>
-					<td><input id="txtEdificio"/></td>
-					</tr>
-					<tr>
-					<td>Patente Comercial</td>
-					<td><input id="txtPatenteComercial"/></td>
-					</tr>
+						<tr>
+							<td>Nombre Comuna</td>
+							<td><input id="txtNombreComuna" /></td>
+						</tr>
+						<tr>
+							<td>Nombre Constructora</td>
+							<td><input id="txtNombreConstructora" /></td>
+						</tr>
+						<tr>
+							<td>Descripción</td>
+							<td><input id="txtDescripcion" /></td>
+						</tr>
+						<tr>
+							<td>Operación</td>
+							<td><input id="txtOperacion" /></td>
+						</tr>
+						<tr>
+							<td>Altura</td>
+							<td><input id="txtAltura" /></td>
+						</tr>
+						<tr>
+							<td>Dormitorio</td>
+							<td><input id="txtDormitorio" /></td>
+						</tr>
+						<tr>
+							<td>Edificio</td>
+							<td><input id="txtEdificio" /></td>
+						</tr>
+						<tr>
+							<td>Patente Comercial</td>
+							<td><input id="txtPatenteComercial" /></td>
+						</tr>
 					</table>
 				</td>
 			</tr>
 		</table>
 		<!-- FIN DATOS PROPIEDAD -->
+		<br>
+		<hr>
+		<div class="cabeza">Seguro</div>
+		<br>
+		<!-- INICIO DATOS SEGURO -->
+		<table align="center">
+			<tr>
+				<td>
+					<table align="left">
+						<tr>
+							<td>ID Seguro</td>
+							<td><input id="txtIdSeguro" /></td>
+						</tr>
+						<tr>
+							<td>Valor</td>
+							<td><input id="txtValor" /></td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table align="right">
+						<tr>
+							<td>Compañia</td>
+							<td><input id="txtCompania" /></td>
+						</tr>
+						<tr>
+							<td>Fecha</td>
+							<td><input id="txtFecha" /></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table align="center">
+			<br>
+			<tr>
+				<td><textarea rows="10" cols="70">Ingrese un comentario aquí</textarea></td>
+			</tr>
+		</table>
+		<table align="center">
+			<tr>
+				<td><input type="button" value="Confirmar"
+					style="width: 100px;" /></td>
+				<td><input type="button" value="Cancelar" style="width: 100px;" /></td>
+			</tr>
+		</table>
+		<br><br>
 	</form>
 
 </body>
