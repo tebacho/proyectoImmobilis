@@ -11,7 +11,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
-import com.immobilis.usuarioweb.form.ActualizaInformacionForm;
+import com.immobilis.usuarioweb.form.ActualizarInformacionForm;
 import com.immobilis.usuarioweb.manager.UsuarioWebManager;
 import com.immobilis.vo.ClienteVO;
 import com.immobilis.vo.ComunaVO;
@@ -23,15 +23,14 @@ public class ActualizarInformacionAction extends DispatchAction {
 	public ActionForward mostrarFormulario(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		if (form instanceof ActualizaInformacionForm) {
-			ActualizaInformacionForm formulario = (ActualizaInformacionForm)form;
+		if (form instanceof ActualizarInformacionForm) {
+			ActualizarInformacionForm formulario = (ActualizarInformacionForm)form;
 			UsuarioWebManager manager = new UsuarioWebManager();
 			ClienteVO cliente= recibirParametros(request);
 			cliente= manager.buscarUsuarioWeb(cliente);
-			formulario.llenarDatos(cliente);
+			//formulario.llenarDatos(cliente);
 			Map<String, ComunaVO> comunas = manager.listarComunas();
 			Map<String, RegionVO> regiones = manager.listarRegiones();
-			
 			
 			if(comunas==null || regiones==null){
 			formulario.setComunas(new HashMap<Integer, ComunaVO>() );
@@ -40,19 +39,27 @@ public class ActualizarInformacionAction extends DispatchAction {
 				formulario.setComunas(comunas);
 				formulario.setRegiones(regiones);
 			}
+			if(cliente==null){
+				cliente=new ClienteVO();
+				ComunaVO comuna= new ComunaVO();
+				comuna.setCodigoComuna(1);
+				comuna.setNombreComuna("alfo0");
+				comuna.setCodigoRegion(2);
+				formulario.llenarDatos(cliente);
+			}
 		
 			
 		}
 
-		return mapping.findForward("actualizaInformacion");
+		return mapping.findForward("actualizarInformacion");
 	}
 	
 	public ActionForward actualizacionInformacionUsuario(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 			String result="";
-		if (form instanceof ActualizaInformacionForm) {
-			ActualizaInformacionForm formulario = (ActualizaInformacionForm)form;
+		if (form instanceof ActualizarInformacionForm) {
+			ActualizarInformacionForm formulario = (ActualizarInformacionForm)form;
 			UsuarioWebManager manager = new UsuarioWebManager();
 			ClienteVO cliente= recibirParametros(request);
 			result= manager.actualizaCliente(cliente);

@@ -61,7 +61,7 @@ select:hover {
 						<tr>
 							<td>Region</td>
 							<td><select name="cbxRegion" class="field" id="region">
-									<logic:iterate name="registroFB" property="regiones"
+									<logic:iterate name="actualizarInformacionFB" property="regiones"
 										id="regiones">
 										<bean:define name="regiones" id="nRegion" property="value" />
 										<option value='<bean:write name="regiones" property="key" />'>
@@ -99,7 +99,7 @@ select:hover {
 						<tr>
 							<td>Comuna</td>
 							<td><select name="cbxRegion" class="field" id="region">
-									<logic:iterate name="registroFB" property="comunas"
+									<logic:iterate name="actualizarInformacionFB" property="comunas"
 										id="comunas">
 										<bean:define name="comunas" id="nComuna" property="value" />
 										<option value='<bean:write name="comunas" property="key" />'>

@@ -112,7 +112,7 @@ select:hover{background-color: #ffff99;}
 				<tr>
 					<td><input type="submit" value="Registrar"
 						style="width: 100px" /></td>
-					<td><input type="button" style="width: 100px" value="Salir" /></td>
+					<td><input type="button" style="width: 100px" value="Salir" onclick="window.parent.Shadowbox.close();"/></td>
 				</tr>
 			</table>
 			<table align="center">
@@ -120,7 +120,7 @@ select:hover{background-color: #ffff99;}
 					<td>
 						<p class="change_link">
 							¿Ya estas registrado? <a
-								href="http://localhost:8080/UsuarioWeb/loginAction.do?method=mostrarFormulario">Ir
+								href="<%=request.getContextPath()%>/loginAction.do?method=mostrarFormulario">Ir
 								a Ingreso</a>
 						</p>
 					<td>

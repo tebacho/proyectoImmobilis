@@ -12,9 +12,9 @@
 <link rel="stylesheet" type="text/css" href="style/busqueda.css" />
 <script type="text/javascript" src="js/shadowbox/shadowbox.js"></script>
 <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
-<script src="js/Validaciones.js" type="text/javascript"></script>
 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+
 <title>Insert title here</title>
 <script type="text/javascript">
 Shadowbox.init({

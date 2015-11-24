@@ -36,7 +36,7 @@ table {
 <body>
 
 	<form align="center" action="#" autocomplete="on">
-		<h1>Historial de Pagos</h1>
+		<h1>Contratos Activos</h1>
 		<hr>
 		<br>
 		<div>

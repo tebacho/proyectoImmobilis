@@ -7,7 +7,7 @@
 <%@page import="java.util.Map"%>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Modelo</title>
 <link rel="stylesheet" type="text/css" href="style/shadowbox.css" />
 <link rel="stylesheet" type="text/css" href="style/estilo_principal.css" />
@@ -33,11 +33,23 @@
 		    });
 		
 	}
+	
 	function cargarActualizacionDatos(){
 		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/usuarioWeb/actualizarInformacionAction.do?method=mostrarFormulario";
-		alert(serverPort+pagina);
-		window.frames.frameCentral.location = serverPort+pagina;
+		var pagina= "/UsuarioWeb/actualizarInformacionAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=serverPort+pagina; 
+		
+	}
+	function cargaHistorialPagos(){
+		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+		var pagina= "/UsuarioWeb/informacionPagosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=serverPort+pagina; 
+		
+	}
+	function cargaContratosActivos(){
+		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+		var pagina= "/UsuarioWeb/contratosActivosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=serverPort+pagina; 
 		
 	}
 	
@@ -138,9 +150,9 @@
 						<input type="button" value="Actualizar Datos"
 							style="width: 150px; height: 25px" onclick="cargarActualizacionDatos();" /><br> <input
 							type="button" value="Historial de Pagos"
-							style="width: 150px; height: 25px" /><br> <input
+							style="width: 150px; height: 25px" onclick="cargaHistorialPagos();"/><br> <input
 							type="button" value="Contrato Activos"
-							style="width: 150px; height: 25px" />
+							style="width: 150px; height: 25px" onclick="cargaContratosActivos();"/>
 					</div>
 				</div>
 			</div>
