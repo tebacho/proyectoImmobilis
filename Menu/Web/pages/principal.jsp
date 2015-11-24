@@ -168,6 +168,7 @@
 							type="button" value="Listado Cobranza"
 							style="width: 150px; height: 25px" /> <input type="button"
 							value="Ingreso Pago" style="width: 150px; height: 25px" />
+							<input type="button" value="Ingresar Respaldos" style="width: 150px; height: 25px;"/>
 					</div>
 				</div>
 			</div>
