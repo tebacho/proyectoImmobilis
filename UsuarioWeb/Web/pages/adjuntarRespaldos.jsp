@@ -24,9 +24,7 @@ select:hover {
 	background-color: #ffff99;
 }
 
-.image-upload>input {
-	display: none;
-}
+
 </style>
 </head>
 <body>
@@ -72,20 +70,16 @@ select:hover {
 							<td><input id="txtRut" /></td>
 						</tr>
 						<tr>
-							<td>Adjunto</td>
+							<td>Adjuntar</td>
 							<td>
-								<div class="image-upload">
-									<label for="file-input"> 
-									<img alt="" src="images/Adjuntar.png">
-									</label> 
-									<input id="file-input" type="file" width="92px" height="28px"/>
-								</div>
+							<input type="file" />
 							</td>
 						</tr>
 					</table>
 				</td>
 			</tr>
 		</table>
+
 	</form>
 </body>
 </html>
