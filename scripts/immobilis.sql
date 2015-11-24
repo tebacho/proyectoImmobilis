@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     24-11-2015 0:37:15                           */
+/* Created on:     24-11-2015 0:52:39                           */
 /*==============================================================*/
 
 
@@ -189,11 +189,12 @@ create table CONTRATO
 /*==============================================================*/
 create table CONVENIO 
 (
-   ID                   varchar2(4),
+   ID                   varchar2(4)          not null,
    NOMBRE               varchar2(10),
    DESCRIPCION          varchar2(40),
    DESCUENTO            number(3,2),
-   FECHA_VIGENCIA       date
+   FECHA_VIGENCIA       date,
+   constraint PK_CONVENIO primary key (ID)
 );
 
 /*==============================================================*/
@@ -276,7 +277,7 @@ create table PAGO
    ID_CONTRATO          Number(5),
    MONTO_CUOTA          Number(10,2),
    N_CUOTA              Number(2),
-   COMISION             Numeber(3,2),
+   COMISION             Number(3,2),
    constraint PK_PAGO primary key (ID_VENCIMIENTO)
 );
 
