@@ -153,7 +153,7 @@ create table CLIENTE
 /*==============================================================*/
 create table COMUNA 
 (
-   ID_COMUNA            Number(4)            not null,
+   ID_COMUNA            Number(5)            not null,
    NOMBRE_COMUNA        VARCHAR(50),
    ID_REGION            number(2),
    constraint PK_COMUNA primary key (ID_COMUNA)
@@ -287,7 +287,7 @@ create table PAGO
 create table PERSONA 
 (
    RUT                  VARCHAR2(10)         not null,
-   ID_COMUNA            Number(4),
+   ID_COMUNA            Number(5),
    NOMBRE               VARCHAR2(30),
    PATERNO              VARCHAR2(15),
    MATERNO              VARCHAR2(15),
@@ -306,7 +306,7 @@ create table PERSONA
 create table PROPIEDAD 
 (
    ID_PROPIEDAD         Number(5)            not null,
-   ID_COMUNA            Number(3),
+   ID_COMUNA            Number(5),
    ID_CONSTRUCTORA      Number(6),
    TIPO_PROPIEDAD       VARCHAR2(20),
    DESCRIPCION          VARCHAR(400),
