@@ -80,7 +80,7 @@ select:hover{background-color: #ffff99;}
 .menu_empleado{
 	width: 20%;
 	float: left;
-	/*display: none;*/
+	display: none;
 }
 .frame{
 	width: 80%;
