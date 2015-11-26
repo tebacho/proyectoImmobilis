@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Busqueda</title>
-<link rel="stylesheet" type="text/css" href="style/busqueda_1.css">
+<link rel="stylesheet" type="text/css" href="style/busqueda_2.css" />
 </head>
 
 <body>
@@ -28,17 +28,16 @@
 
 
 			<section class="resDatos"> <section class="dato2">
-			<figure>
-			<img src="images/icon-propiedad-1.png" /></figure>
+			<figure> <img src="images/icon-propiedad-1.png" /></figure>
 			<p>Deptos.</p>
-			</section> <section class="dato3"> <figure>
-			<img src="images/icon-dormitorios2.png" /></figure>
+			</section> <section class="dato3"> <figure> <img
+				src="images/icon-dormitorios2.png" /></figure>
 			<p>1 a 3</p>
-			</section> <section class="dato4"> <figure>
-			<img src="images/icon-banios2.png" /></figure>
+			</section> <section class="dato4"> <figure> <img
+				src="images/icon-banios2.png" /></figure>
 			<p>1 a 2</p>
-			</section> <section class="dato5"> <figure>
-			<img src="images/icon-medidas2.png" /></figure>
+			</section> <section class="dato5"> <figure> <img
+				src="images/icon-medidas2.png" /></figure>
 			<p>
 				14,8 a 50,4m<sup>2</sup>
 			</p>
@@ -75,17 +74,16 @@
 
 
 			<section class="resDatos"> <section class="dato2">
-			<figure>
-			<img src="images/icon-propiedad-1.png" /></figure>
+			<figure> <img src="images/icon-propiedad-1.png" /></figure>
 			<p>Casa</p>
-			</section> <section class="dato3"> <figure>
-			<img src="images/icon-dormitorios2.png" /></figure>
+			</section> <section class="dato3"> <figure> <img
+				src="images/icon-dormitorios2.png" /></figure>
 			<p>3</p>
-			</section> <section class="dato4"> <figure>
-			<img src="images/icon-banios2.png" /></figure>
+			</section> <section class="dato4"> <figure> <img
+				src="images/icon-banios2.png" /></figure>
 			<p>3</p>
-			</section> <section class="dato5"> <figure>
-			<img src="images/icon-medidas2.png" /></figure>
+			</section> <section class="dato5"> <figure> <img
+				src="images/icon-medidas2.png" /></figure>
 			<p>
 				118,21 a 353,70m<sup>2</sup>
 			</p>
@@ -121,17 +119,16 @@
 
 
 			<section class="resDatos"> <section class="dato2">
-			<figure>
-			<img src="images/icon-propiedad-1.png" /></figure>
+			<figure> <img src="images/icon-propiedad-1.png" /></figure>
 			<p>Bodega</p>
-			</section> <section class="dato3"> <figure>
-			<img src="images/icon-dormitorios2.png" /></figure>
+			</section> <section class="dato3"> <figure> <img
+				src="images/icon-dormitorios2.png" /></figure>
 			<p>0</p>
-			</section> <section class="dato4"> <figure>
-			<img src="images/icon-banios2.png" /></figure>
+			</section> <section class="dato4"> <figure> <img
+				src="images/icon-banios2.png" /></figure>
 			<p>1</p>
-			</section> <section class="dato5"> <figure>
-			<img src="images/icon-medidas2.png" /></figure>
+			</section> <section class="dato5"> <figure> <img
+				src="images/icon-medidas2.png" /></figure>
 			<p>
 				5 a 5m<sup>2</sup>
 			</p>
@@ -167,17 +164,16 @@
 
 
 			<section class="resDatos"> <section class="dato2">
-			<figure>
-			<img src="images/icon-propiedad-1.png" /></figure>
+			<figure> <img src="images/icon-propiedad-1.png" /></figure>
 			<p>Deptos.</p>
-			</section> <section class="dato3"> <figure>
-			<img src="images/icon-dormitorios2.png" /></figure>
+			</section> <section class="dato3"> <figure> <img
+				src="images/icon-dormitorios2.png" /></figure>
 			<p>1 a 3</p>
-			</section> <section class="dato4"> <figure>
-			<img src="images/icon-banios2.png" /></figure>
+			</section> <section class="dato4"> <figure> <img
+				src="images/icon-banios2.png" /></figure>
 			<p>1 a 2</p>
-			</section> <section class="dato5"> <figure>
-			<img src="images/icon-medidas2.png" /></figure>
+			</section> <section class="dato5"> <figure> <img
+				src="images/icon-medidas2.png" /></figure>
 			<p>
 				134,96 a 179,22m<sup>2</sup>
 			</p>
