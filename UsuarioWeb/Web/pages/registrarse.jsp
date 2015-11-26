@@ -46,7 +46,7 @@ select:hover{background-color: #ffff99;}
 						</tr>
 						<tr>
 							<td>Fecha Nacimiento</td>
-							<td><input required="required" placeholder="22-04-1985" /></td>
+							<td><input required="required" type="date" /></td>
 						</tr>
 						<tr>
 							<td>Region</td>
