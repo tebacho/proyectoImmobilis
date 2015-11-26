@@ -15,6 +15,30 @@ color:white;
 input:focus {background-color:#ffff99;}
 select:hover{background-color: #ffff99;}
 </style>
+<script text/javascript>
+function login(){
+	var user = document.getElementById("username");
+	var pass = document.getElementById("password");
+	var params = "&username="+username+"&password="+password;
+	$.ajax({
+        type:    "POST",
+        url:     "<%=request.getContextPath()%>/loginAction.do",
+        data:    "?method=login"+params,
+        
+        success: function(data){
+			if(""!=data){
+				alert(data);
+				parent.location.reload();
+				
+			}else{
+				
+				alert("Error de ingreso.");
+				
+			}
+        }
+	});
+}
+</script>
 </head>
 <body>
 	<form align="center" action="#" autocomplete="on">

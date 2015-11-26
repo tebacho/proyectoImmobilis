@@ -12,6 +12,7 @@ import oracle.jdbc.OracleTypes;
 import com.immobilis.conexiones.connector.ConnectionDAO;
 import com.immobilis.conexiones.dao.ClienteDao;
 import com.immobilis.vo.ClienteVO;
+import com.immobilis.vo.ComunaVO;
 
 public class ClienteDaoImpl implements ClienteDao {
 
@@ -42,20 +43,21 @@ public class ClienteDaoImpl implements ClienteDao {
 			CallableStatement callableStatement = con
 					.prepareCall(cifSpActEstadoMacQuery);
 
-			callableStatement.setString(1, rut);
-			callableStatement.setString(2, nombre);
-			callableStatement.setString(3, paterno);
-			callableStatement.setString(4, materno);
-			callableStatement.setString(5, sexo);
-			callableStatement.setString(6, direccion);
-			callableStatement.setDate(7, fechaNacimiento);
-			callableStatement.setString(8, telefono);
-			callableStatement.setString(9, eMail);
-			callableStatement.setInt(10, comuna);
-			callableStatement.setString(11, password);
-
-			callableStatement.registerOutParameter(12, java.sql.Types.NUMERIC);
-			callableStatement.registerOutParameter(13, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
+			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);	
+			callableStatement.setString(4, rut);
+			callableStatement.setString(5, nombre);
+			callableStatement.setString(6, paterno);
+			callableStatement.setString(7, materno);
+			callableStatement.setString(8, sexo);
+			callableStatement.setString(9, direccion);
+			callableStatement.setDate(10, fechaNacimiento);
+			callableStatement.setString(11, telefono);
+			callableStatement.setString(12, eMail);
+			callableStatement.setInt(13, comuna);
+			callableStatement.setString(14, password);
+			
 			callableStatement.execute();
 			String msgError = callableStatement.getString(13);
 			estado = callableStatement.getBigDecimal(12);
@@ -103,24 +105,24 @@ public class ClienteDaoImpl implements ClienteDao {
 
 		Connection con = null;
 		try {
-			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_USUARIOWEB.SP_ACTUALIZA_USUARIO_WEB(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_CLIENTE.SP_ACTUALIZA_USUARIO_WEB(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 			con = ConnectionDAO.establecerConexion();
 			CallableStatement callableStatement = con
 					.prepareCall(cifSpActEstadoMacQuery);
-			callableStatement.setString(1, rut);
-			callableStatement.setString(2, nombre);
-			callableStatement.setString(3, paterno);
-			callableStatement.setString(4, materno);
-			callableStatement.setString(5, sexo);
-			callableStatement.setString(6, direccion);
-			callableStatement.setDate(7, fechaNacimiento);
-			callableStatement.setString(8, telefono);
-			callableStatement.setString(9, eMail);
-			callableStatement.setInt(10, comuna);
-			callableStatement.setString(11, password);
-			callableStatement.registerOutParameter(12, java.sql.Types.NUMERIC);
-			callableStatement.registerOutParameter(13, java.sql.Types.VARCHAR);
-
+			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
+			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);	
+			callableStatement.setString(4, rut);
+			callableStatement.setString(5, nombre);
+			callableStatement.setString(6, paterno);
+			callableStatement.setString(7, materno);
+			callableStatement.setString(8, sexo);
+			callableStatement.setString(9, direccion);
+			callableStatement.setDate(10, fechaNacimiento);
+			callableStatement.setString(11, telefono);
+			callableStatement.setString(12, eMail);
+			callableStatement.setInt(13, comuna);
+			callableStatement.setString(14, password);
 			callableStatement.execute();
 			String msg = callableStatement.getString(11);
 			estado = callableStatement.getBigDecimal(10);
@@ -152,7 +154,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		Connection con = null;
 		ClienteVO clienteEncontrado = null;
 		try {
-			String cifSpActEstadoMacQuery = "{call PKG_USUARIOWEB.SP_BUSCAR_USUARIO_WEB(?,?,?,?)}";
+			String cifSpActEstadoMacQuery = "{call PKG_CLIENTE.SP_BUSCAR_USUARIO_WEB(?,?,?,?)}";
 			con = ConnectionDAO.establecerConexion();
 			CallableStatement callableStatement = con
 					.prepareCall(cifSpActEstadoMacQuery);
@@ -192,10 +194,11 @@ public class ClienteDaoImpl implements ClienteDao {
 		long t1 = System.currentTimeMillis();
 		String rut = clienteVO.getRut();
 		String pass = clienteVO.getPassword();
+		String eMail = clienteVO.geteMail();
 		Connection con = null;
 		ClienteVO clienteEncontrado = null;
 		try {
-			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_CLIENTE.SP_VALIDAR_CLIENTE(?,?,?,?,?)}";
+			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_CLIENTE.SP_VALIDAR_CLIENTE(?,?,?,?,?,?)}";
 			con = ConnectionDAO.establecerConexion();
 			CallableStatement callableStatement = con
 					.prepareCall(cifSpActEstadoMacQuery);
@@ -204,10 +207,11 @@ public class ClienteDaoImpl implements ClienteDao {
 			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
 			callableStatement.setString(4, rut);
 			callableStatement.setString(5, pass);
+			callableStatement.setString(5, eMail);
 			
 			callableStatement.execute();
-			String msg = callableStatement.getString(4);
-			BigDecimal dm = callableStatement.getBigDecimal(3);
+			String msg = callableStatement.getString(2);
+			BigDecimal dm = callableStatement.getBigDecimal(1);
 
 			if (dm.intValue() == 0) {
 				ResultSet rsUsuarioWeb = (ResultSet) callableStatement
@@ -233,14 +237,28 @@ public class ClienteDaoImpl implements ClienteDao {
 
 	private ClienteVO lineIntoClienteVO(ResultSet rsUsuarioWeb)
 			throws SQLException {
-		ClienteVO usuarioWeb = null;
+		ClienteVO cliente = null;
 		if (rsUsuarioWeb.next()) {
 			{
-				usuarioWeb = new ClienteVO();
-				usuarioWeb.setNombre(rsUsuarioWeb.getString("nombre"));
+				cliente = new ClienteVO();
+				ComunaVO comuna = new ComunaVO();
+				comuna.setCodigoComuna(rsUsuarioWeb.getInt("ID_COMUNA"));
+				comuna.setCodigoRegion(rsUsuarioWeb.getInt("ID_REGION"));
+				cliente.setComuna(comuna);
+				cliente.setRut(rsUsuarioWeb.getString("RUT"));
+				cliente.setNombre(rsUsuarioWeb.getString("NOMBRE"));
+				cliente.setPaterno(rsUsuarioWeb.getString("PATERNO"));
+				cliente.setMaterno(rsUsuarioWeb.getString("MATERNO"));
+				cliente.setSexo(rsUsuarioWeb.getString("SEXO"));
+				cliente.setDireccion(rsUsuarioWeb.getString("DIRECCION"));
+				cliente.setFechaNacimiento(rsUsuarioWeb.getDate("FECHA_NACIMIENTO"));
+				cliente.seteMail(rsUsuarioWeb.getString("MAIL"));
+				cliente.setFechaIngreso(rsUsuarioWeb.getDate("FECHA_INGRESO"));
+				cliente.setTelefono(rsUsuarioWeb.getString("PASSWORD"));
+				
 			}
 		}
-		return usuarioWeb;
+		return cliente;
 	}
 
 	@Override
