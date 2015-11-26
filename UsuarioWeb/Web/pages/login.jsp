@@ -47,7 +47,7 @@ function login(){
 		<p>
 			<label for="username" class="uname" data-icon="u">Su correo
 				electrónico o nombre de usuario </label><br> <input id="username"
-				name="username" required="required" type="text"
+				name="username" required="required" type="email"
 				placeholder="usuario o micorreo@mail.com" size='25' />
 		</p>
 		<p>
