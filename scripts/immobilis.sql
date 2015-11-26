@@ -272,6 +272,7 @@ create table OFICINA
 create table PAGO 
 (
    ESTADO_PAGO          VARCHAR2(8),
+   FECHA_PAGADA			    DATE,
    FECHA_VENCIMIENTO    DATE,
    ID_VENCIMIENTO       Number(5)            not null,
    ID_CONTRATO          Number(5),
