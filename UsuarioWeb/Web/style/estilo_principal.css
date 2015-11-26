@@ -85,13 +85,13 @@ select:hover {
 .menu_usuario {
 	width: 20%;
 	float: left;
-	display: none;
+	/*display: none;*/
 }
 
 .menu_empleado {
 	width: 20%;
 	float: left;
-	display: none;
+	/*display: none;*/
 }
 
 .frame {
