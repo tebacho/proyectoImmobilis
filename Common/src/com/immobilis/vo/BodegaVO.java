@@ -7,6 +7,15 @@ package com.immobilis.vo;
  */
 public class BodegaVO extends PropiedadVO {
 
+ private double altura;
 
+public String getAltura() {
+	return altura+"";
+}
+
+public void setAltura(double altura) {
+	this.altura = altura;
+}
+ 
 	
 }//end BodegaVO

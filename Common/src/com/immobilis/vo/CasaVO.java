@@ -29,6 +29,9 @@ public class CasaVO extends ViviendaVO {
 	public void setMetrosPatio(int metrosPatio) {
 		this.metrosPatio = metrosPatio;
 	}
+	public String getMetrosTotal(){
+		return getMetroshabitables()+"/"+getMetrosCuadrados();
+	}
 	
 	
 }//end CasaVO

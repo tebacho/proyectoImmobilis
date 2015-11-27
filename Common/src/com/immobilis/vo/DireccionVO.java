@@ -43,6 +43,9 @@ public class DireccionVO {
 	public void setPiso(int piso) {
 		this.piso = piso;
 	}
+	public String toString(){
+		return getCalle()+" n° "+ getNumeracion()+" piso"+getPiso()+" , "+getComuna().getNombreComuna();
+	}
 	
 	
 	

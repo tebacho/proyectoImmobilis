@@ -17,11 +17,16 @@ import com.immobilis.principal.manager.BusquedaManager;
 import com.immobilis.principal.manager.FormularioReservaManager;
 import com.immobilis.vo.BodegaVO;
 import com.immobilis.vo.CasaVO;
+import com.immobilis.vo.ComunaVO;
+import com.immobilis.vo.ConstructoraVO;
 import com.immobilis.vo.DepartamentoVO;
+import com.immobilis.vo.DireccionVO;
 import com.immobilis.vo.EstacionamientoVO;
 import com.immobilis.vo.OficinaVO;
 import com.immobilis.vo.PropiedadVO;
+import com.immobilis.vo.PropiedadVO.TipoPropiedad;
 import com.immobilis.vo.ReservaVO;
+import com.immobilis.vo.helper.PropiedadHelper;
 
 public class BusquedaAction extends DispatchAction {
 
@@ -32,7 +37,7 @@ public class BusquedaAction extends DispatchAction {
 			busquedaForm = initCombos(busquedaForm);
 			PropiedadVO propiedad = new CasaVO();
 			Map<String, PropiedadVO> mapa = new HashMap<String, PropiedadVO>();
-
+			mapa = propiedadPrueba(10);
 			((BusquedaForm) form).setPropiedades(mapa);
 
 		}
@@ -119,6 +124,35 @@ public class BusquedaAction extends DispatchAction {
 		}
 		formulario.setTipoPropiedad(tipoPropiedad);
 		return formulario;
+	}
+	private Map<String,PropiedadVO> propiedadPrueba(int times){
+		Map<String,PropiedadVO> propiedades = new HashMap<>();
+
+			PropiedadVO propiedad=null;
+			int num=0;
+			for(TipoPropiedad val : TipoPropiedad.values() ){
+				propiedad= PropiedadHelper.instanciaPropiedad(val);
+				propiedad.setIdPropiedad((++num)+"");
+				propiedad.setDescripcion("descripcion "+ val.toString());
+				DireccionVO direccion = new DireccionVO();
+				ComunaVO comuna = new ComunaVO();
+				ConstructoraVO constructora = new ConstructoraVO();
+				constructora.setIdConstructora(0);
+				constructora.setNombreConstructora("Constructora "+val.toString());
+				propiedad.setConstructora(constructora);
+				comuna.setCodigoComuna(100);
+				comuna.setCodigoRegion(13);
+				comuna.setNombreComuna("comuna1");;
+				direccion.setCalle("calle "+val);
+				direccion.setNumeracion(1030);
+				direccion.setComuna(comuna);
+				direccion.setPiso(1);
+				propiedad.setDireccion(direccion);
+				propiedad.setProyecto("proyecto "+val);
+				propiedad.setTipoOperacion(PropiedadVO.TipoOperacion.ARRIENDO);		
+				propiedades.put(propiedad.getIdPropiedad()+"", propiedad);
+			}
+			return propiedades;
 	}
 
 }

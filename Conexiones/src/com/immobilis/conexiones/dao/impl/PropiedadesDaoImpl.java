@@ -36,20 +36,18 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 			con = ConnectionDAO.establecerConexion();
 			CallableStatement callableStatement = con
 					.prepareCall(cifSpActEstadoMacQuery);
-			callableStatement.setString(1, filtroTipoOperacion);
-			callableStatement.setString(2,
-					filtroTipoPropiedadBuscada.toString());
-			callableStatement.setString(3, filtroUbicacion);
-			callableStatement.registerOutParameter(4, java.sql.Types.NUMERIC);
-			callableStatement.registerOutParameter(5, java.sql.Types.VARCHAR);
-			callableStatement.registerOutParameter(6, OracleTypes.CURSOR);
+			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
+			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
+			callableStatement.setString(4, filtroTipoOperacion);
+			callableStatement.setString(5,filtroTipoPropiedadBuscada.toString());
+			callableStatement.setString(6, filtroUbicacion);
 			callableStatement.execute();
-			// String msg = callableStatement.getString(5);
-			BigDecimal dm = callableStatement.getBigDecimal(4);
+			BigDecimal dm = callableStatement.getBigDecimal(1);
 
 			if (dm.intValue() == 0) {
 				ResultSet rsPropiedades = (ResultSet) callableStatement
-						.getObject(6);
+						.getObject(3);
 				listadoPropiedades = rsIntoPropiedades(rsPropiedades);
 
 			}
@@ -91,21 +89,20 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 		Connection con = null;
 
 		try {
-			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_PROPIEDADES.SP_FILTRO_PROPIEDADES(?)}";
+			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_PROPIEDADES.SP_FETCH_PROPIEDAD(?,?,?,?)}";
 			con = ConnectionDAO.establecerConexion();
-			CallableStatement callableStatement = con
-					.prepareCall(cifSpActEstadoMacQuery);
-			callableStatement.setString(1, idPropiedad);
-			callableStatement.registerOutParameter(2, java.sql.Types.NUMERIC);
-			callableStatement.registerOutParameter(3, java.sql.Types.VARCHAR);
-			callableStatement.registerOutParameter(4, OracleTypes.CURSOR);
-			callableStatement.execute();
+			CallableStatement callableStatement = con.prepareCall(cifSpActEstadoMacQuery);
 			
+			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
+			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
+			callableStatement.setString(4, idPropiedad);
+			callableStatement.execute();
+
 			BigDecimal dm = callableStatement.getBigDecimal(2);
 
 			if (dm.intValue() == 0) {
-				ResultSet rsPropiedades = (ResultSet) callableStatement
-						.getObject(4);
+				ResultSet rsPropiedades = (ResultSet) callableStatement.getObject(3);
 				propiedad = rsIntoPropiedad(rsPropiedades);
 
 			}
@@ -113,7 +110,7 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 			
 		} finally {
 			long t2 = System.currentTimeMillis();
-			System.out.println("[buscarUsuarioWeb]TIEMPO EJECUCION "
+			System.out.println("[fetchPropiedadById]TIEMPO EJECUCION "
 					+ (t2 - t1) + " miliseg");
 			if (con != null) {
 				try {
@@ -132,7 +129,8 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 		PropiedadVO propiedad = null;
 		switch (tipoPropiedad) {
 		case "BODEGA":
-		propiedad = new BodegaVO();	
+		propiedad = new BodegaVO();
+			
 			break;
 		case "OFICINA":
 		propiedad = new OficinaVO();	

@@ -12,20 +12,39 @@ public abstract class PropiedadVO {
 	private String idPropiedad;
 	private PropietarioVO propietario;
 	private String descripcion;
-	private String identificacion ;
+	private String proyecto ;
 	private TipoPropiedad tipoPropiedad;
 	private DireccionVO direccion;
 	private TipoOperacion tipoOperacion;
 	private Map<String,String> urlImagenes;
-	private InmobiliariaVO inmobiliaria;
+	private ConstructoraVO constructora;
+	private int metrosCuadrados;
+	private int precioUF;
 	
 	
-	public InmobiliariaVO getInmobiliaria() {
-		return inmobiliaria;
+	
+	public int getPrecioUF() {
+		return precioUF;
 	}
 
-	public void setInmobiliaria(InmobiliariaVO inmobiliaria) {
-		this.inmobiliaria = inmobiliaria;
+	public void setPrecioUF(int precioUF) {
+		this.precioUF = precioUF;
+	}
+
+	public int getMetrosCuadrados() {
+		return metrosCuadrados;
+	}
+
+	public void setMetrosCuadrados(int metrosCuadrados) {
+		this.metrosCuadrados = metrosCuadrados;
+	}
+
+	public ConstructoraVO getConstructora() {
+		return constructora;
+	}
+
+	public void setConstructora(ConstructoraVO constructora) {
+		this.constructora = constructora;
 	}
 
 	public String getDescripcion() {
@@ -64,12 +83,12 @@ public abstract class PropiedadVO {
 		this.propietario = propietario;
 	}
 
-	public String getIdentificacion() {
-		return identificacion;
+	public String getProyecto() {
+		return proyecto;
 	}
 
-	public void setIdentificacion(String identificacion) {
-		this.identificacion = identificacion;
+	public void setProyecto(String proyecto) {
+		this.proyecto= proyecto;
 	}
 
 	public DireccionVO getDireccion() {
@@ -96,6 +115,12 @@ public abstract class PropiedadVO {
 	public void setTipoOperacion(TipoOperacion tipoOperacion) {
 		this.tipoOperacion = tipoOperacion;
 	}
+	public String getDireccionCompleta(){
+		return direccion.toString();
+	}
+	public String getNombreConstructora(){
+		return constructora.getNombreConstructora();
+	}
 
 
 
@@ -103,7 +128,7 @@ public abstract class PropiedadVO {
 		ARRIENDO,VENTA;
 	}
 	public enum TipoPropiedad{
-		CASA, DEPARTAMENTO, BODEGA, ESTACIONAMIENTO, OFICINA;
+		CASA, DEPTO, BODEGA, ESTAC, OFICINA;
 	}
 	
 }//end PropiedadVO

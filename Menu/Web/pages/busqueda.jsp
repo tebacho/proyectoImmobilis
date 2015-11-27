@@ -7,115 +7,104 @@
 <%@page import="java.util.Map"%>
 
 <head>
-
-<link rel="stylesheet" type="text/css" href="js/shadowbox/shadowbox.css" />
-<link rel="stylesheet" type="text/css" href="style/busqueda.css" />
-<script type="text/javascript" src="js/shadowbox/shadowbox.js"></script>
+<link rel="stylesheet" type="text/css" href="style/busqueda_1.css" />
 <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
-
-
-
-<title>Insert title here</title>
-<script type="text/javascript">
-Shadowbox.init({
-		lang : 'es',
-		players : [ 'img', 'html', 'iframe', 'qt', 'wmp', 'swf', 'flv' ],
-		modal : true,
-		viewportPadding : 50
-	});
-function abrirFormulario(idPropiedad){
-		
-		parametros ="&idPropiedad=idPropiedad";
-		var sbx = window.Shadowbox;
-		sbx.open({
-		        content:    '<%=request.getContextPath()%>/formularioReservaAction.do?method=mostrarFormulario&'+parametros,
-		        player:     "iframe",
-		        height:     450,
-		        width:      700
-		    });
-	}
-
-</script>
-
 </head>
+
 <body>
-	<logic:empty name="busquedaFB" property="propiedades">
-		No hay Resultados que Mostrar
-	</logic:empty>
-	<!--  logic:notEmpty name="busquedaFB" property="propiedades"-->
-	<logic:iterate name ="busquedaFB" property="propiedades" id="propiedades">
-	
-	                <section class="resultadoBusqueda">
-                    <div class="imgProyecto">
-                    	<a href=null>
-                    		<div class="srcImgProyecto" style="background-image:url(null);" >
-                    		</div>
-                    	</a>
-                    </div>
-                    <article class="resultadoProyecto">
-                        <p class="resInmobiliaria"> 
-                        	IMMOBILIS
-                        </p>
-                        <a target="_blank" href='http://www.mientorno.cl/informe?radio=1000&lat=-29.898889&lng=-71.259970&direccion=Avenida Libertad con calle Cruz de Molino'>
-                        	<section original-title="Índice de calidad de barrio habitacional (de 1 a 10), basado en criterios sociales, comerciales y de calidad de vida." class='iconoScore'>
-                        		<span>
-                        			4.1
-                        		</span>
-                        	</section>
-                        </a>
-                        <h2 class="resSegundaL">
-                        	<a href="/ficha_proyecto.php?id=3754">Alto Serena III
-                        	</a>
-                        </h2>
-                        <p class="resDireccion">
-                        	Avenida Libertad con calle Cruz de Molino, La Serena
-                        </p>
-                        <section class="resDatos">
-                            <section class="dato2">
-                                <figure><img src="/img/v3/icon-propiedad-1.png" /></figure>
-                                <p class="resTipoProp">Deptos.</p>
-                            </section><section class="dato3">
-                                <figure><img src='./img/v3/icon-dormitorios2.png' /></figure>
-                                <p class="resDormitorios">1 a 4</p>
-                            </section><section class="dato4">
-                                <figure><img src='./img/v3/icon-banios2.png' /></figure>
-                                <p class="resBanios">1 a 3</p>
-                            </section><section class="dato5" original-title="De 35m<sup>2</sup> a 166,2m<sup>2</sup> útiles." >
-                                <figure><img src="/img/v3/icon-medidas2.png"></figure>
-                                <p class="resMetraje">35 a 166,2m<sup>2</sup></p>
-                            </section>
+	<div class="contenedor_principal" align="center">
 
-                        </section>
+		<!--1 INICIO CONTENDOR -->
+		<logic:notEmpty name="busquedaFB" property="propiedades">
+			<logic:iterate name="busquedaFB" id="propiedades" property="propiedades">
+				<bean:define id="vPropiedades" name="propiedades" property="value" />
+				<section class="resultadoBusqueda resBorde">
+					<div class="contenedor_iz">
+						<div class="imgProyecto"
+							style="background-image: url('images/1_.jpg')" align="left"></div>
+					</div>
+					<div class="contenedor_de">
 
-                        <section class="resultadoPrecios">
-                            <section class="resIconos">
-                                <a class="iconoChico2"  onmouseover="return overlib('<img class=\'previewMapa\' src=\'http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=450x300&maptype=roadmap&markers=color:red|color:red|-29.898889,-71.259970&sensor=false\' />',ABOVE,FULLHTML);" onmouseout="return nd();"   href="./ficha_proyecto.php?id=3754&tipo=1"><img id='iconoPreviewMapa' src="./img/v3/icono-mapa.png" />
-                                </a>                                
-                            </section>
-	                            <section id="resLineaAbajo">
-	                                <p class="resPrecio1L">
-	                                	desde UF 
-	                                	<span>1.408</span></p>
-	                               <p class="resPrecio2L">
-	                               		dividendo mensual (*) 
-	                               			<span>
-	                               				$ 179.400
-	                               			</span> 
-	                               		con 
-	                               			<img class='logoBBVA' src='/img/v3/bbva/logo.png' />
-	                               	</p>
-	                            </section>
-                            <section class="resBotonCotizar" style="">
-                                <button onclick="abrirFormulario(1);" >Cotizar</button>
-                            </section>
-                        </section>
-                    </article>
+						<div align="left" class="familia_1"><bean:write name="vPropiedades" property="nombreConstructora" /></div>
+						<h2>
+							<a href="#"><bean:write name="vPropiedades" property="proyecto" /></a>
+						</h2>
+						<p class="familia_2"><bean:write name="vPropiedades" property="direccion" /></p>
 
-                </section>
-	
-	
-	</logic:iterate>
-	<!--  /logic:notEmpty -->
-	
-	
+						<section class="resDatos">
+							<section class="dato2">
+								<figure>
+									<img src="images/iconos/icon-propiedad-1.png" />
+								</figure>
+								<p><bean:write name="vPropiedades" property="tipoPropiedad" /></p>
+							</section>
+							
+							<logic:present name="vPropiedades" property="dormitorios" >
+							<section class="dato3">
+								<figure>
+									<img src="images/iconos/icon-dormitorios2.png" />
+								</figure>
+								<p><bean:write name="vPropiedades" property="dormitorios" format="#"/></p>
+							</section>
+							</logic:present>
+							
+							<logic:present name="vPropiedades" property="bannos" >
+							<section class="dato4">
+								<figure>
+									<img src="images/iconos/icon-banios2.png" />
+								</figure>
+								<p><bean:write name="vPropiedades" property="bannos" format="#" /></p>
+							</section>
+							</logic:present>
+							
+							<logic:present name="vPropiedades" property="altura" >
+							<section class="dato3">
+								<figure>
+									<img src="images/iconos/icon-altura.png" />
+								</figure>
+								<p> <bean:write name="vPropiedades" property="altura" format="#"/>m</p>
+							</section>
+							
+							</logic:present>
+							<section class="dato5">
+								<figure>
+									<img src="images/iconos/icon-medidas2.png" />
+								</figure>
+								<p>
+									<logic:present name="vPropiedades" property="metrosTotal" >
+										<bean:write name="vPropiedades" property="metrosTotal" />
+									</logic:present>
+									<logic:notPresent name="vPropiedades" property="metrosTotal" >
+										<bean:write name="vPropiedades" property="metrosCuadrados" format="#" />
+									</logic:notPresent>
+									m<sup>2</sup>
+								</p>
+							</section>
+
+						</section>
+
+					</div>
+					<section class="resultadoPrecios">
+						<section id="resLineaAbajo">
+							<p class="precio1">
+								 UF <span><bean:write name="vPropiedades" property="precioUF" format="#" /></span>
+							</p>
+							<br>
+							<p class="precio2">
+								dividendo mensual (*) <span>$ 120.000</span>
+							</p>
+						</section>
+						<section class="resBtnCotizar">
+							<button class="btnCotizar" onclick="abrirFormulario(1);">Cotizar</button>
+						</section>
+					</section>
+				</section>
+				<!--1 FIN CONTENEDOR-->
+
+			</logic:iterate>
+		</logic:notEmpty>
+
+	</div>
 </body>
+
+</html>

@@ -3,7 +3,7 @@ package com.immobilis.vo;
 public class ViviendaVO extends PropiedadVO{
 
 	private int dormitorios;
-	private int baños;
+	private int bannos;
 	
 	
 	public int getDormitorios() {
@@ -12,10 +12,10 @@ public class ViviendaVO extends PropiedadVO{
 	public void setDormitorios(int dormitorios) {
 		this.dormitorios = dormitorios;
 	}
-	public int getBaños() {
-		return baños;
+	public int getBannos() {
+		return bannos;
 	}
-	public void setBaños(int baños) {
-		this.baños = baños;
+	public void setBaños(int bannos) {
+		this.bannos = bannos;
 	}
 }

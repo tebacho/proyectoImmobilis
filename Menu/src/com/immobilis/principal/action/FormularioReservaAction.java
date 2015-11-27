@@ -52,7 +52,7 @@ public class FormularioReservaAction extends DispatchAction {
 		ReservaVO reserva = new ReservaVO();
 		reserva.setApellidoUsuario(reserva.getApellidoUsuario());
 		reserva.setFechaCreacion(formulario.getFechaCreacion());
-		reserva.setIdPropiedad(formulario.getPropiedad().getIdentificacion());
+		reserva.setIdPropiedad(formulario.getPropiedad().getIdPropiedad());
 		reserva.setMailContacto(formulario.getMailContacto());
 		reserva.setNombreUsuario(formulario.getNombreUsuario());
 		reserva.setNumeroContacto(reserva.getNumeroContacto());

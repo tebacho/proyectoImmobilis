@@ -6,31 +6,42 @@ import com.immobilis.vo.DepartamentoVO;
 import com.immobilis.vo.EstacionamientoVO;
 import com.immobilis.vo.OficinaVO;
 import com.immobilis.vo.PropiedadVO;
+import com.immobilis.vo.PropiedadVO.TipoPropiedad;
 
 public class PropiedadHelper {
 
-	public PropiedadVO instanciaPropiedad(String tipoPropiedad){
+	public static PropiedadVO instanciaPropiedad(TipoPropiedad tipoPropiedad){
 		PropiedadVO propiedad =null;
-		if("bodega".equals(tipoPropiedad)){
-			propiedad = new BodegaVO();
-			return propiedad;
+		if(TipoPropiedad.BODEGA.equals(tipoPropiedad)){
+
+			BodegaVO bodega = new BodegaVO();
+			bodega.setAltura(2.00);
+			bodega.setTipoPropiedad(tipoPropiedad);
+			return bodega;
 		}
-		if("casa".equals(tipoPropiedad)){
-			propiedad = new CasaVO();
-			return propiedad;
+		if(TipoPropiedad.CASA.equals(tipoPropiedad)){
+			CasaVO casa = new CasaVO();
+			casa.setTipoPropiedad(tipoPropiedad);
+			casa.setMetrosCuadrados(200);
+			casa.setMetroshabitables(100);
+			return casa;
 		}
-		if("oficina".equals(tipoPropiedad)){
+		if(TipoPropiedad.OFICINA.equals(tipoPropiedad)){
 			propiedad = new OficinaVO();
+			propiedad.setTipoPropiedad(tipoPropiedad);			
 			return propiedad;
 		}
-		if("estacionamiento".equals(tipoPropiedad)){
+		if(TipoPropiedad.ESTAC.equals(tipoPropiedad)){
 			propiedad = new EstacionamientoVO();
+			propiedad.setTipoPropiedad(tipoPropiedad);			
 			return propiedad;
 		}
-		if("departamento".equals(tipoPropiedad)){
+		if(TipoPropiedad.DEPTO.equals(tipoPropiedad)){
 			propiedad = new DepartamentoVO();
+			propiedad.setTipoPropiedad(tipoPropiedad);			
 			return propiedad;
 		}
 		return null;
 	}
+
 }
