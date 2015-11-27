@@ -9,6 +9,22 @@
 <head>
 <link rel="stylesheet" type="text/css" href="style/busqueda_1.css" />
 <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	function abrirFormularioReserva(idPropiedad){
+		var userRut = document.getElementById("sessionRut");
+		
+		var filtros = "&idPropiedad"+idPropiedad+"&userRut"+userRut;
+		
+		var loc="<%=request.getContextPath()%>/formularioReservaAction.do";
+		loc = loc + "?method=mostrarFormulario";
+		loc = loc + filtros;
+		alert(loc);
+		window.parent.document.getElementById('frameCentral').src=loc; 
+		
+		
+	}
+</script>
+
 </head>
 
 <body>
@@ -90,12 +106,12 @@
 								 UF <span><bean:write name="vPropiedades" property="precioUF" format="#" /></span>
 							</p>
 							<br>
-							<p class="precio2">
+							<!--  p class="precio2">
 								dividendo mensual (*) <span>$ 120.000</span>
-							</p>
+							</p -->
 						</section>
 						<section class="resBtnCotizar">
-							<button class="btnCotizar" onclick="abrirFormulario(1);">Cotizar</button>
+							<button class="btnCotizar" onclick="abrirFormularioReserva('<bean:write name="propiedades" property="key" />');">Cotizar</button>
 						</section>
 					</section>
 				</section>

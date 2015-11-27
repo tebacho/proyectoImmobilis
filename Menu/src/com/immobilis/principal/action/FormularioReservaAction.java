@@ -24,7 +24,7 @@ import com.immobilis.vo.ReservaVO;
 
 public class FormularioReservaAction extends DispatchAction {
 
-	public ActionForward abrirFormulario(ActionMapping mapping,
+	public ActionForward mostrarFormulario(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) {
 		String idPropiedad = request.getParameter("idPropiedad");
@@ -32,21 +32,21 @@ public class FormularioReservaAction extends DispatchAction {
 		FormularioReservaManager manager = new FormularioReservaManager();
 		
 		if (form instanceof FormularioReservaForm) {
-			FormularioReservaForm formulario = (FormularioReservaForm) form;
-			ClienteVO clienteVO = manager.findUser(username);
-			PropiedadVO propiedad = manager.findPropiedad(idPropiedad);
-			formulario.setApellidoUsuario(clienteVO.getPaterno());
-			formulario.setFechaCreacion(new Date());
-			formulario.setMailContacto(clienteVO.geteMail());
-			formulario.setNombreUsuario(clienteVO.getNombre());
-			formulario.setNumeroContacto(clienteVO.getTelefono());
-			formulario.setPropiedad(propiedad);
-			formulario.setRutUsuario(clienteVO.getRut());
-			ReservaVO reserva = formToReserva(formulario);
-			manager.sendForm(reserva);
+//			FormularioReservaForm formulario = (FormularioReservaForm) form;
+//			ClienteVO clienteVO = manager.findUser(username);
+//			PropiedadVO propiedad = manager.findPropiedad(idPropiedad);
+//			formulario.setApellidoUsuario(clienteVO.getPaterno());
+//			formulario.setFechaCreacion(new Date());
+//			formulario.setMailContacto(clienteVO.geteMail());
+//			formulario.setNombreUsuario(clienteVO.getNombre());
+//			formulario.setNumeroContacto(clienteVO.getTelefono());
+//			formulario.setPropiedad(propiedad);
+//			formulario.setRutUsuario(clienteVO.getRut());
+//			ReservaVO reserva = formToReserva(formulario);
+//			manager.sendForm(reserva);
 		}
 
-		return null;
+		return mapping.findForward("formularioReserva");
 	}
 	private ReservaVO formToReserva(FormularioReservaForm formulario){
 		ReservaVO reserva = new ReservaVO();

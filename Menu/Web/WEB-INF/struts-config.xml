@@ -5,11 +5,24 @@
 	<form-beans>
 		<form-bean name="principalFB" type="com.immobilis.principal.form.PrincipalForm" />
 		<form-bean name="busquedaFB" type="com.immobilis.principal.form.BusquedaForm" />
+		<form-bean name="formularioReservaFB" type="com.immobilis.principal.form.FormularioReservaForm" />
 	</form-beans>
 	
 	<global-forwards></global-forwards>
 	
 	<action-mappings>
+		
+		<action
+            name ="FormularioReservaFB"
+            path="/formularioReservaAction"
+            type="com.immobilis.principal.action.FormularioReservaAction"
+            parameter="method"
+            input="/pages/index.jsp"
+            scope="request">
+            <forward name="index"        path="/pages/home.jsp"/>     
+            <forward name="formularioReserva"        path="/pages/formularioReserva.jsp"/>
+        </action>
+        
 		<action
             name ="principalFB"
             path="/principalAction"
@@ -35,28 +48,7 @@
         </action>
         
         
-        <action
-            name ="loginEjecutivoFB"
-            path="/loginEjecutivoAction"
-            type="com.immobilis.principal.action.LoginEjecutivoAction"
-            parameter="method"
-            input="/pages/index.jsp"
-            scope="request">
-            <forward name="index"        path="/pages/Home.jsp"/>     
-            <forward name="loginEjecutivo"        path="/pages/loginEjecutivo.jsp"/>
-            
-        </action>
-        <action
-            name ="LoginUsuarioWebFB"
-            path="/loginUsuarioWebAction"
-            type="com.immobilis.principal.action.LoginUsuarioWebAction"
-            parameter="method"
-            input="/pages/index.jsp"
-            scope="request">
-            <forward name="index"        path="/pages/Home.jsp"/>     
-            <forward name="loginUsuarioWeb"        path="/pages/loginUsuarioWeb.jsp"/>
-            
-        </action>
+
    
 	</action-mappings>
 	

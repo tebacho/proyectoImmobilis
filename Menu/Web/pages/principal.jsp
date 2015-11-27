@@ -55,7 +55,6 @@
 	
 	function filtrarPropiedades(){
 		
-		var sbx = window.Shadowbox;
 		var filtros = searchData();
 		
 		var loc="<%=request.getContextPath()%>/busquedaAction.do";
