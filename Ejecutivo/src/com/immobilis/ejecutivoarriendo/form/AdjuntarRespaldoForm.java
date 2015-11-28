@@ -9,5 +9,11 @@ import org.apache.struts.action.ActionForm;
  */
 public class AdjuntarRespaldoForm extends ActionForm {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7553550379174547247L;
+
+	
 	
 }//end ingresarRespaldoArriendoForm

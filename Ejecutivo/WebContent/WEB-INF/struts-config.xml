@@ -3,7 +3,7 @@
 
 <struts-config>
 	<form-beans>
-		<form-bean name="adjuntarRespaldosFB" 	type="com.immobilis.ejecutivoarriendo.form.AdjuntarRespaldosForm" />
+		<form-bean name="adjuntarRespaldosFB" 	type="com.immobilis.ejecutivoarriendo.form.AdjuntarRespaldoForm" />
 		<form-bean name="generarContratoFB" 	type="com.immobilis.ejecutivoarriendo.form.GenerarContratoForm" />
 		<form-bean name="reportePropiedadFB" 	type="com.immobilis.ejecutivoarriendo.form.ReportePropiedadForm" />
 		<form-bean name="reporteContratosFB" 	type="com.immobilis.ejecutivoarriendo.form.ReporteContratosForm" />

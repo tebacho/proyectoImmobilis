@@ -75,12 +75,12 @@ select:hover{background-color: #ffff99;}
 .menu_usuario{
 	width: 20%;
 	float: left;
-	display: none;
+	display: block;
 }
 .menu_empleado{
 	width: 20%;
 	float: left;
-	display: none;
+	display: block;
 }
 .frame{
 	width: 80%;

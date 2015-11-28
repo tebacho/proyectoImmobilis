@@ -50,29 +50,47 @@
 		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
 		var pagina= "/UsuarioWeb/contratosActivosAction.do?method=mostrarFormulario";
 		document.getElementById('frameCentral').src=serverPort+pagina; 
-		
 	}
-	function cargaAdjuntarRespaldo(){
+	
+	<!--	Ejecutivo   -->
+	function cargaEjecutivoAdjuntarRespaldo(){
 		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Ejecutivo/adjuntarRespaldos.do?method=mostrarFormulario";
+		var pagina= "/Ejecutivo/adjuntarRespaldosAction.do?method=mostrarFormulario";
 		document.getElementById('frameCentral').src=serverPort+pagina; 
-		
 	}
-	function cargaGeneraContrato(){
+	function cargaGenerarContrato(){
 		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Ejecutivo/generaContrato.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 	
+		var pagina= "/Ejecutivo/generarContratoAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=serverPort+pagina; 
 	}
-	function cargaInformacionPagos(){
+	function cargaListadoCobranza(){
 		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Ejecutivo/informacionPagos.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 	
-	}	
-	function cargaReporteArriendosPropieda(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Ejecutivo/adjuntarRespaldos.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 	
+		var pagina= "/Cobro/reporteCobrosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=serverPort+pagina; 
 	}
+	function cargaIngresoPago(){
+		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+		var pagina= "/Cobro/ingresoPagoAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=serverPort+pagina; 
+	}
+	function cargaIngresarRespaldo(){
+		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+		var pagina= "/Ejecutivo/adjuntarRespaldosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=serverPort+pagina; 
+	}
+	function cargaReporteArriendos(){
+		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+		var pagina= "/Ejecutivo/reportePropiedadAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=serverPort+pagina; 
+	}
+	function cargaReporteContratos(){
+		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+		var pagina= "/Ejecutivo/reporteContratosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=serverPort+pagina; 
+	}
+	
+	
+	
 	function filtrarPropiedades(){
 		
 		var filtros = searchData();
@@ -102,10 +120,7 @@
 </head>
 <body>
 	<div class="contenedor_principal">
-		<%
-			HttpSession sesion = request.getSession();
-			String nombreUsuario = (String) sesion.getAttribute("usuario");
-		%>
+
 		<div class="contenedor_1">
 			<img alt="" src="images/logo.png" class="logo" align="left">
 
@@ -181,13 +196,13 @@
 					<h1>Menu Empleado</h1>
 					<hr>
 					<div class="menu_boton">
-						<input type="button" value="Actualizar Datos"
-							style="width: 150px; height: 25px" />
-							<input type="button" value="Generar Contrato" style="width: 150px; height: 25px" />
-							<input type="button" value="Listado Cobranza" style="width: 150px; height: 25px" />
-							<input type="button" value="Ingreso Pago" style="width: 150px; height: 25px" />
-							<input type="button" value="Ingresar Respaldos" style="width: 150px; height: 25px;"/>
-							<input type="button" value="Reporte Arriendos" style="width: 150px; height: 25px;"/>
+						<input type="button" value="Actualizar Datos" style="width: 150px; height: 25px" onclick="cargaEjecutivoAdjuntarRespaldo();" />
+							<input type="button" value="Generar Contrato" style="width: 150px; height: 25px" onclick="cargaGenerarContrato();"/>
+							<input type="button" value="Listado Cobranza" style="width: 150px; height: 25px" onclick="cargaListadoCobranza();"/>
+							<input type="button" value="Ingreso Pago" style="width: 150px; height: 25px" onclick="cargaIngresoPago();"/>
+							<input type="button" value="Ingresar Respaldos" style="width: 150px; height: 25px;" onclick="cargaIngresarRespaldo();"/>
+							<input type="button" value="Reporte Arriendos" style="width: 150px; height: 25px;" onclick="cargaReporteArriendos();"/>
+							<input type="button" value="Reporte Contratos" style="width: 150px; height: 25px;" onclick="cargaReporteContratos();"/>
 					</div>
 				</div>
 			</div>
