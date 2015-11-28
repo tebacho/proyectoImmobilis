@@ -42,11 +42,13 @@ textarea {
 }
 </style>
 
+
+
 </head>
 
 <body>
-	<form>
-		<div align="center">
+	<form action="#" autocomplete="on">
+		<div align="center" action="#" autocomplete="on">
 			<h1>Generar Contrato</h1>
 			<hr>
 		</div>
@@ -59,23 +61,25 @@ textarea {
 					<table align="left">
 						<tr>
 							<td>Rut</td>
-							<td><input required="required" /></td>
+							<td><input type="text" required="required" /></td>
 						<tr>
 						<tr>
 							<td>Apellido Paterno</td>
-							<td><input required="required" /></td>
+							<td><input type="text" required="required" /></td>
 						</tr>
 						<tr>
 							<td>Telefono</td>
-							<td><input required="required" /></td>
+							<td><input type="tel" required="required" /></td>
 						</tr>
 						<tr>
 							<td>Fecha Nacimiento</td>
-							<td><input required="required" placeholder="22-04-1985" /></td>
+							<td><input type="date" required="required" /></td>
 						</tr>
 						<tr>
 							<td>Region</td>
-							<td><select></select></td>
+							<td><select>
+									<option></option>
+							</select></td>
 						</tr>
 						<tr>
 							<td>Contraseña</td>
@@ -87,24 +91,28 @@ textarea {
 					<table align="right">
 						<tr>
 							<td>Nombres</td>
-							<td><input required="required" /></td>
+							<td><input type="text" required="required" /></td>
 						</tr>
 						<tr>
 							<td>Apellido Materno</td>
-							<td><input required="required" /></td>
+							<td><input type="text" required="required" /></td>
 						</tr>
 						<tr>
 							<td>Correo</td>
-							<td><input type="text" required="required"
+							<td><input type="email" name="email" required="required"
 								placeholder="correo@gmail.com" /></td>
 						</tr>
 						<tr>
 							<td>Sexo</td>
-							<td><select></select></td>
+							<td><select>
+									<option></option>
+							</select></td>
 						<tr>
 						<tr>
 							<td>Comuna</td>
-							<td><select></select></td>
+							<td><select>
+									<option></option>
+							</select></td>
 						</tr>
 						<tr>
 							<td>Repita Contraseña</td>
@@ -126,71 +134,83 @@ textarea {
 					<table align="left">
 						<tr>
 							<td>ID Propiedad</td>
-							<td><input id="txtIdPropiedad" /></td>
+							<td><input type="text" required="required"
+								id="txtIdPropiedad" /></td>
 						</tr>
 						<tr>
-							<td>Nombre Región</td>
-							<td><input id="txtNombreRegion" /></td>
+							<td>Región</td>
+							<td><select>
+									<option></option>
+							</select></td>
 						</tr>
 						<tr>
 							<td>Tipo Propiedad</td>
-							<td><input id="txtTipoPropiedad" /></td>
+							<td><input type="text" required="required"
+								id="txtTipoPropiedad" /></td>
 						</tr>
 						<tr>
 							<td>Precio</td>
-							<td><input id="txtPrecio" /></td>
+							<td><input type="text" required="required" id="txtPrecio" /></td>
 						</tr>
 						<tr>
 							<td>Disponible</td>
-							<td><input id="txtDisponible" /></td>
+							<td><select>
+									<option></option>
+							</select></td>
 						</tr>
 						<tr>
 							<td>Baño</td>
-							<td><input id="txtBano" /></td>
+							<td><input type="text" required="required" id="txtBano" /></td>
 						</tr>
 						<tr>
 							<td>Conjunto</td>
-							<td><input id="txtConjunto" /></td>
+							<td><input type="text" required="required" id="txtConjunto" /></td>
 						</tr>
 						<tr>
 							<td>Nivel</td>
-							<td><input id="txtNivel" /></td>
+							<td><input type="text" required="required" id="txtNivel" /></td>
 						</tr>
 					</table>
 				</td>
 				<td>
 					<table align="right">
 						<tr>
-							<td>Nombre Comuna</td>
-							<td><input id="txtNombreComuna" /></td>
+							<td>Comuna</td>
+							<td><select>
+									<option></option>
+							</select></td>
 						</tr>
 						<tr>
-							<td>Nombre Constructora</td>
-							<td><input id="txtNombreConstructora" /></td>
+							<td>Constructora</td>
+							<td><input type="text" required="required"
+								id="txtNombreConstructora" /></td>
 						</tr>
 						<tr>
 							<td>Descripción</td>
-							<td><input id="txtDescripcion" /></td>
+							<td><input type="text" required="required"
+								id="txtDescripcion" /></td>
 						</tr>
 						<tr>
 							<td>Operación</td>
-							<td><input id="txtOperacion" /></td>
+							<td><input type="text" required="required" id="txtOperacion" /></td>
 						</tr>
 						<tr>
 							<td>Altura</td>
-							<td><input id="txtAltura" /></td>
+							<td><input type="text" required="required" id="txtAltura" /></td>
 						</tr>
 						<tr>
 							<td>Dormitorio</td>
-							<td><input id="txtDormitorio" /></td>
+							<td><input type="text" required="required"
+								id="txtDormitorio" /></td>
 						</tr>
 						<tr>
 							<td>Edificio</td>
-							<td><input id="txtEdificio" /></td>
+							<td><input type="text" required="required" id="txtEdificio" /></td>
 						</tr>
 						<tr>
 							<td>Patente Comercial</td>
-							<td><input id="txtPatenteComercial" /></td>
+							<td><input type="text" required="required"
+								id="txtPatenteComercial" /></td>
 						</tr>
 					</table>
 				</td>
@@ -208,23 +228,27 @@ textarea {
 					<table align="left">
 						<tr>
 							<td>ID Seguro</td>
-							<td><input id="txtIdSeguro" /></td>
+							<td><input required="required" type="text" id="txtIdSeguro" /></td>
 						</tr>
 						<tr>
 							<td>Valor</td>
-							<td><input id="txtValor" /></td>
+							<td><input type="text" required="required" id="txtValor" /></td>
 						</tr>
 					</table>
 				</td>
 				<td>
 					<table align="right">
 						<tr>
-							<td>Compañia</td>
-							<td><input id="txtCompania" /></td>
+							<td>Fecha</td>
+							<td><input type="date" required="required" id="txtFecha" /></td>
 						</tr>
 						<tr>
-							<td>Fecha</td>
-							<td><input id="txtFecha" /></td>
+							<td>Compañia</td>
+							<td><select>
+									<option>Seleccione Aseguradora</option>
+									<option>Aseguradora A</option>
+									<option>Aseguradora B</option>
+							</select></td>
 						</tr>
 					</table>
 				</td>
@@ -238,12 +262,12 @@ textarea {
 		</table>
 		<table align="center">
 			<tr>
-				<td><input type="button" value="Confirmar"
+				<td><input type="submit" value="Confirmar"
 					style="width: 100px;" /></td>
 				<td><input type="button" value="Cancelar" style="width: 100px;" /></td>
 			</tr>
 		</table>
-		<br><br>
+		<br> <br>
 	</form>
 
 </body>
