@@ -18,4 +18,4 @@ public void setAltura(double altura) {
 }
  
 	
-}//end BodegaVO
+}
