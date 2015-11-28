@@ -47,7 +47,7 @@ textarea {
 </head>
 
 <body>
-	<form action="#" autocomplete="on">
+	<form name="form1" action="#" autocomplete="on">
 		<div align="center" action="#" autocomplete="on">
 			<h1>Generar Contrato</h1>
 			<hr>
@@ -82,8 +82,11 @@ textarea {
 							</select></td>
 						</tr>
 						<tr>
-							<td>Contraseña</td>
-							<td><input type="password" required="required" /></td>
+							<td>Comuna</td>
+							<td><select>
+									<option></option>
+							</select></td>
+
 						</tr>
 					</table>
 				</td>
@@ -109,14 +112,16 @@ textarea {
 							</select></td>
 						<tr>
 						<tr>
-							<td>Comuna</td>
-							<td><select>
-									<option></option>
-							</select></td>
+
+
+							<td>Contraseña</td>
+							<td><input type="password" name="password" id="password"
+								required></td>
 						</tr>
 						<tr>
 							<td>Repita Contraseña</td>
-							<td><input type="password" required="required" /></td>
+							<td><input type="password" name="password" id="password2"
+								required></td>
 						</tr>
 					</table>
 				</td>
@@ -263,12 +268,28 @@ textarea {
 		<table align="center">
 			<tr>
 				<td><input type="submit" value="Confirmar"
-					style="width: 100px;" /></td>
+					style="width: 100px;" onclick="comparar(clave1,clave2)" /></td>
 				<td><input type="button" value="Cancelar" style="width: 100px;" /></td>
 			</tr>
 		</table>
 		<br> <br>
 	</form>
+
+	<script type="text/javascript">
+		var password, password2;
+
+		password = document.getElementById('password');
+		password2 = document.getElementById('password2');
+
+		password.onchange = password2.onkeyup = passwordMatch;
+
+		function passwordMatch() {
+			if (password.value !== password2.value)
+				password2.setCustomValidity('Las contraseñas no coinciden.');
+			else
+				password2.setCustomValidity('');
+		}
+	</script>
 
 </body>
 
