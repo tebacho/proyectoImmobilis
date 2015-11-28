@@ -23,11 +23,16 @@ input:focus {
 select:hover {
 	background-color: #ffff99;
 }
+
 .cabeza_grilla {
 	font-weight: bold;
 	font-style: italic;
 }
-.contenido_grilla{font-family: "Courier New", Courier, monospace;}
+
+.contenido_grilla {
+	font-family: "Courier New", Courier, monospace;
+}
+
 .table_grilla {
 	border-spacing: 25px;
 	border-style: solid;
@@ -46,63 +51,66 @@ select:hover {
 		<table align="center">
 			<tr>
 				<td>ID Propiedad</td>
-				<td><input id="txtIdPropiedad" /></td>
-				<td>Nombre Región</td>
-				<td><input id="txtNombreRegion" /></td>
+				<td><input type="text" id="txtIdPropiedad" required="required"/></td>
+				<td>Región</td>
+				<td><select>
+						<option>Selecione Región</option>
+				</select></td>
 			</tr>
 			<tr>
-				<td>Nombre Comuna</td>
-				<td><input id="txtNombreComuna" /></td>
 				<td>Dirección</td>
-				<td><input id="txtDireccion" /></td>
+				<td><input type="text" id="txtDireccion" required="required"/></td>
+				<td>Comuna</td>
+				<td><select>
+						<option>Seleccione Comuna</option>
+				</select></td>
+
 			</tr>
 			<tr>
 				<td>Tipo Propiedad</td>
-				<td><input id="txtTipoPropiedad" /></td>
+				<td><input type="text" id="txtTipoPropiedad" required="required"/></td>
 			</tr>
 		</table>
 		<br>
 		<table align="center">
 			<tr>
-				<td><input type="button" value="Buscar" style="width: 100px;"/></td>
-				<td><input type="button" value="Filtrar" style="width: 100px;"/></td>
-				<td><input type="button" value="Cerrar" style="width: 100px;"/></td>
+				<td><input type="submit" value="Filtrar" style="width: 100px;" /></td>
 			</tr>
 		</table>
 		<hr>
 		<br>
 		<table align="center" class="table_grilla">
-		<tr class="cabeza_grilla">
-		<td>N°Contrato</td>
-		<td>F Contrato</td>
-		<td>Monto</td>
-		<td>F Vencimiento</td>
-		<td>Estado</td>
-		<td>Nombre</td>
-		<td>A Paterno</td>
-		<td>A Materno</td>
-		<td>Rut</td>
-		</tr>
-		<tr>
-		</tr>
-		<tr class="contenido_grilla">
-		<td>001</td>
-		<td>24-11-2015</td>
-		<td>$400.000</td>
-		<td>24-12-2015</td>
-		<td>Pendiente</td>
-		<td>Silvia</td>
-		<td>Saint</td>
-		<td>Electra</td>
-		<td>16.111.222-k</td>
-		</tr>
+			<tr class="cabeza_grilla">
+				<td>N°Contrato</td>
+				<td>F Contrato</td>
+				<td>Monto</td>
+				<td>F Vencimiento</td>
+				<td>Estado</td>
+				<td>Nombre</td>
+				<td>A Paterno</td>
+				<td>A Materno</td>
+				<td>Rut</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr class="contenido_grilla">
+				<td>001</td>
+				<td>24-11-2015</td>
+				<td>$400.000</td>
+				<td>24-12-2015</td>
+				<td>Pendiente</td>
+				<td>Silvia</td>
+				<td>Saint</td>
+				<td>Electra</td>
+				<td>16.111.222-k</td>
+			</tr>
 		</table>
 		<br>
 		<table align="center">
-		<tr>
-		<td><input type="button" value="Imprimir" style="width: 100px;"/></td>
-		<td><input type="button" value="Cerrar" style="width: 100px;"/></td>
-		</tr>
+			<tr>
+				<td><input type="button" onclick='window:print();' value="Imprimir" style="width: 100px;" /></td>
+				<td><input type="button" value="Cerrar" style="width: 100px;" /></td>
+			</tr>
 		</table>
 	</form>
 

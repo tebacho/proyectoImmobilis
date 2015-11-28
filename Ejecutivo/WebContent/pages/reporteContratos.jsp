@@ -29,8 +29,13 @@ table {
 	border-spacing: 25px;
 	border-style: solid;
 	border-color: #c2c2a3;
+	background-color: #fff;
 }
-#cabeza_grilla{background-color: pink;}
+
+#cabeza_grilla {
+	font-weight: bold;
+	font-style: italic;
+}
 </style>
 </head>
 <body>
@@ -40,14 +45,13 @@ table {
 		<hr>
 		<br>
 		<div>
-			<label>Desde</label> <input type="text" placeholder="02-12-2014" />
-			<label>Hasta</label> <input type="text" placeholder="02-12-2015" />
-			<input type="button" value="Buscar" style="width: 100px" /> <input
-				type="button" value="Cancelar" style="width: 100px" />
+			<label>Desde</label> <input type="date" /> <label>Hasta</label> <input
+				type="date" /> <input type="submit" value="Buscar"
+				style="width: 100px" />
 		</div>
 		<br>
 		<hr>
-		<table classe="grilla" align="center" width="600px" style="background:url(../images/libreta.png) no-repeat">
+		<table classe="grilla" align="center" width="600px">
 			<tr id="cabeza_grilla">
 				<td>N°Contrato</td>
 				<td>Fecha Contrato</td>
@@ -66,9 +70,9 @@ table {
 			</tr>
 		</table>
 		<div>
-		<br>
-			<input type="button" value="Imprimir" style="width: 100px" /> <input
-				type="button" value="Cerrar" style="width: 100px" />
+			<br> <input type="button" onclick="window:print();"
+				value="Imprimir" style="width: 100px" /> <input type="button"
+				value="Cerrar" style="width: 100px" />
 		</div>
 	</form>
 
