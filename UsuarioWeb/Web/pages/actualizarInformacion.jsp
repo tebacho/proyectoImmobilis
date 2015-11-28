@@ -44,19 +44,19 @@ select:hover {
 					<table align="left">
 						<tr>
 							<td>Rut</td>
-							<td><input required="required" /></td>
+							<td><input required="required" type="text"/></td>
 						<tr>
 						<tr>
 							<td>Apellido Paterno</td>
-							<td><input required="required" /></td>
+							<td><input required="required" type="text"/></td>
 						</tr>
 						<tr>
 							<td>Telefono</td>
-							<td><input required="required" /></td>
+							<td><input required="required" type="text"/></td>
 						</tr>
 						<tr>
 							<td>Fecha Nacimiento</td>
-							<td><input required="required" placeholder="22-04-1985" /></td>
+							<td><input required="required" type="date" /></td>
 						</tr>
 						<tr>
 							<td>Region</td>
@@ -81,11 +81,11 @@ select:hover {
 					<table align="right">
 						<tr>
 							<td>Nombres</td>
-							<td><input required="required" /></td>
+							<td><input required="required" type="text"/></td>
 						</tr>
 						<tr>
 							<td>Apellido Materno</td>
-							<td><input required="required" /></td>
+							<td><input required="required" type="text"/></td>
 						</tr>
 						<tr>
 							<td>Correo</td>
@@ -94,7 +94,11 @@ select:hover {
 						</tr>
 						<tr>
 							<td>Sexo</td>
-							<td><select></select></td>
+							<td>
+							<select>
+							<option></option>
+							</select>
+							</td>
 						<tr>
 						<tr>
 							<td>Comuna</td>
@@ -121,7 +125,7 @@ select:hover {
 				<tr>
 					<td><input type="submit" value="Actualizar"
 						style="width: 100px" /></td>
-					<td><input type="button" style="width: 100px" value="Cancelar" /></td>
+					<td><input type="button" style="width: 100px" value="Salir" /></td>
 				</tr>
 			</table>
 		</table>

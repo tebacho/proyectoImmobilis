@@ -32,10 +32,10 @@ select:hover {
 		<hr>
 		<br>
 		<div>
-			<label>Numero Contrato</label><input type="text" /> 
-			<label>Fecha Contrato</label><input type="text" /> 
+			<label>Numero Contrato</label><input type="text" required="required"/> 
+			<label>Fecha Contrato</label><input type="date" /> 
 			<br><br> 
-			<input type="button" value="Buscar" style="width: 100px;" /> 
+			<input type="submit" value="Buscar" style="width: 100px;" /> 
 			<input type="button" value="Cancelar" style="width: 100px;" />
 			<br><br>
 			<hr>
