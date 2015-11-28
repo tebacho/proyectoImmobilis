@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     28-11-2015 17:54:55                          */
+/* Created on:     28-11-2015 18:27:08                          */
 /*==============================================================*/
 
 
@@ -104,8 +104,6 @@ drop table IMMOBILIS.DOCUMENTO_RESPALDO cascade constraints;
 drop table IMMOBILIS.EMPLEADO cascade constraints;
 
 drop table IMMOBILIS.ESTACIONAMIENTO cascade constraints;
-
-drop table IMMOBILIS.INMOBILIARIA cascade constraints;
 
 drop table IMMOBILIS.OFICINA cascade constraints;
 
@@ -384,25 +382,6 @@ create table IMMOBILIS.ESTACIONAMIENTO
    ID_PROPIEDAD         NUMBER(5,0)          not null,
    NIVEL                NUMBER(2,0),
    constraint PK_ESTACIONAMIENTO primary key (ID_PROPIEDAD)
-         USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
-        STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-        PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-        TABLESPACE "SYSTEM"  ENABLE
-)
-SEGMENT CREATION IMMEDIATE 
-  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "SYSTEM";
-
-/*==============================================================*/
-/* Table: INMOBILIARIA                                          */
-/*==============================================================*/
-create table IMMOBILIS.INMOBILIARIA 
-(
-   ID_INMOBILIARIA      NUMBER(6,0)          not null,
-   NOMBRE               VARCHAR2(50 BYTE),
-   constraint PK_INMOBILIARIA primary key (ID_INMOBILIARIA)
          USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
         STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
         PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
