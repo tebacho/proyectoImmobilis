@@ -3,25 +3,55 @@
 
 <struts-config>
 	<form-beans>
-		<form-bean name="contratoFB" type="com.immobilis.ejecutivoarriendo.action.UsuarioWebForm" />
+		<form-bean name="adjuntarRespaldosFB" 	type="com.immobilis.ejecutivoarriendo.form.AdjuntarRespaldosForm" />
+		<form-bean name="generarContratoFB" 	type="com.immobilis.ejecutivoarriendo.form.GenerarContratoForm" />
+		<form-bean name="reportePropiedadFB" 	type="com.immobilis.ejecutivoarriendo.form.ReportePropiedadForm" />
+		<form-bean name="reporteContratosFB" 	type="com.immobilis.ejecutivoarriendo.form.ReporteContratosForm" />
 	</form-beans>
 	
 	<global-forwards></global-forwards>
 	
 	<action-mappings>
 		<action
-            name ="usuarcontratoFB"
-            path="/usuarioWebAction"
-            type="com.immobilis.usuarioweb.action.UsuarioWebAction"
+            name ="adjuntarRespaldosFB"
+            path="/adjuntarRespaldosAction"
+            type="com.immobilis.ejecutivoarriendo.action.AdjuntarRespaldosAction"
             parameter="method"
             input="/pages/index.jsp"
             scope="request">
             <forward name="index"        path="/pages/home.jsp"/>     
-            <forward name="usuarioWeb"        path="/pages/usuarioWeb.jsp"/>
-            
+            <forward name="adjuntarRespaldos"        path="/pages/adjuntarRespaldos.jsp"/>
         </action>
-        
+		<action
+            name ="generarContratoFB"
+            path="/generarContratoAction"
+            type="com.immobilis.ejecutivoarriendo.action.GenerarContratoAction"
+            parameter="method"
+            input="/pages/index.jsp"
+            scope="request">
+            <forward name="index"        path="/pages/home.jsp"/>     
+            <forward name="generarContrato"        path="/pages/generarContrato.jsp"/>
+        </action>
+        <action
+            name ="reporteContratosFB"
+            path="/reporteContratosAction"
+            type="com.immobilis.ejecutivoarriendo.action.ReporteContratosAction"
+            parameter="method"
+            input="/pages/index.jsp"
+            scope="request">
+            <forward name="index"        path="/pages/home.jsp"/>     
+            <forward name="reporteContratos"        path="/pages/reporteContratos.jsp"/>
+        </action>
+        <action
+            name ="reportePropiedadFB"
+            path="/reportePropiedadAction"
+            type="com.immobilis.ejecutivoarriendo.action.ReportePropiedadAction"
+            parameter="method"
+            input="/pages/index.jsp"
+            scope="request">
+            <forward name="index"        path="/pages/home.jsp"/>     
+            <forward name="reportePropiedad"        path="/pages/reportePropiedad.jsp"/>
+        </action>
 	</action-mappings>
-	
 	
 </struts-config>

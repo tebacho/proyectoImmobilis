@@ -9,23 +9,25 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.immobilis.ejecutivoarriendo.form.GenerarContratoForm;
-import com.immobilis.ejecutivoarriendo.form.ReporteContratosForm;
 
 /**
- * @author Rodo
+ * @author Rodolfo
  * @version 1.0
- * @created 20-sep.-2015 20:13:28
+ * @created 20-sep.-2015 20:13:34
  */
-public class ReporteContratosAction extends DispatchAction {
+public class AdjuntarRespaldosAction extends DispatchAction{
 
+	
 	public ActionForward mostrarFormulario(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
-		if (form instanceof ReporteContratosForm) {
-			ReporteContratosForm formulario = (ReporteContratosForm) form;
+		if (form instanceof GenerarContratoForm) {
+			GenerarContratoForm contratoForm = (GenerarContratoForm) form;
 
 		}
 
-		return mapping.findForward("reporteContratos");
+		return mapping.findForward("adjuntarRespaldos");
 	}
-}//end ArriendoAction
+
+	
+}//end IngresarRespaldoArriendoAction
