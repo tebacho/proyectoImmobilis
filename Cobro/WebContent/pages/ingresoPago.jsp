@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Historial de Pagos Usuario</title>
+<title>Ingreso de Pago</title>
 <style type="text/css">
 body {
 	background-color: #d6d6c2;
@@ -25,50 +25,68 @@ select:hover {
 	background-color: #ffff99;
 }
 
-table {
+.cabeza_grilla {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.contenido_grilla {
+	font-family: "Courier New", Courier, monospace;
+}
+
+.table_grilla {
 	border-spacing: 25px;
 	border-style: solid;
 	border-color: #c2c2a3;
+	background-color: #fff;
 }
-#cabeza_grilla{background-color: pink;}
 </style>
 </head>
 <body>
 
 	<form align="center" action="#" autocomplete="on">
-		<h1>Historial de Pagos</h1>
+		<h1>Ingreso de Pagos</h1>
 		<hr>
 		<br>
-		<div>
-			<label>Desde</label> <input type="text" placeholder="02-12-2014" />
-			<label>Hasta</label> <input type="text" placeholder="02-12-2015" />
-			<input type="button" value="Buscar" style="width: 100px" /> <input
-				type="button" value="Cancelar" style="width: 100px" />
-		</div>
-		<br>
-		<hr>
-		<table classe="grilla" align="center" width="600px" style="background:url(../images/libreta.png) no-repeat">
-			<tr id="cabeza_grilla">
-				<td>N°Contrato</td>
-				<td>Fecha Contrato</td>
-				<td>Cuota</td>
-				<td>Fecha Vencimiento</td>
-				<td>Monto Cuota</td>
-				<td>Estado</td>
-			</tr>
+		<table align="center">
 			<tr>
-				<td>0001</td>
-				<td>22-11-2015</td>
-				<td>12</td>
-				<td>22-12-2015</td>
-				<td>$400.000</td>
-				<td>Pagado</td>
+				<td>N°Contrato</td>
+				<td><input type="text" /></td>
+				<td>Rut Cliente</td>
+				<td><input type="text" /></td>
+				<td><input type="button" value="Buscar" style="width: 100px;" /></td>
 			</tr>
 		</table>
-		<div>
 		<br>
-			<input type="button" value="Imprimir" style="width: 100px" /> <input
-				type="button" value="Cerrar" style="width: 100px" />
+		<hr>
+		<br>
+		<table align="center" class="table_grilla">
+			<tr class="cabeza_grilla">
+				<td>N°Contrato</td>
+				<td>F.Contrato</td>
+				<td>F.Vencimiento</td>
+				<td>Cuota</td>
+				<td>Estado</td>
+				<td>Nombre</td>
+				<td>A.Paterno</td>
+				<td>A.Materno</td>
+				<td>Rut</td>
+			</tr>
+			<tr class="contenido_grilla">
+				<td>001</td>
+				<td>28-11-2015</td>
+				<td>28-12-2015</td>
+				<td>$300.000</td>
+				<td>Vencido</td>
+				<td>Soila</td>
+				<td>Concha</td>
+				<td>De Piedra</td>
+				<td>8.123.444-k</td>
+			</tr>
+		</table>
+		<div algin="center">
+		<br>
+		<input type="button" value="Pagar" style="width: 150px;"/>
 		</div>
 	</form>
 
