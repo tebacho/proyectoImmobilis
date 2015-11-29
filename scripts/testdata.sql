@@ -160,8 +160,8 @@ VALUES (2, 'DON TRIZTAN', 2, 5);
 /*==============================================================*/
 /* Generate test data for the table "CONTRATO".                 */
 /*==============================================================*/
-INSERT INTO CONTRATO (ID_CONTRATO, ID_RESERVA, DESCUENTO, RUT, EMP_RUT, ID_SERVICIO, ID_SEGURO) 
-VALUES (1, 1, 0, '15413610K', '63868175', 1, 1);
+INSERT INTO CONTRATO (ID_CONTRATO, ID_RESERVA, DESCUENTO, RUT, EMP_RUT, ID_SERVICIO, ID_SEGURO, FECHA_CONTRATO) 
+VALUES (1, 1, 0, '15413610K', '63868175', 1, 1, SYSDATE);
 
 /*==============================================================*/
 /* Generate test data for the table "ESTACIONAMIENTO".          */

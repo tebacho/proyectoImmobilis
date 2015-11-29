@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     28-11-2015 22:34:52                          */
+/* Created on:     29-11-2015 2:45:15                           */
 /*==============================================================*/
 
 
@@ -133,6 +133,13 @@ DROP TABLE SERVICIO CASCADE CONSTRAINTS;
 
 DROP TABLE IMMOBILIS.TIPORESERVA CASCADE CONSTRAINTS;
 
+DROP USER IMMOBILIS;
+
+/*==============================================================*/
+/* User: IMMOBILIS                                              */
+/*==============================================================*/
+CREATE USER IMMOBILIS 
+  identified by "";
 
 /*==============================================================*/
 /* Table: BODEGA                                                */
@@ -245,6 +252,7 @@ CREATE TABLE IMMOBILIS.CONTRATO
    EMP_RUT              VARCHAR2(12 BYTE),
    ID_SERVICIO          NUMBER(6),
    ID_SEGURO            NUMBER(5,0),
+   FECHA_CONTRATO       DATE,
    CONSTRAINT PK_CONTRATO PRIMARY KEY (ID_CONTRATO)
          USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
         STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -600,6 +608,7 @@ CREATE TABLE SERVICIO
    ID_SERVICIO          NUMBER(6)            NOT NULL,
    DESCRIPCION          VARCHAR2(20),
    FECHAVIGENCIA        DATE,
+   VALOR                DATE,
    CONSTRAINT PK_SERVICIO PRIMARY KEY (ID_SERVICIO)
 );
 
