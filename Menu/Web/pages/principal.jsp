@@ -66,6 +66,7 @@
 	function cargaListadoCobranza(){
 		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
 		var pagina= "/Cobro/reporteCobrosAction.do?method=mostrarFormulario";
+		alert(serverPort+pagina);
 		document.getElementById('frameCentral').src=serverPort+pagina; 
 	}
 	function cargaIngresoPago(){
@@ -184,7 +185,7 @@
 						<input type="button" value="Actualizar Datos"
 							style="width: 150px; height: 25px" onclick="cargarActualizacionDatos();" /><br> <input
 							type="button" value="Historial de Pagos"
-							style="width: 150px; height: 25px" onclick="cargaHistorialPagos();"/><br> <input
+							style="width: 150px; height: 25px" onclick="cargaReporteContratos();"/><br> <input
 							type="button" value="Ver Contratos"
 							style="width: 150px; height: 25px" onclick="cargaContratosActivos();"/>
 					</div>
@@ -196,13 +197,12 @@
 					<h1>Menu Empleado</h1>
 					<hr>
 					<div class="menu_boton">
-						<input type="button" value="Actualizar Datos" style="width: 150px; height: 25px" onclick="cargaEjecutivoAdjuntarRespaldo();" />
+						<!--input type="button" value="Actualizar Datos" style="width: 150px; height: 25px" onclick="cargaEjecutivoAdjuntarRespaldo();" /-->
 							<input type="button" value="Generar Contrato" style="width: 150px; height: 25px" onclick="cargaGenerarContrato();"/>
 							<input type="button" value="Listado Cobranza" style="width: 150px; height: 25px" onclick="cargaListadoCobranza();"/>
 							<input type="button" value="Ingreso Pago" style="width: 150px; height: 25px" onclick="cargaIngresoPago();"/>
 							<input type="button" value="Ingresar Respaldos" style="width: 150px; height: 25px;" onclick="cargaIngresarRespaldo();"/>
 							<input type="button" value="Reporte Arriendos" style="width: 150px; height: 25px;" onclick="cargaReporteArriendos();"/>
-							<input type="button" value="Reporte Contratos" style="width: 150px; height: 25px;" onclick="cargaReporteContratos();"/>
 					</div>
 				</div>
 			</div>
