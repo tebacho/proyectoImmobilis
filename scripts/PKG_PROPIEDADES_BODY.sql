@@ -88,7 +88,7 @@ procedure SP_INGRESA_NUEVA_PROPIEDAD(
 	SP_METROS_CUADRADOS IN NUMBER,
 	SP_PRECIO_UF IN NUMBER,
 	SP_DIRECCION IN VARCHAR2,
-    SP_RUT_PROPIETARIO IN VARCHAR2)
+SP_RUT_PROPIETARIO IN VARCHAR2)
 
 IS
 coincidencias number(9);
@@ -201,37 +201,37 @@ procedure SP_BUSCAR_ID_PROPIEDAD(
 )
 IS
 BEGIN
-  cod_resultado:=0;
- open cursorPropiedad for 
-SELECT 
-  PRO.ID_PROPIEDAD,
-  PRO.ID_COMUNA,
-  PRO.ID_CONSTRUCTORA,
-  PRO.TIPO_PROPIEDAD,
-  PRO.DESCRIPCION,
-  PRO.OPERACION,
-  PRO.DISPONIBLE,
-  PRO.PROYECTO,
-  PRO.METROS_CUADRADOS,
-  PRO.PRECIO_UF,
-  PRO.DIRECCION,
-  PRO.RUT_PROPIETARIO
-  
-
-FROM 
-  PROPIEDAD PRO
-join 
-  REGISTROPROPIEDAD reg on PRO.ID_PROPIEDAD = reg.ID_PROPIEDAD
-where 
-  reg.activo =1
-AND 
-  pro.ID_PROPIEDAD=SP_ID_PROPIEDAD;
-  
-  cod_resultado:=0;
-  
- EXCEPTION WHEN OTHERS THEN
-  msg_error :='Ha ocurrido un error al buscar la propiedad '||sp_rut;  
-  
+	cod_resultado:=0;
+	open cursorPropiedad for 
+	SELECT 
+	PRO.ID_PROPIEDAD,
+	PRO.ID_COMUNA,
+	PRO.ID_CONSTRUCTORA,
+	PRO.TIPO_PROPIEDAD,
+	PRO.DESCRIPCION,
+	PRO.OPERACION,
+	PRO.DISPONIBLE,
+	PRO.PROYECTO,
+	PRO.METROS_CUADRADOS,
+	PRO.PRECIO_UF,
+	PRO.DIRECCION,
+	PRO.RUT_PROPIETARIO
+	
+	
+	FROM 
+	PROPIEDAD PRO
+	join 
+	REGISTROPROPIEDAD reg on PRO.ID_PROPIEDAD = reg.ID_PROPIEDAD
+	where 
+	reg.activo =1
+	AND 
+	pro.ID_PROPIEDAD=SP_ID_PROPIEDAD;
+	
+	cod_resultado:=0;
+	
+	EXCEPTION WHEN OTHERS THEN
+	msg_error :='Ha ocurrido un error al buscar la propiedad '||sp_rut;  
+	
 END;
 
 END;
