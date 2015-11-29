@@ -2,18 +2,19 @@ package com.immobilis.vo;
 
 public class ConstructoraVO {
 	private int idConstructora;
-	private String nombreConstructora;
+	private String nombre;
+	
 	public int getIdConstructora() {
 		return idConstructora;
 	}
 	public void setIdConstructora(int idConstructora) {
 		this.idConstructora = idConstructora;
 	}
-	public String getNombreConstructora() {
-		return nombreConstructora;
+	public String getNombre() {
+		return nombre;
 	}
-	public void setNombreConstructora(String nombreConstructora) {
-		this.nombreConstructora = nombreConstructora;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 }

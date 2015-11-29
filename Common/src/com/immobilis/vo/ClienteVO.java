@@ -12,7 +12,22 @@ public class ClienteVO extends PersonaVO {
 	private String rut;
 	private String password;
 	private Date fechaIngreso;
+	private ConvenioVO convenio;
+	private int activo;
 	
+	
+	public ConvenioVO getConvenio() {
+		return convenio;
+	}
+	public void setConvenio(ConvenioVO convenio) {
+		this.convenio = convenio;
+	}
+	public int getActivo() {
+		return activo;
+	}
+	public void setActivo(int activo) {
+		this.activo = activo;
+	}
 	public String getRut() {
 		return rut;
 	}

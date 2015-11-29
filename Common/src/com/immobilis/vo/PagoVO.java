@@ -9,6 +9,9 @@ public class PagoVO {
 	private int idContrato;
 	private double montoCuota;
 	private int numeroCuota;
+	private ConversionVO conversion;
+	private double Comision;
+	private Date fechaPagada;
 	public String getEstadoPago() {
 		return estadoPago;
 	}
@@ -45,5 +48,25 @@ public class PagoVO {
 	public void setNumeroCuota(int numeroCuota) {
 		this.numeroCuota = numeroCuota;
 	}
+	public ConversionVO getConversion() {
+		return conversion;
+	}
+	public void setConversion(ConversionVO conversion) {
+		this.conversion = conversion;
+	}
+	public double getComision() {
+		return Comision;
+	}
+	public void setComision(double comision) {
+		Comision = comision;
+	}
+	public Date getFechaPagada() {
+		return fechaPagada;
+	}
+	public void setFechaPagada(Date fechaPagada) {
+		this.fechaPagada = fechaPagada;
+	}
+	
+	
 	
 }

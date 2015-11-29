@@ -5,7 +5,7 @@ package com.immobilis.vo;
  * @version 1.0
  * @created 20-sep.-2015 20:13:28
  */
-public class AdministradorVO extends EjecutivoVO {
+public class AdministradorVO extends EmpleadoVO{
 
 	
 }//end AdministradorVO

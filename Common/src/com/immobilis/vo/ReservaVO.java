@@ -10,9 +10,8 @@ public class ReservaVO {
 	private String apellidoUsuario;
 	private String numeroContacto;
 	private String mailContacto;
-	
 	private Date fechaCreacion;
-	private String IdPropiedad;
+	private PropiedadVO propiedad;
 
 	public String getIdReserva() {
 		return idReserva;
@@ -56,11 +55,12 @@ public class ReservaVO {
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
-	public String getIdPropiedad() {
-		return IdPropiedad;
+	public PropiedadVO getPropiedad() {
+		return propiedad;
 	}
-	public void setIdPropiedad(String idPropiedad) {
-		IdPropiedad = idPropiedad;
+	public void setPropiedad(PropiedadVO propiedad) {
+		this.propiedad = propiedad;
 	}
+	
 	
 }
