@@ -5,33 +5,35 @@ package com.immobilis.vo;
  * @version 1.0
  * @created 20-sep.-2015 20:13:28
  */
-public class CasaVO extends ViviendaVO {
+public class CasaVO extends PropiedadVO {
 
 	private String conjunto;
-	private int metroshabitables;
-	private int metrosPatio;
-
+	private int metrosHabitables;
+	private int bannos;
+	private int dormitorios;
 	public String getConjunto() {
 		return conjunto;
 	}
 	public void setConjunto(String conjunto) {
 		this.conjunto = conjunto;
 	}
-	public int getMetroshabitables() {
-		return metroshabitables;
+	public int getMetrosHabitables() {
+		return metrosHabitables;
 	}
-	public void setMetroshabitables(int metroshabitables) {
-		this.metroshabitables = metroshabitables;
+	public void setMetrosHabitables(int metrosHabitables) {
+		this.metrosHabitables = metrosHabitables;
 	}
-	public int getMetrosPatio() {
-		return metrosPatio;
+	public int getBannos() {
+		return bannos;
 	}
-	public void setMetrosPatio(int metrosPatio) {
-		this.metrosPatio = metrosPatio;
+	public void setBannos(int bannos) {
+		this.bannos = bannos;
 	}
-	public String getMetrosTotal(){
-		return getMetroshabitables()+"/"+getMetrosCuadrados();
+	public int getDormitorios() {
+		return dormitorios;
 	}
-	
+	public void setDormitorios(int dormitorios) {
+		this.dormitorios = dormitorios;
+	}
 	
 }//end CasaVO

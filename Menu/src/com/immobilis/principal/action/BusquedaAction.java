@@ -34,10 +34,13 @@ public class BusquedaAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response) {
 		if (form instanceof BusquedaForm) {
 			BusquedaForm busquedaForm = (BusquedaForm) form;
+			BusquedaManager manager = new BusquedaManager();
 			busquedaForm = initCombos(busquedaForm);
-			PropiedadVO propiedad = new CasaVO();
 			Map<String, PropiedadVO> mapa = new HashMap<String, PropiedadVO>();
-			mapa = propiedadPrueba(10);
+			String filtroTipoOperacion= request.getParameter("filtroTipoOperacion");
+			String filtroTipoPropiedad = request.getParameter("filtroTipoPropiedad");
+			String filtroUbicacion = request.getParameter("filtroUbicacion");
+			mapa = manager.fetchByFilter(filtroTipoOperacion, filtroTipoPropiedad, filtroUbicacion );
 			((BusquedaForm) form).setPropiedades(mapa);
 
 		}
@@ -48,22 +51,26 @@ public class BusquedaAction extends DispatchAction {
 	public ActionForward filterPropiedades(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) {
+		
 		if (form instanceof BusquedaForm) {
+			BusquedaForm busquedaForm = (BusquedaForm) form;
+			
 			String filtroTipoOperacion;
-			String filtroTipoPropiedadBuscada;
+			String filtroTipoPropiedad;
 			String filtroUbicacion;
-			filtroTipoOperacion = request.getParameter("tipoOperacionFiltro");
-			filtroTipoPropiedadBuscada = request.getParameter("filtroTipoPropiedadBuscada");
+			
+			filtroTipoOperacion = request.getParameter("filtroTipoOperacionFiltro");
+			filtroTipoPropiedad = request.getParameter("filtroTipoPropiedad");
 			filtroUbicacion = request.getParameter("filtroUbicacion");
 			
-			BusquedaForm busquedaForm = (BusquedaForm) form;
 			BusquedaManager busquedaManager = new BusquedaManager();
+			
 			Map<String, PropiedadVO> listadoPropiedades = busquedaManager
 					.fetchByFilter(filtroTipoOperacion,
-							filtroTipoPropiedadBuscada, filtroUbicacion);
+							filtroTipoPropiedad, filtroUbicacion);
 			busquedaForm.setPropiedades(listadoPropiedades);
 			busquedaForm.setFiltroTipoOperacion(filtroTipoOperacion);
-			busquedaForm.setFiltroTipoPropiedadBuscada(filtroTipoPropiedadBuscada);
+			busquedaForm.setFiltroTipoPropiedadBuscada(filtroTipoPropiedad);
 			busquedaForm.setFiltroTipoOperacion(filtroUbicacion);
 			busquedaForm = initCombos(busquedaForm);
 		}
@@ -147,7 +154,7 @@ public class BusquedaAction extends DispatchAction {
 				direccion.setNumeracion(1030);
 				direccion.setComuna(comuna);
 				direccion.setPiso(1);
-				propiedad.setDireccion(direccion);
+//				propiedad.setDireccion(direccion);
 				propiedad.setProyecto("proyecto "+val);
 				propiedad.setTipoOperacion(PropiedadVO.TipoOperacion.ARRIENDO);		
 				propiedades.put(propiedad.getIdPropiedad()+"", propiedad);

@@ -52,7 +52,7 @@
 		document.getElementById('frameCentral').src=serverPort+pagina; 
 	}
 	
-	<!--	Ejecutivo   -->
+	//	Ejecutivo
 	function cargaEjecutivoAdjuntarRespaldo(){
 		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
 		var pagina= "/Ejecutivo/adjuntarRespaldosAction.do?method=mostrarFormulario";
@@ -106,10 +106,11 @@
 	function searchData() {
 		var operacion = document.getElementById("tipoBusquedaFiltro").value;
 		var tipoPropiedad = document.getElementById("tipoPropiedadFiltro").value;
-		var comuna = document.getElementById("txtComuna").value;
+		var ubicacion = document.getElementById("txtComuna").value;
+		
 		var variables = "&filtroTipoOperacion=" + operacion
-				+ "&filtroTipoPropiedadBuscada=" + tipoPropiedad
-				+ "&filtroUbicacion" + comuna;
+				+ "&filtroTipoPropiedad=" + tipoPropiedad
+				+ "&filtroUbicacion" + ubicacion;
 		return variables;
 	}
 	function closeAndReload() {

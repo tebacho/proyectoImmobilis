@@ -14,7 +14,7 @@ public abstract class PropiedadVO {
 	private String descripcion;
 	private String proyecto ;
 	private TipoPropiedad tipoPropiedad;
-	private DireccionVO direccion;
+	private String direccion;
 	private TipoOperacion tipoOperacion;
 	private Map<String,String> urlImagenes;
 	private ConstructoraVO constructora;
@@ -90,14 +90,6 @@ public abstract class PropiedadVO {
 	public void setProyecto(String proyecto) {
 		this.proyecto= proyecto;
 	}
-
-	public DireccionVO getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(DireccionVO direccion) {
-		this.direccion = direccion;
-	}
 	
 	public TipoPropiedad getTipoPropiedad() {
 		return tipoPropiedad;
@@ -115,14 +107,10 @@ public abstract class PropiedadVO {
 	public void setTipoOperacion(TipoOperacion tipoOperacion) {
 		this.tipoOperacion = tipoOperacion;
 	}
-	public String getDireccionCompleta(){
-		return direccion.toString();
-	}
+
 	public String getNombreConstructora(){
 		return constructora.getNombreConstructora();
 	}
-
-
 
 	public enum TipoOperacion{
 		ARRIENDO,VENTA;

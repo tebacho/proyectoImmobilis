@@ -8,12 +8,12 @@ package com.immobilis.vo;
 public class EstacionamientoVO extends PropiedadVO {
 
 	
-	private String nivel;
+	private int nivel;
 	
-	public String getNivel() {
+	public int getNivel() {
 		return nivel;
 	}
-	public void setNivel(String nivel) {
+	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
 	

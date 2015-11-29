@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="style/busqueda_1.css" />
 <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+
 	function abrirFormularioReserva(idPropiedad){
 		var userRut = document.getElementById("sessionRut");
 		
@@ -23,6 +24,7 @@
 		
 		
 	}
+	
 </script>
 
 </head>

@@ -20,13 +20,11 @@ import com.immobilis.vo.OficinaVO;
 import com.immobilis.vo.PropiedadVO;
 import com.immobilis.vo.PropiedadVO.TipoPropiedad;
 
-
 public class PropiedadesDaoImpl implements PropiedadesDao {
 
 	@Override
 	public Map<String, PropiedadVO> fetchByFilter(String filtroTipoOperacion,
-			String filtroTipoPropiedadBuscada,
-			String filtroUbicacion) {
+			String filtroTipoPropiedadBuscada, String filtroUbicacion) {
 		long t1 = System.currentTimeMillis();
 		Map<String, PropiedadVO> listadoPropiedades = null;
 		Connection con = null;
@@ -40,7 +38,8 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
 			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
 			callableStatement.setString(4, filtroTipoOperacion);
-			callableStatement.setString(5,filtroTipoPropiedadBuscada.toString());
+			callableStatement.setString(5,
+					filtroTipoPropiedadBuscada.toString());
 			callableStatement.setString(6, filtroUbicacion);
 			callableStatement.execute();
 			BigDecimal dm = callableStatement.getBigDecimal(1);
@@ -67,7 +66,6 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 		}
 		return listadoPropiedades;
 	}
-	
 
 	private Map<String, PropiedadVO> rsIntoPropiedades(ResultSet rsPropiedades)
 			throws SQLException {
@@ -81,18 +79,18 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 		return propiedades;
 	}
 
-
 	@Override
 	public PropiedadVO fetchPropiedadById(String idPropiedad) {
 		long t1 = System.currentTimeMillis();
-		PropiedadVO propiedad= null;
+		PropiedadVO propiedad = null;
 		Connection con = null;
 
 		try {
 			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_PROPIEDADES.SP_FETCH_PROPIEDAD(?,?,?,?)}";
 			con = ConnectionDAO.establecerConexion();
-			CallableStatement callableStatement = con.prepareCall(cifSpActEstadoMacQuery);
-			
+			CallableStatement callableStatement = con
+					.prepareCall(cifSpActEstadoMacQuery);
+
 			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
 			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
 			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
@@ -102,12 +100,13 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 			BigDecimal dm = callableStatement.getBigDecimal(2);
 
 			if (dm.intValue() == 0) {
-				ResultSet rsPropiedades = (ResultSet) callableStatement.getObject(3);
+				ResultSet rsPropiedades = (ResultSet) callableStatement
+						.getObject(3);
 				propiedad = rsIntoPropiedad(rsPropiedades);
 
 			}
 		} catch (SQLException sqle) {
-			
+
 		} finally {
 			long t2 = System.currentTimeMillis();
 			System.out.println("[fetchPropiedadById]TIEMPO EJECUCION "
@@ -122,33 +121,44 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 		}
 		return propiedad;
 	}
-	
-	private PropiedadVO rsIntoPropiedad(ResultSet rsPropiedad) throws SQLException{
+
+	private PropiedadVO rsIntoPropiedad(ResultSet rsPropiedad)
+			throws SQLException {
 		String tipoPropiedad = rsPropiedad.getString("tipoPropiedad");
-		
+
 		PropiedadVO propiedad = null;
 		switch (tipoPropiedad) {
 		case "BODEGA":
-		propiedad = new BodegaVO();
-			
+			BodegaVO bodega = new BodegaVO();
+			bodega.setAltura(rsPropiedad.getDouble("altura"));
+			propiedad = bodega;
 			break;
 		case "OFICINA":
-		propiedad = new OficinaVO();	
-			break;	
+			OficinaVO oficina = new OficinaVO();
+			oficina.setPatenteComercial(rsPropiedad.getInt("patentecomercial"));
+			propiedad = oficina;
+			break;
 		case "ESTACIONAMIENTO":
-		propiedad = new EstacionamientoVO();			
-					break;	
+			EstacionamientoVO estacionamiento = new EstacionamientoVO();
+			estacionamiento.setNivel(rsPropiedad.getInt("nivel"));
+			propiedad = estacionamiento;
+			break;
 		case "DEPARTAMENTO":
-		propiedad = new DepartamentoVO();	
-			break;	
+			DepartamentoVO departamento = new DepartamentoVO();
+			departamento.setBannos(rsPropiedad.getInt("bano"));
+			departamento.setEdificio("Edificio");
+			departamento.setDormitorios(rsPropiedad.getInt("dormitorio"));
+			propiedad = departamento;
+			break;
 		case "CASA":
-		propiedad = new CasaVO();
-			break;		
+			CasaVO casa = new CasaVO();
+			casa.set
+			propiedad = new CasaVO();
+			break;
 		default:
-			
 		}
+
 		return propiedad;
 	}
-	
 
 }

@@ -7,6 +7,15 @@ package com.immobilis.vo;
  */
 public class OficinaVO extends PropiedadVO{
 
-		
+	int patenteComercial;
 
+	public int getPatenteComercial() {
+		return patenteComercial;
+	}
+
+	public void setPatenteComercial(int patenteComercial) {
+		this.patenteComercial = patenteComercial;
+	}
+	
+	
 }//end OficinaVO
