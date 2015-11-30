@@ -23,10 +23,10 @@
 	});
 	
 	function abrirLoginUsuarioWeb(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+		
 		var sbx = window.Shadowbox;
 		sbx.open({
-		        content:    serverPort+"/UsuarioWeb/loginAction.do?method=mostrarFormulario",
+		        content:    '<%=request.getContextPath()%>/loginAction.do?method=mostrarFormulario',
 		        player:     "iframe",
 		        height:     500,
 		        width:      650
@@ -35,58 +35,54 @@
 	}
 	
 	function cargarActualizacionDatos(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/UsuarioWeb/actualizarInformacionAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 
+		var rutCliente = document.getElementById("rutCliente");
+		var pagina= "actualizarInformacionAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=pagina; 
 		
 	}
 	function cargaHistorialPagos(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/UsuarioWeb/informacionPagosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 
+		var pagina= "informacionPagosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=pagina; 
 		
 	}
 	function cargaContratosActivos(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/UsuarioWeb/contratosActivosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 
+		var pagina= "contratosActivosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=pagina; 
 	}
 	
 	//	Ejecutivo
 	function cargaEjecutivoAdjuntarRespaldo(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Ejecutivo/adjuntarRespaldosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 
+		
+		var pagina= "adjuntarRespaldosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=pagina; 
 	}
 	function cargaGenerarContrato(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Ejecutivo/generarContratoAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 
+		
+		var pagina= "generarContratoAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=pagina; 
 	}
 	function cargaListadoCobranza(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Cobro/reporteCobrosAction.do?method=mostrarFormulario";
-		alert(serverPort+pagina);
-		document.getElementById('frameCentral').src=serverPort+pagina; 
+		
+		var pagina= "reporteCobrosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=pagina; 
 	}
 	function cargaIngresoPago(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Cobro/ingresoPagoAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 
+		var pagina= "ingresoPagoAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=pagina; 
 	}
 	function cargaIngresarRespaldo(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Ejecutivo/adjuntarRespaldosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 
+		
+		var pagina= "adjuntarRespaldosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=pagina; 
 	}
 	function cargaReporteArriendos(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Ejecutivo/reportePropiedadAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 
+		
+		var pagina= "reportePropiedadAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src=pagina; 
 	}
 	function cargaReporteContratos(){
-		var serverPort=location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-		var pagina= "/Ejecutivo/reporteContratosAction.do?method=mostrarFormulario";
+		
+		var pagina= "reporteContratosAction.do?method=mostrarFormulario";
 		document.getElementById('frameCentral').src=serverPort+pagina; 
 	}
 	
@@ -96,11 +92,11 @@
 		
 		var filtros = searchData();
 		
-		var loc="<%=request.getContextPath()%>/busquedaAction.do";
+		var loc="busquedaAction.do";
 		loc = loc + "?method=filterPropiedades";
 		loc = loc + filtros;
-		alert(loc);
-		window.frames.frameCentral.location = loc;
+		document.getElementById('frameCentral').src=loc
+
 	}
 
 	function searchData() {
@@ -121,6 +117,7 @@
 </script>
 </head>
 <body>
+
 	<div class="contenedor_principal">
 
 		<div class="contenedor_1">
@@ -165,7 +162,7 @@
 								</logic:iterate>
 						</select>
 
-						</span> <span> <input type="text" placeholder="Ingrese comuna"
+						</span> <span> <input type="text" placeholder="Ingrese ubicacion"
 							id="txtComuna">
 						</span> <span><input type="button" value="Buscar"
 							onclick="filtrarPropiedades()" /></span>
@@ -173,10 +170,7 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
+		<%if(request.getSession().getAttribute("cliente")!=null){ %>
 		<div class="contenedor_4">
 			<div class="menu_usuario">
 				<div class="menu">
@@ -191,8 +185,8 @@
 							style="width: 150px; height: 25px" onclick="cargaContratosActivos();"/>
 					</div>
 				</div>
-			</div>
-
+			</div><%} %>
+			<%if(request.getSession().getAttribute("empleado")!=null){ %>
 			<div class="menu_empleado">
 				<div class="menu">
 					<h1>Menu Empleado</h1>
@@ -207,13 +201,15 @@
 					</div>
 				</div>
 			</div>
-
+			<%} %>
+			
 			<div class="frame">
 				<iframe id="frameCentral"
 					src="<%=request.getContextPath()%>/busquedaAction.do?method=iniciarPagina"
 					width="100%" height="500px"
 					style="display: inline-block; scrollable: true;"> </iframe>
 			</div>
+
 		</div>
 
 

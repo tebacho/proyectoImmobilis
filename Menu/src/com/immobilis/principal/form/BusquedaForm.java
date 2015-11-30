@@ -13,17 +13,17 @@ public class BusquedaForm extends ActionForm {
 	 */
 	private static final long serialVersionUID = -4898282656252301496L;
 	
-	Map<String,PropiedadVO> propiedades;
+	Map<Integer,PropiedadVO> propiedades;
 	private Map<String,String> tipoBusqueda;
 	private Map<String,String> tipoPropiedad;
 	String filtroTipoOperacion;
 	String filtroTipoPropiedadBuscada;
 	String filtroUbicacion;
 	
-	public Map<String, PropiedadVO> getPropiedades() {
+	public Map<Integer, PropiedadVO> getPropiedades() {
 		return propiedades;
 	}
-	public void setPropiedades(Map<String, PropiedadVO> propiedades) {
+	public void setPropiedades(Map<Integer, PropiedadVO> propiedades) {
 		this.propiedades = propiedades;
 	}
 	public String getFiltroTipoOperacion() {

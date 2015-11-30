@@ -14,14 +14,12 @@
 	function abrirFormularioReserva(idPropiedad){
 		var userRut = document.getElementById("sessionRut");
 		
-		var filtros = "&idPropiedad"+idPropiedad+"&userRut"+userRut;
+		var filtros = "&idPropiedad="+idPropiedad;
 		
-		var loc="<%=request.getContextPath()%>/formularioReservaAction.do";
+		var loc="formularioReservaAction.do";
 		loc = loc + "?method=mostrarFormulario";
 		loc = loc + filtros;
-		alert(loc);
 		window.parent.document.getElementById('frameCentral').src=loc; 
-		
 		
 	}
 	
@@ -90,7 +88,7 @@
 								</figure>
 								<p>
 									<logic:present name="vPropiedades" property="metrosTotal" >
-										<bean:write name="vPropiedades" property="metrosTotal" />
+										<bean:write name="vPropiedades" property="metrosTotal" format="#" />
 									</logic:present>
 									<logic:notPresent name="vPropiedades" property="metrosTotal" >
 										<bean:write name="vPropiedades" property="metrosCuadrados" format="#" />
@@ -113,7 +111,7 @@
 							</p -->
 						</section>
 						<section class="resBtnCotizar">
-							<button class="btnCotizar" onclick="abrirFormularioReserva('<bean:write name="propiedades" property="key" />');">Cotizar</button>
+							<button class="btnCotizar" onclick="abrirFormularioReserva('<bean:write name="vPropiedades" property="idPropiedad" format="#" />');">Cotizar</button>
 						</section>
 					</section>
 				</section>
@@ -121,6 +119,7 @@
 
 			</logic:iterate>
 		</logic:notEmpty>
+		<logic:empty name="busquedaFB" property="propiedades">No Hay propiedades que desplegar</logic:empty>
 
 	</div>
 </body>
