@@ -135,7 +135,7 @@ function abrirLoginEmpleado(){
 
 .menu_indicador {
 	border: 3px solid #c2c2a3;
-	height: 350px;
+	height: 500px;
 	width: 18%;
 	float: left;
 	display: block;
@@ -268,6 +268,9 @@ function abrirLoginEmpleado(){
 			<div class="menu_indicador">
 				<div class="titulo_indicador">Indicadores Economicos</div>
 				<div class="titulo_indicador">Hoy</div>
+				<br>
+				<hr>
+				<br>
 				<div class="indicador">
 					<p></p>
 				</div>
@@ -314,17 +317,17 @@ function abrirLoginEmpleado(){
 							"<p/>",
 							{
 								html : 'Valor UF $' + dailyIndicators.uf.valor
-										+ '<br><br>' + 'Valor UTM $'
+										+ '<br><br><br>' + 'Valor UTM $'
 										+ dailyIndicators.utm.valor
-										+ '<br><br>' + 'Valor Dólar O.$'
+										+ '<br><br><br>' + 'Valor Dólar O.$'
 										+ dailyIndicators.dolar.valor
-										+ '<br><br>' + 'Valor Euro $'
+										+ '<br><br><br>' + 'Valor Euro $'
 										+ dailyIndicators.euro.valor
-										+ '<br><br>' + 'Valor IPC $'
+										+ '<br><br><br>' + 'Valor IPC $'
 										+ dailyIndicators.ipc.valor
-										+ '<br><br>' + 'Valor IVP $'
+										+ '<br><br><br>' + 'Valor IVP $'
 										+ dailyIndicators.ivp.valor
-										+ '<br><br>' + 'Valor Imacec '
+										+ '<br><br><br>' + 'Valor Imacec '
 										+ dailyIndicators.imacec.valor
 
 							}).appendTo(".indicador");
