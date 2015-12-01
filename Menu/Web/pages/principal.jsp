@@ -8,7 +8,7 @@
 
 <head>
 
-<title>Modelo</title>
+<title>Immobilis</title>
 <link rel="stylesheet" type="text/css" href="style/shadowbox.css" />
 <link rel="stylesheet" type="text/css" href="style/estilo_principal.css" />
 <script src="js/shadowbox/shadowbox.js" type="text/javascript"></script>
