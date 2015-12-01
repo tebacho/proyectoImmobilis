@@ -178,7 +178,7 @@ function abrirLoginEmpleado(){
 						</select>
 
 						</span> <span> <input type="text" placeholder="Ingrese ubicacion"
-							id="txtComuna">
+							id="txtComuna" required="required">
 						</span> <span><input type="button" value="Buscar"
 							onclick="filtrarPropiedades()" /></span>
 					</p>
