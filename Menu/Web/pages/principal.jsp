@@ -143,9 +143,9 @@ function abrirLoginEmpleado(){
 				</logic:present>
 				<logic:notPresent name="cliente" property="rut" scope="session">
 					<span> <input type="button" value="Ingresar"
-						onclick="abrirLoginUsuarioWeb();" /></span>
+						onclick="abrirLoginUsuarioWeb();" style="width: 100px;"/></span>
 					<span> <input type="button" value="Colaborador"
-						onclick="abrirLoginEmpleado();" /></span>
+						onclick="abrirLoginEmpleado();" style="width: 100px;"/></span>
 				</logic:notPresent>
 			</div>
 
@@ -262,6 +262,7 @@ function abrirLoginEmpleado(){
 			</div>
 			<div class="pie_3" style="width: 100%">
 				<p>Copyright &copy; 2015 - Todos los derechos reservados.</p>
+				<br>
 			</div>
 		</div>
 
