@@ -142,7 +142,7 @@ function abrirLoginEmpleado(){
 						onclick="cerrarSesion();" /></span>
 				</logic:present>
 				<logic:notPresent name="cliente" property="rut" scope="session">
-					<span> <input type="button" value="Ingresar"
+					<span> <input type="button" value="Usuario"
 						onclick="abrirLoginUsuarioWeb();" style="width: 100px;"/></span>
 					<span> <input type="button" value="Colaborador"
 						onclick="abrirLoginEmpleado();" style="width: 100px;"/></span>
