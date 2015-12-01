@@ -51,15 +51,15 @@ select:hover {
 		<table align="center">
 			<tr>
 				<td>Fecha Inicio</td>
-				<td><input type="date"  id="calFechaInicio" /></td>
+				<td><input type="text"  id="calFechaInicio" required="required"/></td>
 				<td>Fecha Termino</td>
-				<td><input type="date" id="calFechaInicio" /></td>
+				<td><input type="text" id="calFechaInicio" required="required"/></td>
 			</tr>
 		</table>
 		<br>
 		<table align="center">
 			<tr>
-				<td><input type="button" value="Filtrar" id="btnFiltrar"
+				<td><input type="submit" value="Filtrar" id="btnFiltrar"
 					style="width: 100px;" /></td>
 				<td><input type="button" value="Cerrar" id="btnCerrar"
 					style="width: 100px;" /></td>
@@ -93,8 +93,8 @@ select:hover {
 		<br>
 		<table align="center">
 			<tr>
-				<td><input type="button" value="Imprimir" style="width: 100px;" onclick="window:print()"/></td>
-				<td><input type="button" value="Borrar" style="width: 100px;" /></td>
+				<td><input type="submit" value="Imprimir" style="width: 100px;" onclick="window:print()"/></td>
+				<td><input type="reset" value="Borrar" style="width: 100px;" /></td>
 			</tr>
 		</table>
 	</form>

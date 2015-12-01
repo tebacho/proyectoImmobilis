@@ -45,9 +45,11 @@ table {
 		<hr>
 		<br>
 		<div>
-			<label>Desde</label> <input type="date" /> <label>Hasta</label> <input
-				type="date" /> <input type="submit" value="Buscar"
-				style="width: 100px" />
+			<label>Desde</label> 
+			<input type="text" required="required" placeholder="dd-mm-aaaa"/> 
+			<label>Hasta</label> 
+			<input type="text" required="required" placeholder="dd-mm-aaaa"/> 
+			<input type="submit" value="Buscar" style="width: 100px" />
 		</div>
 		<br>
 		<hr>

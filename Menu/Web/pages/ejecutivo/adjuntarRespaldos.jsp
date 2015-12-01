@@ -59,7 +59,7 @@ select:hover {
 					<table align="right">
 						<tr>
 							<td>Fecha Contrato</td>
-							<td><input type="date" id="txtFechaContrato" required="required"/></td>
+							<td><input type="text" value="02-12-2015" id="txtFechaContrato" required="required"/></td>
 						</tr>
 						<tr>
 							<td>Apellido Paterno</td>

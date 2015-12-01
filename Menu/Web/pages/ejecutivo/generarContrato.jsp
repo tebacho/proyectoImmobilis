@@ -73,7 +73,7 @@ textarea {
 						</tr>
 						<tr>
 							<td>Fecha Nacimiento</td>
-							<td><input type="date" required="required" /></td>
+							<td><input type="text" placeholder="dd-mm-aaaa" required="required" /></td>
 						</tr>
 						<tr>
 							<td>Region</td>
@@ -245,7 +245,7 @@ textarea {
 					<table align="right">
 						<tr>
 							<td>Fecha</td>
-							<td><input type="date" required="required" id="txtFecha" /></td>
+							<td><input type="text" placeholder="dd-mm-aaaa" required="required" id="txtFecha" /></td>
 						</tr>
 						<tr>
 							<td>Compañia</td>
