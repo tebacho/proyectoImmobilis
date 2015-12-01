@@ -19,6 +19,7 @@ h1 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	text-shadow: 2px 2px 4px #000000;
 	color: white;
+	font-size: 30px;
 }
 
 input:focus {
@@ -40,8 +41,7 @@ function login(){
 
 	$.ajax({
         type:    "POST",
-        url:     "<%=request.getContextPath()%>
-	/loginEjecutivoAction.do",
+        url:     "<%=request.getContextPath()%>/loginEjecutivoAction.do",
 			data : "method=loginEjecutivo" + params,
 
 			success : function(data) {
@@ -62,7 +62,9 @@ function login(){
 <body>
 
 	<form align="center" autocomplete="on">
+	<br>
 		<h1>Iniciar Sesión Colaborador</h1>
+		<br>
 		<hr>
 		<p>
 			<label for="username" class="uname" data-icon="u">Ingrese su

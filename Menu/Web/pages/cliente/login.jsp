@@ -19,12 +19,20 @@ h1 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	text-shadow: 2px 2px 4px #000000;
 	color: white;
+	font-size: 30px;
 }
 
 input:focus {
 	background-color: #ffff99;
 }
-
+a:hover{
+color: #fff;
+background-color: #ff6600;
+font-size: 20px;}
+a:link{
+text-decoration: none;
+}
+a{color: #ff6600;}
 select:hover {
 	background-color: #ffff99;
 }
@@ -40,8 +48,7 @@ function login(){
 
 	$.ajax({
         type:    "POST",
-        url:     "<%=request.getContextPath()%>
-	/loginAction.do",
+        url:     "<%=request.getContextPath()%>/loginAction.do",
 			data : "method=login" + params,
 
 			success : function(data) {
@@ -64,7 +71,9 @@ function login(){
 		request.getSession().getValue("nombre");
 	%>
 	<form align="center" autocomplete="on">
+	<br>
 		<h1>Iniciar Sesión Usuario</h1>
+		<br>
 		<hr>
 		<p>
 			<label for="username" class="uname" data-icon="u">Ingrese su
@@ -89,8 +98,7 @@ function login(){
 
 		</p>
 		<p class="change_link">
-			¿No esta registrado? <a href=<%=request.getContextPath()%>
-				/registroAction.do?method=mostrarFormulario class="to_register">Registrarse</a>
+			¿No esta registrado? <a href=<%=request.getContextPath()%>/registroAction.do?method=mostrarFormulario class="to_register">Registrarse</a>
 		</p>
 	</form>
 </body>

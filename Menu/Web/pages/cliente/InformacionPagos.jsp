@@ -29,8 +29,17 @@ table {
 	border-spacing: 25px;
 	border-style: solid;
 	border-color: #c2c2a3;
+	background-color: #fff;
 }
-#cabeza_grilla{background-color: pink;}
+
+#cabeza_grilla {
+	font-style: italic;
+	font-weight: bold;
+}
+
+.contenido_grilla {
+	font-family: monospace;
+}
 </style>
 </head>
 <body>
@@ -40,14 +49,14 @@ table {
 		<hr>
 		<br>
 		<div>
-			<label>Desde</label> <input type="text" placeholder="02-12-2014" />
-			<label>Hasta</label> <input type="text" placeholder="02-12-2015" />
-			<input type="button" value="Buscar" style="width: 100px" /> <input
+			<label>Desde</label> <input type="text" placeholder="02-12-2014" required="required"/>
+			<label>Hasta</label> <input type="text" placeholder="02-12-2015" required="required"/>
+			<input type="submit" value="Buscar" style="width: 100px" /> <input
 				type="button" value="Cancelar" style="width: 100px" />
 		</div>
 		<br>
 		<hr>
-		<table classe="grilla" align="center" width="600px" style="background:url(../images/libreta.png) no-repeat">
+		<table class="grilla" align="center">
 			<tr id="cabeza_grilla">
 				<td>N°Contrato</td>
 				<td>Fecha Contrato</td>
@@ -56,7 +65,7 @@ table {
 				<td>Monto Cuota</td>
 				<td>Estado</td>
 			</tr>
-			<tr>
+			<tr class="contenido_grilla">
 				<td>0001</td>
 				<td>22-11-2015</td>
 				<td>12</td>
@@ -66,9 +75,8 @@ table {
 			</tr>
 		</table>
 		<div>
-		<br>
-			<input type="button" value="Imprimir" style="width: 100px" /> <input
-				type="button" value="Cerrar" style="width: 100px" />
+			<br> <input type="button" value="Imprimir" style="width: 100px" onclick="window:print()"/>
+			<input type="button" value="Cerrar" style="width: 100px" />
 		</div>
 	</form>
 

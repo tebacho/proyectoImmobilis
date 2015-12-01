@@ -93,7 +93,7 @@ select:hover {
 		<br>
 		<table align="center">
 			<tr>
-				<td><input type="button" value="Imprimir" style="width: 100px;" /></td>
+				<td><input type="button" value="Imprimir" style="width: 100px;" onclick="window:print()"/></td>
 				<td><input type="button" value="Borrar" style="width: 100px;" /></td>
 			</tr>
 		</table>

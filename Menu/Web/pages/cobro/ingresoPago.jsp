@@ -51,10 +51,10 @@ select:hover {
 		<table align="center">
 			<tr>
 				<td>N°Contrato</td>
-				<td><input type="text" /></td>
+				<td><input type="text" required="required"/></td>
 				<td>Rut Cliente</td>
-				<td><input type="text" /></td>
-				<td><input type="button" value="Buscar" style="width: 100px;" /></td>
+				<td><input type="text" required="required"/></td>
+				<td><input type="submit" value="Buscar" style="width: 100px;" /></td>
 			</tr>
 		</table>
 		<br>
@@ -86,7 +86,7 @@ select:hover {
 		</table>
 		<div algin="center">
 		<br>
-		<input type="button" value="Pagar" style="width: 150px;"/>
+		<input type="submit" value="Pagar" style="width: 150px;"/>
 		</div>
 	</form>
 
