@@ -40,10 +40,13 @@ select:hover {
  function registrar(){
 	 
 	 var params = getData();
-	 	alert("hola");
+	if(params==""){
+		return;
+	}
+
 		$.ajax({
 	        type:    "POST",
-	        url:     "registroAction.do",
+	        url:     '<%=request.getContextPath()%>/registroAction.do',
 	        data:    "method=registroUsuario"+params,
 	        
 	        success: function(data){
@@ -63,10 +66,10 @@ select:hover {
 	var fechaNacimiento = document.getElementById("fechaNacimiento").value;
 	 if(!validarFecha(fechaNacimiento)){
 		 alert("fecha invalida");
-		 return;
+		 return "";
 	 }
 	 if( Valida_Rut(document.getElementById("rut"))){
-		 return;
+		 return "";
 	 }
 	var rut="&rut="+document.getElementById("rut").value;
 	var apellidoPaterno="&apellidoPaterno="+document.getElementById("apellidoPaterno").value;
@@ -93,7 +96,7 @@ select:hover {
 </script>
 </head>
 <body>
-	<form id="formulario1" name="formulario1" >
+	<form >
 		<input type="hidden" id="method" name="method" value="registroUsuario" />
 		<input type="hidden" value="hiddenvalue1" name="Hidden1" />
 		<div align="center">

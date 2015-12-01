@@ -1,11 +1,14 @@
 package com.immobilis.usuarioweb.form;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts.action.ActionForm;
 
 import com.immobilis.vo.ClienteVO;
+import com.immobilis.vo.ComunaVO;
+import com.immobilis.vo.RegionVO;
 
 /**
  * @author Rodolfo
@@ -19,107 +22,76 @@ public class ActualizarInformacionForm extends ActionForm {
 	 * 
 	 */
 	private static final long serialVersionUID = -7845965486514105909L;
-	private String nombre;
-	private String paterno;
-	private String materno;	
-	private Date fechaNacimiento;
-	private String rut;
-	private String sexo;
-	private String eMail;
-	private String password;
-	private String telefono;
-	private String passIngreso;
-	private String rutIngreso;
-	private Map regiones;
-	private Map comunas;
-	public String getNombre() {
-		return nombre;
+	private ClienteVO cliente;
+	private List<RegionVO> listRegiones;
+	private List<ComunaVO> listComunas;
+	private Map<String,String> listSexo;
+
+	
+	public Map<String, String> getListSexo() {
+		return listSexo;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public void setListSexo(Map<String, String> listSexo) {
+		this.listSexo = listSexo;
 	}
-	public String getPaterno() {
-		return paterno;
+
+	public ClienteVO getCliente() {
+		return cliente;
 	}
-	public void setPaterno(String paterno) {
-		this.paterno = paterno;
+
+	public void setCliente(ClienteVO cliente) {
+		this.cliente = cliente;
 	}
-	public String getMaterno() {
-		return materno;
+
+	public List<RegionVO> getListRegiones() {
+		return listRegiones;
 	}
-	public void setMaterno(String materno) {
-		this.materno = materno;
+
+	public void setListRegiones(List<RegionVO> listRegiones) {
+		this.listRegiones = listRegiones;
 	}
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
+
+	public List<ComunaVO> getListComunas() {
+		return listComunas;
 	}
-	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+
+	public void setListComunas(List<ComunaVO> listComunas) {
+		this.listComunas = listComunas;
 	}
-	public String getRut() {
-		return rut;
-	}
-	public void setRut(String rut) {
-		this.rut = rut;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-	public String geteMail() {
-		return eMail;
-	}
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getTelefono() {
-		return telefono;
-	}
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-	public Map getRegiones() {
-		return regiones;
-	}
-	public void setRegiones(Map regiones) {
-		this.regiones = regiones;
-	}
-	public Map getComunas() {
-		return comunas;
-	}
-	public void setComunas(Map comunas) {
-		this.comunas = comunas;
-	}
-	public String getPassIngreso() {
-		return passIngreso;
-	}
-	public void setPassIngreso(String passIngreso) {
-		this.passIngreso = passIngreso;
-	}
-	public String getRutIngreso() {
-		return rutIngreso;
-	}
-	public void setRutIngreso(String rutIngreso) {
-		this.rutIngreso = rutIngreso;
-	}
+
 	public void llenarDatos(ClienteVO cliente){
-		setNombre(cliente.getNombre());
-		setPaterno(cliente.getPaterno());
-		setMaterno(cliente.getMaterno());	
-		setFechaNacimiento(cliente.getFechaNacimiento());
-		setRut(cliente.getRut());
-		setSexo(cliente.getSexo());
-		seteMail(cliente.geteMail());
-		setPassword(cliente.getPassword());;
-		setTelefono(cliente.getTelefono());
+		try{
+			ComunaVO comuna = cliente.getComuna();
+			RegionVO region = null;
+			int codigoComuna = comuna.getCodigoComuna();
+			int codigoRegion = comuna.getCodigoRegion();
+			for (ComunaVO com: listComunas){
+				if(com.getCodigoComuna()==codigoComuna){
+					comuna=listComunas.remove(listComunas.indexOf(com));
+					break;
+				}
+			}
+			for (RegionVO reg : listRegiones){
+				if(reg.getCodigoRegion()==codigoRegion){
+					region=listRegiones.remove(listRegiones.indexOf(reg));
+					break;
+				}
+			}
+			listComunas.add(0, comuna);
+			listRegiones.add(0, region);
+			if(cliente.getSexo().equalsIgnoreCase("H")){
+				listSexo.put("H","HOMBRE");
+				listSexo.put("M","MUJER");
+			}else{
+				listSexo.put("M","MUJER");
+				listSexo.put("H","HOMBRE");
+			}
+
+		}catch(Exception ex){
+			
+		}
 	}
+	
 
 }//end ActualizaInformacionPersonalForm

@@ -1,6 +1,11 @@
 package com.immobilis.usuarioweb.action;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,85 +22,79 @@ import com.immobilis.vo.ClienteVO;
 import com.immobilis.vo.ComunaVO;
 import com.immobilis.vo.RegionVO;
 
-
 public class ActualizarInformacionAction extends DispatchAction {
-	
+
 	public ActionForward mostrarFormulario(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		if (form instanceof ActualizarInformacionForm) {
-			ActualizarInformacionForm formulario = (ActualizarInformacionForm)form;
+			ActualizarInformacionForm formulario = (ActualizarInformacionForm) form;
+			ClienteVO cliente = (ClienteVO) request.getSession().getAttribute(
+					"cliente");
 			UsuarioWebManager manager = new UsuarioWebManager();
-			ClienteVO cliente= recibirParametros(request);
-			cliente= manager.buscarCliente(cliente);
-			//formulario.llenarDatos(cliente);
-////			Map<String, ComunaVO> comunas = manager.listarComunas();
-////			Map<String, RegionVO> regiones = manager.listarRegiones();
-//			
-//			if(comunas==null || regiones==null){
-//			formulario.setComunas(new HashMap<Integer, ComunaVO>() );
-//			formulario.setRegiones(new HashMap<Integer, RegionVO>());
-//			}else{
-//				formulario.setComunas(comunas);
-//				formulario.setRegiones(regiones);
-//			}
-//			if(cliente==null){
-//				cliente=new ClienteVO();
-//				ComunaVO comuna= new ComunaVO();
-//				comuna.setCodigoComuna(1);
-//				comuna.setNombreComuna("alfo0");
-//				comuna.setCodigoRegion(2);
-//				formulario.llenarDatos(cliente);
-//			}
-		
-			
+			formulario.setListComunas(manager.listarComunas());
+			formulario.setListRegiones(manager.listarRegiones());
+			formulario.setCliente(cliente);
+			formulario.llenarDatos(cliente);
+
 		}
 
 		return mapping.findForward("actualizarInformacion");
 	}
-	
+
 	public ActionForward actualizacionInformacionUsuario(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-			ClienteVO clienteResult=null;
+		ClienteVO clienteResult = null;
 		if (form instanceof ActualizarInformacionForm) {
-			ActualizarInformacionForm formulario = (ActualizarInformacionForm)form;
+			ActualizarInformacionForm formulario = (ActualizarInformacionForm) form;
+			String	passwordActual	=	request.getParameter("passwordActual");
 			UsuarioWebManager manager = new UsuarioWebManager();
-			ClienteVO cliente= recibirParametros(request);
-			clienteResult= manager.actualizaCliente(cliente);
-			formulario.llenarDatos(cliente);
+			ClienteVO clienteActualizar = recibirParametros(request);
+			clienteResult = manager.actualizaCliente(clienteActualizar, passwordActual);
+			formulario.llenarDatos(clienteResult);
 		}
 
 		return mapping.findForward("success");
 	}
-	public ClienteVO recibirParametros(HttpServletRequest request){
-		 ClienteVO cliente = new ClienteVO();
-		 String nombre = request.getParameter("");
-		 cliente.setNombre(nombre);
-		 String paterno= request.getParameter("");
-		 cliente.setPaterno(paterno);
-		 String materno= request.getParameter("");
-		 cliente.setMaterno(materno);
-//		 Date fechaNacimiento= Date.parse(request.getParameter(""));
-		 String rut= request.getParameter("");
-		 cliente.setRut(rut);
-		 String sexo= request.getParameter("");
-		 cliente.setSexo(sexo);
-		 String eMail= request.getParameter("");
-		 cliente.seteMail(eMail);
-		 String password= request.getParameter("");
-		 cliente.setPassword(password);
-		 String telefono= request.getParameter("");
-		 cliente.setTelefono(telefono);
-		 String comuna= request.getParameter("");
-//		 cliente.setComuna(comuna);
-		 String region= request.getParameter("");
-		 String passIngreso= request.getParameter("");
-		 String rutIngreso= request.getParameter("");
 
-		 return cliente;
+	public ClienteVO recibirParametros(HttpServletRequest request) {
+		ClienteVO cliente = new ClienteVO();
+		String passwordNuevo = request.getParameter("passwordNuevo");
+		cliente.setPassword(passwordNuevo);
+		String selSexo = request.getParameter("selSexo");
+		cliente.setSexo(selSexo);
+		String email = request.getParameter("email");
+		cliente.seteMail(email);
+		String materno = request.getParameter("materno");
+		cliente.setMaterno(materno);
+		String telefono = request.getParameter("telefono");
+		cliente.setTelefono(telefono);
+		String paterno = request.getParameter("paterno");
+		cliente.setPaterno(paterno);
+		String rut = request.getParameter("rut");
+		cliente.setRut(rut);
+		Date fechaNacimiento = stringIntoDate(request.getParameter("fechaNacimiento"));
+		cliente.setFechaNacimiento(fechaNacimiento);
+		int codigoComuna = Integer.parseInt(request.getParameter("comuna"));
+		ComunaVO  comuna = new ComunaVO();
+		comuna.setCodigoComuna(codigoComuna);
+		int codigoRegion = Integer.parseInt(request.getParameter("region"));
+		comuna.setCodigoRegion(codigoRegion);
+		cliente.setComuna(comuna);
+		return cliente;
 	}
-	
-	
-	
+
+	public Date stringIntoDate(String stringDate) {
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date fecha = null;
+		try {
+			fecha = format.parse(stringDate);
+
+		} catch (ParseException e) {
+
+		}
+		return fecha;
+	}
+
 }

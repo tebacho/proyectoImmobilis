@@ -15,6 +15,7 @@
 		<form-bean name="generarContratoFB" 	type="com.immobilis.ejecutivoarriendo.form.GenerarContratoForm" />
 		<form-bean name="reportePropiedadFB" 	type="com.immobilis.ejecutivoarriendo.form.ReportePropiedadForm" />
 		<form-bean name="reporteContratosFB" 	type="com.immobilis.ejecutivoarriendo.form.ReporteContratosForm" />
+		<form-bean name="loginEjecutivoFB" 		type="com.immobilis.ejecutivoarriendo.form.LoginEjecutivoForm" />
 		 <!-- UsuarioWeb -->
         <form-bean name="loginFB" type="com.immobilis.usuarioweb.form.LoginForm" />
 		<form-bean name="registroFB" type="com.immobilis.usuarioweb.form.RegistroForm" />
@@ -33,6 +34,7 @@
 			parameter="method" input="/pages/index.jsp" scope="request">
 			<forward name="index" path="/pages/home.jsp" />
 			<forward name="formularioReserva" path="/pages/formularioReserva.jsp" />
+			<forward name="login"        path="/pages/cliente/login.jsp"/>
 		</action>
 
 		<action name="principalFB" path="/principalAction"
@@ -107,6 +109,16 @@
             <forward name="index"        path="/pages/home.jsp"/>     
             <forward name="reportePropiedad"        path="/pages/ejecutivo/reportePropiedad.jsp"/>
         </action>
+        <action
+            name ="loginEjecutivoFB"
+            path="/loginEjecutivoAction"
+            type="com.immobilis.ejecutivoarriendo.action.LoginEjecutivoAction"
+            parameter="method"
+            input="/pages/index.jsp"
+            scope="request">
+            <forward name="index"        path="/pages/home.jsp"/>     
+            <forward name="login"        path="/pages/ejecutivo/loginEjecutivo.jsp"/>
+        </action>
         <!--UsuarioWeb -->
        <action
             name ="contratosActivosFB"
@@ -150,7 +162,7 @@
             scope="session">
             <forward name="index"        path="/pages/home.jsp"/>     
             <forward name="login"        path="/pages/cliente/login.jsp"/>
-            <forward name="loginExitoso"        path="/pages/cliente/ingresoExitoso.jsp"/>
+            <forward name="principal"        path="/principalAction.do?method=iniciarPagina"/>
         </action>
         
        <action

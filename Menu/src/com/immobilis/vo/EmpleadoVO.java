@@ -11,7 +11,14 @@ public class EmpleadoVO extends PersonaVO{
 
 	private int rolEmpleado;
 	private Date fechaContrato;
+	private String password;
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getRolEmpleado() {
 		return rolEmpleado;
 	}

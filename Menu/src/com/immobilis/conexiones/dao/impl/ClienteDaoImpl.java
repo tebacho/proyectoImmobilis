@@ -79,68 +79,12 @@ public class ClienteDaoImpl implements ClienteDao {
 				}
 			}
 		}
-		return clienteVO;
-	}
-
-	public ClienteVO actualizarCliente(ClienteVO clienteVO) {
-
-		long t1 = System.currentTimeMillis();
-		String rut = clienteVO.getRut();
-		String nombre = clienteVO.getNombre();
-		String paterno = clienteVO.getPaterno();
-		String materno = clienteVO.getMaterno();
-		String sexo = clienteVO.getSexo();
-		String direccion = clienteVO.getDireccion();
-		Date fechaNacimiento = (java.sql.Date) clienteVO.getFechaNacimiento();
-		String telefono = clienteVO.getTelefono();
-		String eMail = clienteVO.geteMail();
-		int comuna = clienteVO.getComuna().getCodigoComuna();
-		String password = clienteVO.getPassword();
-
-		BigDecimal estado = new BigDecimal(0);
-
-		Connection con = null;
-		try {
-			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_CLIENTE.SP_ACTUALIZA_CLIENTE(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
-			con = ConnectionDAO.establecerConexion();
-			CallableStatement callableStatement = con
-					.prepareCall(cifSpActEstadoMacQuery);
-			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
-			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
-			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);	
-			callableStatement.setString(4, rut);
-			callableStatement.setString(5, nombre);
-			callableStatement.setString(6, paterno);
-			callableStatement.setString(7, materno);
-			callableStatement.setString(8, sexo);
-			callableStatement.setString(9, direccion);
-			callableStatement.setDate(10, fechaNacimiento);
-			callableStatement.setString(11, telefono);
-			callableStatement.setString(12, eMail);
-			callableStatement.setInt(13, comuna);
-			callableStatement.setString(14, password);
-			callableStatement.execute();
-			String msg = callableStatement.getString(11);
-
-		} catch (SQLException sqle) {
-
-		} finally {
-			long t2 = System.currentTimeMillis();
-			System.out.println("[ingresarNuevoUsuario]TIEMPO EJECUCION "
-					+ (t2 - t1) + " miliseg");
-			if (con != null) {
-				try {
-					ConnectionDAO.closeConnection(con);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		if (estado.intValue() == 0) {
+		if(estado.intValue()!=0){
 			return null;
-		}
+					}
 		return clienteVO;
 	}
+
 
 	@Override
 	public Map<String,ClienteVO> fetchClienteVO(ClienteVO clienteVO) {
@@ -321,6 +265,67 @@ public class ClienteDaoImpl implements ClienteDao {
 			}
 		}
 		return clientes;
+	}
+
+	@Override
+	public ClienteVO actualizarCliente(ClienteVO clienteVO, String password) {
+		long t1 = System.currentTimeMillis();
+		String passwordActual = password;
+		String rut = clienteVO.getRut();
+		String nombre = clienteVO.getNombre();
+		String paterno = clienteVO.getPaterno();
+		String materno = clienteVO.getMaterno();
+		String sexo = clienteVO.getSexo();
+		String direccion = clienteVO.getDireccion();
+		java.sql.Date fechaNacimiento = new java.sql.Date(clienteVO.getFechaNacimiento().getTime());
+		String telefono = clienteVO.getTelefono();
+		String eMail = clienteVO.geteMail();
+		int comuna = clienteVO.getComuna().getCodigoComuna();
+		String passwordNuevo = clienteVO.getPassword().equals("")?passwordActual:clienteVO.getPassword();
+
+		BigDecimal estado = new BigDecimal(0);
+
+		Connection con = null;
+		try {
+			String cifSpActEstadoMacQuery = "{call IMMOBILIS.PKG_CLIENTE.SP_ACTUALIZA_CLIENTE(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+			con = ConnectionDAO.establecerConexion();
+			CallableStatement callableStatement = con
+					.prepareCall(cifSpActEstadoMacQuery);
+			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
+			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
+			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);	
+			callableStatement.setString(4, rut);
+			callableStatement.setString(5, nombre);
+			callableStatement.setString(6, paterno);
+			callableStatement.setString(7, materno);
+			callableStatement.setString(8, sexo);
+			callableStatement.setDate(9, fechaNacimiento);
+			callableStatement.setString(10, telefono);
+			callableStatement.setString(11, eMail);
+			callableStatement.setInt(12, comuna);
+			callableStatement.setString(13, password);
+			callableStatement.setString(14, passwordNuevo);
+			callableStatement.execute();
+			String msg = callableStatement.getString(11);
+
+		} catch (SQLException sqle) {
+
+		} finally {
+			long t2 = System.currentTimeMillis();
+			System.out.println("[ingresarNuevoUsuario]TIEMPO EJECUCION "
+					+ (t2 - t1) + " miliseg");
+			if (con != null) {
+				try {
+					ConnectionDAO.closeConnection(con);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		if (estado.intValue() == 0) {
+			return null;
+		}
+		return clienteVO;
 	}
 
 }

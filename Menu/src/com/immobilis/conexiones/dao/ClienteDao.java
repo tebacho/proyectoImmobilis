@@ -9,7 +9,7 @@ import com.immobilis.vo.ClienteVO;
 public interface ClienteDao {
 
 	public ClienteVO addCliente(ClienteVO cliente);
-	public ClienteVO actualizarCliente(ClienteVO clienteVO);
+	public ClienteVO actualizarCliente(ClienteVO clienteVO, String password);
 	public Map<String,ClienteVO> fetchClienteVO(ClienteVO clienteVO);
 	public ClienteVO loginCliente(ClienteVO clienteVO);
 	public ClienteVO deleteCliente(ClienteVO cliente);

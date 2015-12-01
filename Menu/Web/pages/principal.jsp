@@ -33,69 +33,82 @@
 		    });
 		
 	}
+function abrirLoginEmpleado(){
+		
+		var sbx = window.Shadowbox;
+		sbx.open({
+		        content:    '<%=request.getContextPath()%>/loginEjecutivoAction.do?method=mostrarFormulario',
+		        player:     "iframe",
+		        height:     500,
+		        width:      650
+		    });
+		
+	}
 	
-	function cargarActualizacionDatos(){
+	function cerrarSesion(){
+		window.location= '<%=request.getContextPath()%>/loginAction.do?method=cerrarSession';
+	}
+
+	function cargarActualizacionDatos() {
 		var rutCliente = document.getElementById("rutCliente");
-		var pagina= "actualizarInformacionAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=pagina; 
-		
+		var pagina = "actualizarInformacionAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src = pagina;
+
 	}
-	function cargaHistorialPagos(){
-		var pagina= "informacionPagosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=pagina; 
-		
+	function cargaHistorialPagos() {
+		var pagina = "informacionPagosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src = pagina;
+
 	}
-	function cargaContratosActivos(){
-		var pagina= "contratosActivosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=pagina; 
+	function cargaContratosActivos() {
+		var pagina = "contratosActivosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src = pagina;
 	}
-	
+
 	//	Ejecutivo
-	function cargaEjecutivoAdjuntarRespaldo(){
-		
-		var pagina= "adjuntarRespaldosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=pagina; 
+	function cargaEjecutivoAdjuntarRespaldo() {
+
+		var pagina = "adjuntarRespaldosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src = pagina;
 	}
-	function cargaGenerarContrato(){
-		
-		var pagina= "generarContratoAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=pagina; 
+	function cargaGenerarContrato() {
+
+		var pagina = "generarContratoAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src = pagina;
 	}
-	function cargaListadoCobranza(){
-		
-		var pagina= "reporteCobrosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=pagina; 
+	function cargaListadoCobranza() {
+
+		var pagina = "reporteCobrosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src = pagina;
 	}
-	function cargaIngresoPago(){
-		var pagina= "ingresoPagoAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=pagina; 
+	function cargaIngresoPago() {
+		var pagina = "ingresoPagoAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src = pagina;
 	}
-	function cargaIngresarRespaldo(){
-		
-		var pagina= "adjuntarRespaldosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=pagina; 
+	function cargaIngresarRespaldo() {
+
+		var pagina = "adjuntarRespaldosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src = pagina;
 	}
-	function cargaReporteArriendos(){
-		
-		var pagina= "reportePropiedadAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=pagina; 
+	function cargaReporteArriendos() {
+
+		var pagina = "reportePropiedadAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src = pagina;
 	}
-	function cargaReporteContratos(){
-		
-		var pagina= "reporteContratosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src=serverPort+pagina; 
+	function cargaReporteContratos() {
+
+		var pagina = "reporteContratosAction.do?method=mostrarFormulario";
+		document.getElementById('frameCentral').src = serverPort + pagina;
 	}
-	
-	
-	
-	function filtrarPropiedades(){
-		
+
+	function filtrarPropiedades() {
+
 		var filtros = searchData();
-		
-		var loc="busquedaAction.do";
+
+		var loc = "busquedaAction.do";
 		loc = loc + "?method=filterPropiedades";
 		loc = loc + filtros;
-		document.getElementById('frameCentral').src=loc
+		document.getElementById('frameCentral').src = loc
 
 	}
 
@@ -103,10 +116,10 @@
 		var operacion = document.getElementById("tipoBusquedaFiltro").value;
 		var tipoPropiedad = document.getElementById("tipoPropiedadFiltro").value;
 		var ubicacion = document.getElementById("txtComuna").value;
-		
+
 		var variables = "&filtroTipoOperacion=" + operacion
-				+ "&filtroTipoPropiedad=" + tipoPropiedad
-				+ "&filtroUbicacion" + ubicacion;
+				+ "&filtroTipoPropiedad=" + tipoPropiedad + "&filtroUbicacion"
+				+ ubicacion;
 		return variables;
 	}
 	function closeAndReload() {
@@ -124,14 +137,16 @@
 			<img alt="" src="images/logo.png" class="logo" align="left">
 
 			<div class="ingreso" align="right">
-				<logic:notEmpty name="nombreUsuario">
+				<logic:present name="cliente" property="rut" scope="session">
 					<span> <input type="button" value="Cerrar Sesion"
-						onclick="cerrarSession();" /></span>
-				</logic:notEmpty>
-				<logic:empty name="nombreUsuario">
+						onclick="cerrarSesion();" /></span>
+				</logic:present>
+				<logic:notPresent name="cliente" property="rut" scope="session">
 					<span> <input type="button" value="Ingresar"
 						onclick="abrirLoginUsuarioWeb();" /></span>
-				</logic:empty>
+					<span> <input type="button" value="Colaborador"
+						onclick="abrirLoginEmpleado();" /></span>
+				</logic:notPresent>
 			</div>
 
 		</div>
@@ -170,7 +185,9 @@
 				</div>
 			</div>
 		</div>
-		<%if(request.getSession().getAttribute("cliente")!=null){ %>
+		<%
+			if (request.getSession().getAttribute("cliente") != null) {
+		%>
 		<div class="contenedor_4">
 			<div class="menu_usuario">
 				<div class="menu">
@@ -178,31 +195,47 @@
 					<hr>
 					<div class="menu_boton">
 						<input type="button" value="Actualizar Datos"
-							style="width: 150px; height: 25px" onclick="cargarActualizacionDatos();" /><br> <input
+							style="width: 150px; height: 25px"
+							onclick="cargarActualizacionDatos();" /><br> <input
 							type="button" value="Historial de Pagos"
-							style="width: 150px; height: 25px" onclick="cargaReporteContratos();"/><br> <input
+							style="width: 150px; height: 25px"
+							onclick="cargaReporteContratos();" /><br> <input
 							type="button" value="Ver Contratos"
-							style="width: 150px; height: 25px" onclick="cargaContratosActivos();"/>
+							style="width: 150px; height: 25px"
+							onclick="cargaContratosActivos();" />
 					</div>
 				</div>
-			</div><%} %>
-			<%if(request.getSession().getAttribute("empleado")!=null){ %>
+			</div>
+			<%
+				}
+			%>
+			<%
+				if (request.getSession().getAttribute("empleado") != null) {
+			%>
 			<div class="menu_empleado">
 				<div class="menu">
 					<h1>Menu Empleado</h1>
 					<hr>
 					<div class="menu_boton">
 						<!--input type="button" value="Actualizar Datos" style="width: 150px; height: 25px" onclick="cargaEjecutivoAdjuntarRespaldo();" /-->
-							<input type="button" value="Generar Contrato" style="width: 150px; height: 25px" onclick="cargaGenerarContrato();"/>
-							<input type="button" value="Listado Cobranza" style="width: 150px; height: 25px" onclick="cargaListadoCobranza();"/>
-							<input type="button" value="Ingreso Pago" style="width: 150px; height: 25px" onclick="cargaIngresoPago();"/>
-							<input type="button" value="Ingresar Respaldos" style="width: 150px; height: 25px;" onclick="cargaIngresarRespaldo();"/>
-							<input type="button" value="Reporte Arriendos" style="width: 150px; height: 25px;" onclick="cargaReporteArriendos();"/>
+						<input type="button" value="Generar Contrato"
+							style="width: 150px; height: 25px"
+							onclick="cargaGenerarContrato();" /> <input type="button"
+							value="Listado Cobranza" style="width: 150px; height: 25px"
+							onclick="cargaListadoCobranza();" /> <input type="button"
+							value="Ingreso Pago" style="width: 150px; height: 25px"
+							onclick="cargaIngresoPago();" /> <input type="button"
+							value="Ingresar Respaldos" style="width: 150px; height: 25px;"
+							onclick="cargaIngresarRespaldo();" /> <input type="button"
+							value="Reporte Arriendos" style="width: 150px; height: 25px;"
+							onclick="cargaReporteArriendos();" />
 					</div>
 				</div>
 			</div>
-			<%} %>
-			
+			<%
+				}
+			%>
+
 			<div class="frame">
 				<iframe id="frameCentral"
 					src="<%=request.getContextPath()%>/busquedaAction.do?method=iniciarPagina"

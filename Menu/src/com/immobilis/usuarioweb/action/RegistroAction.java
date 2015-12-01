@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -51,6 +52,8 @@ public class RegistroAction extends DispatchAction {
 			HttpServletResponse response) throws Exception {
 		System.out.println("aaaa");
 		if (form instanceof RegistroForm) {
+			 HttpSession sesion = request.getSession();
+		      sesion.setAttribute("cliente", null);
 			RegistroForm formulario = (RegistroForm) form;
 			UsuarioWebManager manager = new UsuarioWebManager();
 			ClienteVO cliente = recibirParametros(request);

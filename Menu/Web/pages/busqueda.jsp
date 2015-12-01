@@ -27,7 +27,7 @@
 
 </head>
 
-<body>
+<body background="images/background/busqueda-background.jpg" >
 	<div class="contenedor_principal" align="center">
 
 		<!--1 INICIO CONTENDOR -->

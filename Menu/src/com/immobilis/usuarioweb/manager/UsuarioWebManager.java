@@ -22,9 +22,9 @@ public class UsuarioWebManager {
 		return clienteDao.addCliente(clienteVO);
 	}
 	
-	public ClienteVO actualizaCliente(ClienteVO clienteVO){
-		ClienteDao clienteDao = new ClienteDaoImpl();
-		return clienteDao.actualizarCliente(clienteVO);	
+	public ClienteVO actualizaCliente(ClienteVO clienteVO,String passwordActual){
+		ClienteVO clienteVo = DaoFactory.getInstance().getClienteDao().actualizarCliente(clienteVO, passwordActual);
+		return clienteVo;	
 	}
 	public ClienteVO buscarCliente(ClienteVO ClienteBuscado){
 		Map<String, ClienteVO> clienteEncontrado = null;

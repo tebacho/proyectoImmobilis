@@ -1,23 +1,21 @@
-package com.immobilis.usuarioweb.action;
+package com.immobilis.ejecutivoarriendo.action;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
-import org.apache.jasper.tagplugins.jstl.core.Remove;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.google.gson.Gson;
+import com.immobilis.ejecutivoarriendo.manager.LoginEjecutivoManager;
 import com.immobilis.usuarioweb.form.LoginForm;
-import com.immobilis.usuarioweb.manager.UsuarioWebManager;
-import com.immobilis.vo.ClienteVO;
+import com.immobilis.vo.EmpleadoVO;
 
-public class LoginAction extends DispatchAction {
+public class LoginEjecutivoAction extends DispatchAction {
 
 	public ActionForward mostrarFormulario(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
@@ -26,23 +24,23 @@ public class LoginAction extends DispatchAction {
 		return mapping.findForward("login");
 	}
 
-	public ActionForward login(ActionMapping mapping, ActionForm form,
+	public ActionForward loginEjecutivo(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		if (form instanceof LoginForm) {
 
-			UsuarioWebManager manager = new UsuarioWebManager();
-			ClienteVO cliente = recibirParametros(request);
-			cliente = manager.loginUsuario(cliente);
+			LoginEjecutivoManager manager = new LoginEjecutivoManager();
+			EmpleadoVO ejecutivo = recibirParametros(request);
+			ejecutivo = manager.loginEmpleado(ejecutivo);
 			String resp = "";
 
 			try {
-				if (cliente != null) {
+				if (ejecutivo != null) {
 					
 					HttpSession sesion = request.getSession();
-					sesion.setAttribute("cliente", cliente);
-					resp = cliente.getNombre() + "," + cliente.getPassword()
-							+ "," + cliente.getRut();
+					sesion.setAttribute("ejecutivo", ejecutivo);
+					resp = ejecutivo.getNombre() + "," + ejecutivo.getPassword()
+							+ "," + ejecutivo.getRut();
 
 				} else {
 					resp = "";
@@ -66,14 +64,14 @@ public class LoginAction extends DispatchAction {
 		return null;
 	}
 
-	public ClienteVO recibirParametros(HttpServletRequest request) {
-		ClienteVO cliente = new ClienteVO();
+	public EmpleadoVO recibirParametros(HttpServletRequest request) {
+		EmpleadoVO empleado = new EmpleadoVO();
 		String rut = request.getParameter("rut");
 		rut = rut.trim().replace(".", "").replace("-", "").toUpperCase();
-		cliente.setRut(rut);
+		empleado.setRut(rut);
 		String password = request.getParameter("password");
-		cliente.setPassword(password);
-		return cliente;
+		empleado.setPassword(password);
+		return empleado;
 	}
 
 	public ActionForward cerrarSession(ActionMapping mapping, ActionForm form,
