@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="style/estilo_principal.css" />
 <script src="js/shadowbox/shadowbox.js" type="text/javascript"></script>
 <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<link rel="shortcut icon" href="images/iconos/favicon.ico">
 
 <script type="text/javascript">
 	Shadowbox.init({
