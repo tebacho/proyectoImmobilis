@@ -128,6 +128,14 @@ function abrirLoginEmpleado(){
 		window.location.reload();
 	}
 </script>
+<style type="text/css">
+.indicador {
+	color: #ff6600;
+	width: 20%;
+	float: left;
+	display: block
+}
+</style>
 </head>
 <body>
 
@@ -143,9 +151,9 @@ function abrirLoginEmpleado(){
 				</logic:present>
 				<logic:notPresent name="cliente" property="rut" scope="session">
 					<span> <input type="button" value="Usuario"
-						onclick="abrirLoginUsuarioWeb();" style="width: 100px;"/></span>
+						onclick="abrirLoginUsuarioWeb();" style="width: 100px;" /></span>
 					<span> <input type="button" value="Colaborador"
-						onclick="abrirLoginEmpleado();" style="width: 100px;"/></span>
+						onclick="abrirLoginEmpleado();" style="width: 100px;" /></span>
 				</logic:notPresent>
 			</div>
 
@@ -189,6 +197,8 @@ function abrirLoginEmpleado(){
 			if (request.getSession().getAttribute("cliente") != null) {
 		%>
 		<div class="contenedor_4">
+
+
 			<div class="menu_usuario">
 				<div class="menu">
 					<h1>Menu Cliente</h1>
@@ -236,6 +246,13 @@ function abrirLoginEmpleado(){
 				}
 			%>
 
+			<!-- INIDCADOR INICIO -->
+
+			<div class="indicador">
+				<p></p>
+			</div>
+
+			<!-- INDICADOR FIN -->
 			<div class="frame">
 				<iframe id="frameCentral"
 					src="<%=request.getContextPath()%>/busquedaAction.do?method=iniciarPagina"
@@ -267,4 +284,14 @@ function abrirLoginEmpleado(){
 		</div>
 
 	</div>
+	<script type="text/javascript">
+		$.getJSON('http://mindicador.cl/api', function(data) {
+			var dailyIndicators = data;
+			$("<p/>", {
+				html : 'Valor UF Hoy $' + dailyIndicators.uf.valor
+			}).appendTo(".indicador");
+		}).fail(function() {
+			console.log('Error al consumir la API!');
+		});
+	</script>
 </body>
