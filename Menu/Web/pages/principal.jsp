@@ -130,28 +130,28 @@ function abrirLoginEmpleado(){
 </script>
 <style type="text/css">
 .indicador {
-padding-left: 35px;
-}
-.menu_indicador{
-border:3px solid #c2c2a3;
-height: 300px;
-width: 18%;
-float: left;
-display: block;
-margin-left: 10px;
-background-color: #e9e9e9;
-color: #666;
-}
-.titulo_indicador{
-font-size: 19px;
-text-align: center;
-margin: 5px 0px 10px 0px;
-color: #ff6600;
-font-weight: bold;
-font-family: "Comic Sans MS", cursive, sans-serif;
+	padding-left: 35px;
 }
 
+.menu_indicador {
+	border: 3px solid #c2c2a3;
+	height: 350px;
+	width: 18%;
+	float: left;
+	display: block;
+	margin-left: 10px;
+	background-color: #e9e9e9;
+	color: #666;
+}
 
+.titulo_indicador {
+	font-size: 19px;
+	text-align: center;
+	margin: 5px 0px 10px 0px;
+	color: #ff6600;
+	font-weight: bold;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
 </style>
 </head>
 <body>
@@ -264,12 +264,13 @@ font-family: "Comic Sans MS", cursive, sans-serif;
 			%>
 
 			<!-- INIDCADOR INICIO -->
-			
+
 			<div class="menu_indicador">
-			<div class="titulo_indicador">Indicadores Economicos</div>
-			<div class="indicador">
-				<p></p>
-			</div>			
+				<div class="titulo_indicador">Indicadores Economicos</div>
+				<div class="titulo_indicador">Hoy</div>
+				<div class="indicador">
+					<p></p>
+				</div>
 			</div>
 
 			<!-- INDICADOR FIN -->
@@ -312,13 +313,19 @@ font-family: "Comic Sans MS", cursive, sans-serif;
 					$(
 							"<p/>",
 							{
-								html :  'Valor UF $' + dailyIndicators.uf.valor + '<br><br>'
-								        + 'Valor UTM $'+ dailyIndicators.utm.valor + '<br><br>'
-										+ 'Valor Dólar O.$'+ dailyIndicators.dolar.valor + '<br><br>'
-							            + 'Valor Euro $'+ dailyIndicators.euro.valor + '<br><br>'
-										+ 'Valor IPC $'+ dailyIndicators.ipc.valor + '<br><br>'
-										+ 'Valor IVP $'+ dailyIndicators.ivp.valor + '<br><br>'
-										+ 'Valor Imacec '+ dailyIndicators.imacec.valor
+								html : 'Valor UF $' + dailyIndicators.uf.valor
+										+ '<br><br>' + 'Valor UTM $'
+										+ dailyIndicators.utm.valor
+										+ '<br><br>' + 'Valor Dólar O.$'
+										+ dailyIndicators.dolar.valor
+										+ '<br><br>' + 'Valor Euro $'
+										+ dailyIndicators.euro.valor
+										+ '<br><br>' + 'Valor IPC $'
+										+ dailyIndicators.ipc.valor
+										+ '<br><br>' + 'Valor IVP $'
+										+ dailyIndicators.ivp.valor
+										+ '<br><br>' + 'Valor Imacec '
+										+ dailyIndicators.imacec.valor
 
 							}).appendTo(".indicador");
 				}).fail(function() {
