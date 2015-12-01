@@ -6,14 +6,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>login</title>
 <style type="text/css">
-body{background-color: #d6d6c2;}
-h1{
-font-family: "Comic Sans MS", cursive, sans-serif;
-text-shadow: 2px 2px 4px #000000;
-color:white;
+body {
+	background-color: #d6d6c2;
 }
-input:focus {background-color:#ffff99;}
-select:hover{background-color: #ffff99;}
+
+h1 {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	text-shadow: 2px 2px 4px #000000;
+	color: white;
+}
+
+input:focus {
+	background-color: #ffff99;
+}
+
+select:hover {
+	background-color: #ffff99;
+}
 </style>
 <script text/javascript>
 function login(){
@@ -23,31 +32,32 @@ function login(){
 	$.ajax({
         type:    "POST",
         url:     "<%=request.getContextPath()%>/loginAction.do",
-        data:    "?method=login"+params,
-        
-        success: function(data){
-			if(""!=data){
-				alert(data);
-				parent.location.reload();
-				
-			}else{
-				
-				alert("Error de ingreso.");
-				
+			data : "?method=login" + params,
+
+			success : function(data) {
+				if ("" != data) {
+					alert(data);
+					parent.location.reload();
+
+				} else {
+
+					alert("Error de ingreso.");
+
+				}
 			}
-        }
-	});
-}
+		});
+	}
 </script>
 </head>
 <body>
 	<form align="center" action="#" autocomplete="on">
 		<h1>Iniciar Sesión</h1>
 		<hr>
+		<br>
 		<p>
-			<label for="username" class="uname" data-icon="u">Su correo
-				electrónico o nombre de usuario </label><br> <input id="username"
-				name="username" required="required" type="email"
+			<label for="username" class="uname" data-icon="u">Ingrese su
+				Rut</label><br> <input id="username" name="username"
+				required="required" type="email"
 				placeholder="usuario o micorreo@mail.com" size='25' />
 		</p>
 		<p>
@@ -61,12 +71,14 @@ function login(){
 				conectado</label>
 		</p>
 		<p class="login button">
-			<input type="submit" value="Iniciar Sesión" style="width: 100px"/> 
-			<input type='button' value='Salir' style="width: 100px" onclick="window.parent.Shadowbox.close();" />
+			<input type="submit" value="Iniciar Sesión" style="width: 100px" /> <input
+				type='button' value='Salir' style="width: 100px"
+				onclick="window.parent.Shadowbox.close();" />
 
 		</p>
 		<p class="change_link">
-			¿No esta registrado? <a href=<%=request.getContextPath()%>/registroAction.do?method=mostrarFormulario class="to_register">Registrarse</a>
+			¿No esta registrado? <a href=<%=request.getContextPath()%>
+				/registroAction.do?method=mostrarFormulario class="to_register">Registrarse</a>
 		</p>
 	</form>
 </body>
