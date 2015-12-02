@@ -1,15 +1,21 @@
 package com.immobilis.principal.action;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
+import sun.rmi.transport.proxy.HttpReceiveSocket;
+
+import com.google.gson.Gson;
 import com.immobilis.principal.form.FormularioReservaForm;
 import com.immobilis.principal.manager.FormularioReservaManager;
 import com.immobilis.vo.ClienteVO;
@@ -36,8 +42,8 @@ public class FormularioReservaAction extends DispatchAction {
 				PropiedadVO propiedad = manager.findPropiedad(Integer
 						.parseInt(idPropiedad));
 				formulario.setPropiedad(propiedad);
-				List<ComunaVO> comunas = manager.listarComunas();
-				List<RegionVO> regiones = manager.listarRegiones();
+
+				
 			} else {
 				return mapping.findForward("login");
 			}
@@ -45,74 +51,53 @@ public class FormularioReservaAction extends DispatchAction {
 		return mapping.findForward("formularioReserva");
 	}
 
-	// private FormularioReservaForm initCombos(FormularioReservaForm form,
-	// ClienteVO cliente){
-	// FormularioReservaManager manager = new FormularioReservaManager();
-	// Map<Integer, ComunaVO> comunas = manager.listarComunas();
-	// Map<Integer, RegionVO> regiones = manager.listarRegiones();
-	// if(cliente.getComuna()!=null){
-	// int idComuna = cliente.getComuna().getCodigoComuna();
-	// int idREgion = cliente.getComuna().getCodigoRegion();
-	// ComunaVO comuna = null;
-	// RegionVO region = null;
-	// for(Integer key : comunas.keySet()){
-	// if(key.equals(idComuna)){
-	// comuna= comunas.get(key);
-	// }
-	// }
-	// }
-	//
-	// }
-	private ReservaVO formToReserva(FormularioReservaForm formulario) {
+	private ReservaVO createReserva(HttpServletRequest request) {
 		ReservaVO reserva = new ReservaVO();
-		reserva.setApellidoUsuario(reserva.getApellidoUsuario());
-		reserva.setFechaCreacion(formulario.getFechaCreacion());
-		// reserva.setIdPropiedad(formulario.getPropiedad().getIdPropiedad());
-		// reserva.setMailContacto(formulario.getMailContacto());
-		// reserva.setNombreUsuario(formulario.getNombreUsuario());
-		// reserva.setNumeroContacto(reserva.getNumeroContacto());
-		// reserva.setRutUsuario(formulario.getRutUsuario());
+		ClienteVO cliente = (ClienteVO)request.getSession().getAttribute("cliente");
+		reserva.setApellidoUsuario(cliente.getPaterno());
+		reserva.setFechaCreacion(new Date());
+		 reserva.setIdPropiedad(Integer.parseInt(request.getParameter("txtIdPropiedad")));
+		 reserva.setTipoReserva(request.getParameter("txtOperacion").equalsIgnoreCase("COMPRA")?0:1);
+		 reserva.setMailContacto(cliente.geteMail());
+		 reserva.setNombreUsuario(cliente.getNombre());
+		 reserva.setNumeroContacto(cliente.getTelefono());
+		 reserva.setRutUsuario(cliente.getRut());
 		return reserva;
 	}
 
-	// private FormularioReservaForm initCombos(FormularioReservaForm form,
-	// ClienteVO cliente){
-	// FormularioReservaManager manager = new FormularioReservaManager();
-	// Map<Integer, ComunaVO> comunas = manager.listarComunas();
-	// Map<Integer, RegionVO> regiones = manager.listarRegiones();
-	// form.setComboComunasCliente(comunas);
-	// form.setComboRegionCliente(regiones);
-	// ComunaVO comuna;
-	// RegionVO region;
-	// if(cliente!=null && cliente.getComuna()!=null){
-	// int idComuna = cliente.getComuna().getCodigoComuna();
-	// int idRegion = cliente.getComuna().getCodigoRegion();
-	// for (Integer key : comunas.keySet()){
-	// if (key.equals(idComuna)){
-	// comuna=comunas.get(key);
-	// }
-	// }
-	// for (Integer key : regiones.keySet()){
-	// if (key.equals(idRegion)){
-	// region=regiones.get(key);
-	// }
-	// }
-	// if(comuna!=null){
-	// comunas.
-	// }
-	// }
-	//
-	// }
-
-	public ActionForward enviarFormulario(ActionMapping mapping,
+	public ActionForward reservar(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) {
 		if (form instanceof FormularioReservaForm) {
-			FormularioReservaForm formulario = (FormularioReservaForm) form;
+			ReservaVO reserva = createReserva(request);
+			FormularioReservaManager manager = new FormularioReservaManager();
+			String resp;
+			try {
+				if (manager.sendForm(reserva)) {
+					
+					resp = "Reserva Realizada con éxito";
+
+				} else {
+					resp = "";
+				}
+			} catch (Exception e) {
+				resp = "";
+			}
+			try {
+				response.setContentType("application/json");
+				ServletOutputStream o = response.getOutputStream();
+
+				String json = (new Gson()).toJson(resp);
+				o.print(json.toString());
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
 
 		}
 
 		return null;
+
 	}
 
 }

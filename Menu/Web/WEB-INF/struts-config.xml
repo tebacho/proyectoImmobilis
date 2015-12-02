@@ -162,7 +162,6 @@
             scope="session">
             <forward name="index"        path="/pages/home.jsp"/>     
             <forward name="login"        path="/pages/cliente/login.jsp"/>
-            <forward name="principal"        path="/principalAction.do?method=iniciarPagina"/>
         </action>
         
        <action

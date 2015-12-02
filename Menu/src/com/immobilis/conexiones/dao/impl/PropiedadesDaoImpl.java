@@ -136,10 +136,10 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 				propiedad.setConstructora(constructora);
 				propiedad.setDescripcion(rsPropiedad.getString("DESCRIPCION"));
 				String tipoOperacion = rsPropiedad.getString("OPERACION");
-				if(tipoOperacion.equalsIgnoreCase("VENTA")){
-					propiedad.setTipoOperacion(TipoOperacion.VENTA);
-				}else if(tipoOperacion.equalsIgnoreCase("ARRIENDO")){
+				if(tipoOperacion.equalsIgnoreCase("ARRIENDO")){
 					propiedad.setTipoOperacion(TipoOperacion.ARRIENDO);
+				}else {
+					propiedad.setTipoOperacion(TipoOperacion.VENTA);
 				}
 				propiedad.setDisponible(rsPropiedad.getString("DISPONIBLE").equalsIgnoreCase("S")?"Disponible":"No Disponible");
 				propiedad.setProyecto(rsPropiedad.getString("PROYECTO"));
@@ -349,9 +349,9 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 
 
 	@Override
-	public Map<Integer, PropiedadVO> addPropiedad(PropiedadVO propiedad) {
+	public PropiedadVO addPropiedad(PropiedadVO propiedad) {
 		long t1 = System.currentTimeMillis();
-		Map<Integer, PropiedadVO> listadoPropiedades = null;
+		PropiedadVO encontrada = null;
 		Connection con = null;
 			int idPropiedad = propiedad.getIdPropiedad();
 			int idComuna = propiedad.getComuna().getCodigoComuna();
@@ -392,9 +392,7 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 			BigDecimal dm = callableStatement.getBigDecimal(1);
 
 			if (dm.intValue() == 0) {
-				ResultSet rsPropiedades = (ResultSet) callableStatement
-						.getObject(3);
-				listadoPropiedades = rsIntoPropiedades(rsPropiedades);
+				encontrada=propiedad;
 			}
 		} catch (SQLException sqle) {
 
@@ -410,7 +408,8 @@ public class PropiedadesDaoImpl implements PropiedadesDao {
 				}
 			}
 		}
-		return listadoPropiedades;
+
+		return encontrada;
 	}
 
 	@Override

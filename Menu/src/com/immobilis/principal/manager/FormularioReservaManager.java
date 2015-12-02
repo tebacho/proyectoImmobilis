@@ -43,8 +43,7 @@ public class FormularioReservaManager {
 	}
 	public boolean sendForm(ReservaVO reserva){
 		FormularioReservaDao formularioDAO = new FormularioReservaDaoImpl();
-		formularioDAO.SendReserve(reserva);
-		return true;
+		return formularioDAO.SendReserve(reserva);
 	}
 	public List<ComunaVO> listarComunas(){
 		ComunaDao comunaDao = new ComunaDaoImpl();

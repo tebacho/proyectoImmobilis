@@ -8,14 +8,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
+import com.google.gson.Gson;
 import com.immobilis.usuarioweb.form.ActualizarInformacionForm;
 import com.immobilis.usuarioweb.manager.UsuarioWebManager;
 import com.immobilis.vo.ClienteVO;
@@ -53,6 +56,31 @@ public class ActualizarInformacionAction extends DispatchAction {
 			ClienteVO clienteActualizar = recibirParametros(request);
 			clienteResult = manager.actualizaCliente(clienteActualizar, passwordActual);
 			formulario.llenarDatos(clienteResult);
+			String resp = "";
+
+			try {
+				if (clienteResult != null) {
+					
+					HttpSession sesion = request.getSession();
+					sesion.setAttribute("cliente", clienteResult);
+					resp = "CLIENTE "+clienteResult.getNombre() + " ACTUALIZADO";
+
+				} else {
+					resp = "";
+				}
+			} catch (Exception e) {
+				resp = "";
+			}
+			try {
+				response.setContentType("application/json");
+				ServletOutputStream o = response.getOutputStream();
+
+				String json = (new Gson()).toJson(resp);
+				o.print(json.toString());
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
 		}
 
 		return mapping.findForward("success");
@@ -62,6 +90,8 @@ public class ActualizarInformacionAction extends DispatchAction {
 		ClienteVO cliente = new ClienteVO();
 		String passwordNuevo = request.getParameter("passwordNuevo");
 		cliente.setPassword(passwordNuevo);
+		String nombre = request.getParameter("nombre");
+		cliente.setNombre(nombre);
 		String selSexo = request.getParameter("selSexo");
 		cliente.setSexo(selSexo);
 		String email = request.getParameter("email");

@@ -35,7 +35,7 @@ select:hover {
 <script type="text/javascript">
 	function actualizar() {
 		var params = getData();
-		alert(params);
+
 		$.ajax({
 	        type:    "POST",
 	        url:     "actualizarInformacionAction.do?",
@@ -43,7 +43,7 @@ select:hover {
 	        
 	        success: function(data){
 				if(""!=data){
-					alert("Usuario modificado");
+					alert(data);
 					parent.location.reload();
 					
 				}else{
@@ -55,18 +55,19 @@ select:hover {
 		});
 	}
 	function getData(){
-		var	passwordNuevo	=	"&passwordNuevo="+document.getElementById("passwordNuevo").value
-		var	comuna	=			"&comuna="+document.getElementById("comuna").value
-		var	selSexo	=			"&selSexo="+document.getElementById("selSexo").value
-		var	email	=			"&email="+document.getElementById("email").value
-		var	materno	=			"&materno="+document.getElementById("materno").value
-		var	passwordActual	=	"&passwordActual="+document.getElementById("passwordActual").value
-		var	region	=			"&region="+document.getElementById("region").value
-		var	fechaNacimiento	=	"&fechaNacimiento="+document.getElementById("fechaNacimiento").value
-		var	telefono	=		"&telefono="+document.getElementById("telefono").value
-		var	paterno	=			"&paterno="+document.getElementById("paterno").value
-		var	rut	=				"&rut="+document.getElementById("rut").value
-		return passwordNuevo+comuna+selSexo+email+materno+passwordActual+region+fechaNacimiento+telefono+paterno+rut;
+		var	passwordNuevo	=	"&passwordNuevo="+document.getElementById("passwordNuevo").value;
+		var	comuna	=			"&comuna="+document.getElementById("comuna").value;
+		var nombre = 			"&nombre="+document.getElementById("nombre").value;
+		var	selSexo	=			"&selSexo="+document.getElementById("selSexo").value;
+		var	email	=			"&email="+document.getElementById("email").value;
+		var	materno	=			"&materno="+document.getElementById("materno").value;
+		var	passwordActual	=	"&passwordActual="+document.getElementById("passwordActual").value;
+		var	region	=			"&region="+document.getElementById("region").value;
+		var	fechaNacimiento	=	"&fechaNacimiento="+document.getElementById("fechaNacimiento").value;
+		var	telefono	=		"&telefono="+document.getElementById("telefono").value;
+		var	paterno	=			"&paterno="+document.getElementById("paterno").value;
+		var	rut	=				"&rut="+document.getElementById("rut").value;
+		return passwordNuevo+comuna+nombre+selSexo+email+materno+passwordActual+region+fechaNacimiento+telefono+paterno+rut;
 
 	}
 </script>
@@ -150,10 +151,10 @@ select:hover {
 										<option value="H">Hombre</option>
 										<option value="M">Mujer</option>
 									</logic:equal>
-									<logic:equal name="cliente" value="M" property="sexo">
+									<logic:notEqual name="cliente" value="H" property="sexo">
 										<option value="M">Mujer</option>
 										<option value="H">Hombre</option>
-									</logic:equal>
+									</logic:notEqual>
 							</select></td>
 						<tr>
 						<tr>

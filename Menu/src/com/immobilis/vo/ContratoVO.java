@@ -20,6 +20,7 @@ public class ContratoVO {
 	private Date fechaContrato;
 	private ServicioVO servicio;
 	private SeguroVO seguro;
+	private PropiedadVO propiedad;
 	
 	
 	
@@ -84,5 +85,12 @@ public class ContratoVO {
 	public void setFechaContrato(Date fechaContrato) {
 		this.fechaContrato = fechaContrato;
 	}
+	public PropiedadVO getPropiedad() {
+		return propiedad;
+	}
+	public void setPropiedad(PropiedadVO propiedad) {
+		this.propiedad = propiedad;
+	}
+	
 	
 }//end ContratoVO

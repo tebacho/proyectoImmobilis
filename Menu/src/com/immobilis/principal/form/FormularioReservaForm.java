@@ -11,6 +11,7 @@ import com.immobilis.vo.ClienteVO;
 import com.immobilis.vo.ComunaVO;
 import com.immobilis.vo.PropiedadVO;
 import com.immobilis.vo.RegionVO;
+import com.immobilis.vo.SeguroVO;
 
 public class FormularioReservaForm extends ActionForm {
 
@@ -22,12 +23,19 @@ public class FormularioReservaForm extends ActionForm {
 	private ClienteVO cliente;
 	private Date fechaCreacion;
 	private PropiedadVO propiedad;
-	
 	private List<RegionVO> listRegiones;
 	private RegionVO regionSelect; 
 	private List<ComunaVO> listComunas;
 	private ComunaVO comunaSelect;
+	private List<SeguroVO> listSeguros;
 	
+	
+	public List<SeguroVO> getListSeguros() {
+		return listSeguros;
+	}
+	public void setListSeguros(List<SeguroVO> listSeguros) {
+		this.listSeguros = listSeguros;
+	}
 	public List<ComunaVO> getListComunas() {
 		if(listComunas==null){
 			listComunas=new ArrayList<ComunaVO>();

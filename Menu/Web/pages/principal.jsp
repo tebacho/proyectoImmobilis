@@ -8,7 +8,7 @@
 
 <head>
 
-<title>Immobilis</title>
+<title>Modelo</title>
 <link rel="stylesheet" type="text/css" href="style/shadowbox.css" />
 <link rel="stylesheet" type="text/css" href="style/estilo_principal.css" />
 <script src="js/shadowbox/shadowbox.js" type="text/javascript"></script>
@@ -45,9 +45,44 @@ function abrirLoginEmpleado(){
 		    });
 		
 	}
-	
 	function cerrarSesion(){
-		window.location= '<%=request.getContextPath()%>/loginAction.do?method=cerrarSession';
+		
+		$.ajax({
+	        type:    "POST",
+	        url:     "<%=request.getContextPath()%>/loginAction.do",
+	        data:    "method=cerrarSession",
+	        
+	        success: function(data){
+				if(""!=data){
+					alert(data);
+					window.location.reload();
+					
+				}else{
+					
+					alert("Error al cerrar la sesion.");
+					
+				}
+	        }
+		});
+	}
+	function cerrarSesionEjecutivo(){
+		$.ajax({
+	        type:    "POST",
+	        url:     "<%=request.getContextPath()%>/loginEjecutivoAction.do",
+	        data:    "method=cerrarSession",
+	        
+	        success: function(data){
+				if(""!=data){
+					alert(data);
+					window.location.reload();
+					
+				}else{
+					
+					alert("Error al cerrar la sesion.");
+					
+				}
+	        }
+		});
 	}
 
 	function cargarActualizacionDatos() {
@@ -56,7 +91,7 @@ function abrirLoginEmpleado(){
 		document.getElementById('frameCentral').src = pagina;
 
 	}
-	function cargaHistorialPagos() {
+	function cargaInformacionPagos() {
 		var pagina = "informacionPagosAction.do?method=mostrarFormulario";
 		document.getElementById('frameCentral').src = pagina;
 
@@ -99,7 +134,7 @@ function abrirLoginEmpleado(){
 	function cargaReporteContratos() {
 
 		var pagina = "reporteContratosAction.do?method=mostrarFormulario";
-		document.getElementById('frameCentral').src = serverPort + pagina;
+		document.getElementById('frameCentral').src = pagina;
 	}
 
 	function filtrarPropiedades() {
@@ -167,17 +202,23 @@ function abrirLoginEmpleado(){
 					<span> <input type="button" value="Cerrar Sesion"
 						onclick="cerrarSesion();" /></span>
 				</logic:present>
+				<logic:present name="ejecutivo" property="rut" scope="session">
+					<span> <input type="button" value="Cerrar Sesion"
+						onclick="cerrarSesionEjecutivo();" /></span>
+				</logic:present>
 				<logic:notPresent name="cliente" property="rut" scope="session">
-					<span> <input type="button" value="Usuario"
-						onclick="abrirLoginUsuarioWeb();" style="width: 100px;" /></span>
+				<logic:notPresent name="ejecutivo" property="rut" scope="session">
+					<span> <input type="button" value="Cliente"
+						onclick="abrirLoginUsuarioWeb();" /></span>
 					<span> <input type="button" value="Colaborador"
 						onclick="abrirLoginEmpleado();" style="width: 100px;" /></span>
+				</logic:notPresent>
 				</logic:notPresent>
 			</div>
 
 		</div>
 
-
+<logic:notPresent name="ejecutivo" property="rut" scope="session">
 		<div class="contenedor_2">
 			<div class="buscador">
 				<div align="center" style="display: inline; widht: 100%;">
@@ -211,12 +252,9 @@ function abrirLoginEmpleado(){
 				</div>
 			</div>
 		</div>
-		<%
-			if (request.getSession().getAttribute("cliente") != null) {
-		%>
+		</logic:notPresent>
+		<logic:present name="cliente" property="rut" scope="session">
 		<div class="contenedor_4">
-
-
 			<div class="menu_usuario">
 				<div class="menu">
 					<h1>Menu Cliente</h1>
@@ -227,19 +265,15 @@ function abrirLoginEmpleado(){
 							onclick="cargarActualizacionDatos();" /><br> <input
 							type="button" value="Historial de Pagos"
 							style="width: 150px; height: 25px"
-							onclick="cargaReporteContratos();" /><br> <input
+							onclick="cargaInformacionPagos();" /><br> <input
 							type="button" value="Ver Contratos"
 							style="width: 150px; height: 25px"
 							onclick="cargaContratosActivos();" />
 					</div>
 				</div>
 			</div>
-			<%
-				}
-			%>
-			<%
-				if (request.getSession().getAttribute("empleado") != null) {
-			%>
+			</logic:present>
+			<logic:present name="ejecutivo" property="rut" scope="session">
 			<div class="menu_empleado">
 				<div class="menu">
 					<h1>Menu Empleado</h1>
@@ -260,12 +294,11 @@ function abrirLoginEmpleado(){
 					</div>
 				</div>
 			</div>
-			<%
-				}
-			%>
+			</logic:present>
 
 			<!-- INIDCADOR INICIO -->
-
+<logic:notPresent name="cliente" property="rut" scope="session">
+<logic:notPresent name="ejecutivo" property="rut" scope="session">
 			<div class="menu_indicador">
 				<div class="titulo_indicador">Indicadores Economicos</div>
 				<div class="titulo_indicador">Hoy</div>
@@ -276,7 +309,8 @@ function abrirLoginEmpleado(){
 					<p></p>
 				</div>
 			</div>
-
+</logic:notPresent>
+</logic:notPresent>
 			<!-- INDICADOR FIN -->
 			<div class="frame">
 				<iframe id="frameCentral"

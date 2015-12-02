@@ -119,7 +119,6 @@
 
 			</logic:iterate>
 		</logic:notEmpty>
-		<logic:empty name="busquedaFB" property="propiedades">No Hay propiedades que desplegar</logic:empty>
 
 	</div>
 </body>

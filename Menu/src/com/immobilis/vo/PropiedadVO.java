@@ -110,13 +110,25 @@ public abstract class PropiedadVO {
 		this.urlImagenes = urlImagenes;
 	}
 	public String getNombreConstructora(){
-		return this.constructora.getNombre();
+		if(this.constructora!=null)
+			return this.constructora.getNombre();
+		else
+			return "";
+		
 	}
 	public String getNombreComuna(){
+		if(this.comuna!=null)
 		return this.comuna.getNombreComuna();
+		else
+			return "";
+		
 	}
 	public String getNombreRegion(){
+		if(region!=null)
 		return this.region.getNombreRegion();
+		else
+			return "";
+		
 	}
 	public enum TipoOperacion{
 		ARRIENDO,VENTA;

@@ -59,7 +59,7 @@ select:hover {
 		<br>
 		<table align="center">
 			<tr>
-				<td><input type="submit" value="Filtrar" id="btnFiltrar"
+				<td><input type="button" value="Filtrar" id="btnFiltrar"
 					style="width: 100px;" /></td>
 				<td><input type="button" value="Cerrar" id="btnCerrar"
 					style="width: 100px;" /></td>

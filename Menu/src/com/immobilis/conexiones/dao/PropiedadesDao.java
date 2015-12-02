@@ -11,6 +11,6 @@ public interface PropiedadesDao {
 			String filtroUbicacion);
 	public Map<Integer, PropiedadVO> fetchPropiedad(PropiedadVO propiedad);
 	public PropiedadVO fetchPropiedadById(PropiedadVO propiedad);
-	public Map<Integer, PropiedadVO> addPropiedad(PropiedadVO propiedad);
+	public PropiedadVO addPropiedad(PropiedadVO propiedad);
 	public PropiedadVO updatePropiedad(PropiedadVO propiedad);
 }

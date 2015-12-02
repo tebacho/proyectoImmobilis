@@ -4,19 +4,29 @@ import java.util.Date;
 
 public class ReservaVO {
 
-	private String idReserva;
+	private int idReserva;
 	private String rutUsuario;
 	private String nombreUsuario;
 	private String apellidoUsuario;
 	private String numeroContacto;
 	private String mailContacto;
 	private Date fechaCreacion;
-	private PropiedadVO propiedad;
+	private int idPropiedad;
+	private int tipoReserva;
+	private int idSeguro;
 
-	public String getIdReserva() {
+	
+	public int getIdSeguro() {
+		return idSeguro;
+	}
+	public void setIdSeguro(int idSeguro) {
+		this.idSeguro = idSeguro;
+	}
+	
+	public int getIdReserva() {
 		return idReserva;
 	}
-	public void setIdReserva(String idReserva) {
+	public void setIdReserva(int idReserva) {
 		this.idReserva = idReserva;
 	}
 	public String getRutUsuario() {
@@ -55,12 +65,17 @@ public class ReservaVO {
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
-	public PropiedadVO getPropiedad() {
-		return propiedad;
+	public int getIdPropiedad() {
+		return idPropiedad;
 	}
-	public void setPropiedad(PropiedadVO propiedad) {
-		this.propiedad = propiedad;
+	public void setIdPropiedad(int idPropiedad) {
+		this.idPropiedad = idPropiedad;
 	}
-	
+	public int getTipoReserva() {
+		return tipoReserva;
+	}
+	public void setTipoReserva(int tipoReserva) {
+		this.tipoReserva = tipoReserva;
+	}
 	
 }

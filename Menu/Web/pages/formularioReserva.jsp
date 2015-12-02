@@ -62,7 +62,29 @@ a:HOVER {
 	font-size: 30px;
 }
 </style>
-
+<script type="text/javascript">
+function reservar(){
+	var idPropiedad = "&txtIdPropiedad="+document.getElementById("txtIdPropiedad").value;
+	var operacion = "&txtOperacion="+document.getElementById("txtOperacion").value;
+	$.ajax({
+        type:    "POST",
+        url:     "<%=request.getContextPath()%>/formularioReservaAction.do",
+        data:    "method=reservar"+idPropiedad+operacion,
+        
+        success: function(data){
+			if(""!=data){
+				alert(data);
+				parent.location.reload();
+				
+			}else{
+				
+				alert("Error de ingreso.");
+				
+			}
+        }
+	});
+}
+</script>
 </head>
 <body>
 
@@ -83,33 +105,33 @@ a:HOVER {
 						<tr>
 							<td>ID Propiedad</td>
 							<td><input type="text" id="txtIdPropiedad"
-								value='<bean:write name="vPropiedades" property="idPropiedad" format="#" />' /></td>
+								readonly value='<bean:write name="vPropiedades" property="idPropiedad" format="#" />' /></td>
 						</tr>
 						<tr>
 							<td>Nombre Región</td>
-							<td><input typ="text" id="txtNombreRegion"
-								value='<bean:write name="vPropiedades" property="nombreRegion"  />' /></td>
+							<td><input type="text" id="txtNombreRegion"
+								readonly value='<bean:write name="vPropiedades" property="nombreRegion"  />' /></td>
 						</tr>
 						<tr>
 							<td>Tipo Propiedad</td>
 							<td><input type="text" id="txtTipoPropiedad"
-								value='<bean:write name="vPropiedades" property="tipoPropiedad"  />' /></td>
+								readonly value='<bean:write name="vPropiedades" property="tipoPropiedad"  />' /></td>
 						</tr>
 						<tr>
 							<td>Descripción</td>
 							<td><input type="text" id="txtDescripcion"
-								value='<bean:write name="vPropiedades" property="descripcion" />' /></td>
+								readonly value='<bean:write name="vPropiedades" property="descripcion" />' /></td>
 						</tr>
 						<tr>
 							<td>Operación</td>
 							<td><input type="text" id="txtOperacion"
-								value='<bean:write name="vPropiedades" property="tipoOperacion"  />' /></td>
+								readonly value='<bean:write name="vPropiedades" property="tipoOperacion"  />' /></td>
 						</tr>
 						<tr>
 							<logic:present name="vPropiedades" property="altura">
 								<td>Altura</td>
 								<td><input type="text" id="txtAltura"
-									value='<bean:write name="vPropiedades" property="altura" format="#" />' /></td>
+									readonly value='<bean:write name="vPropiedades" property="altura" format="#" />' /></td>
 							</logic:present>
 							<logic:notPresent name="vPropiedades" property="altura">
 								<td>-</td>
@@ -120,7 +142,7 @@ a:HOVER {
 							<logic:present name="vPropiedades" property="dormitorios">
 								<td>Dormitorio</td>
 								<td><input type="text" id="txtDormitorio"
-									value='<bean:write name="vPropiedades" property="dormitorios" format="#" />' /></td>
+									readonly value='<bean:write name="vPropiedades" property="dormitorios" format="#" />' /></td>
 							</logic:present>
 							<logic:notPresent name="vPropiedades" property="dormitorios">
 								<td>-</td>
@@ -131,7 +153,7 @@ a:HOVER {
 							<logic:present name="vPropiedades" property="edificio">
 								<td>Edificio</td>
 								<td><input type="text" id="txtEdificio"
-									value='<bean:write name="vPropiedades" property="edificio" />' /></td>
+									readonly value='<bean:write name="vPropiedades" property="edificio" />' /></td>
 							</logic:present>
 							<logic:notPresent name="vPropiedades" property="edificio">
 								<td>-</td>
@@ -142,7 +164,7 @@ a:HOVER {
 							<logic:present name="vPropiedades" property="patenteComercial">
 								<td>Patente Comercial</td>
 								<td><input type="text" id="txtPatenteComercial"
-									value='<bean:write name="vPropiedades" property="patenteComercial" format="#" />' /></td>
+									readonly value='<bean:write name="vPropiedades" property="patenteComercial" format="#" />' /></td>
 							</logic:present>
 							<logic:notPresent name="vPropiedades" property="patenteComercial">
 								<td>-</td>
@@ -156,34 +178,34 @@ a:HOVER {
 						<tr>
 							<td>Nombre Comuna</td>
 							<td><input type="text" id="txtNombreComuna"
-								value='<bean:write name="vPropiedades" property="nombreComuna" />' /></td>
+								readonly value='<bean:write name="vPropiedades" property="nombreComuna" />' /></td>
 						</tr>
 						<tr>
 							<td>Dirección</td>
 							<td><input type="text" id="txtDireccion"
-								value='<bean:write name="vPropiedades" property="direccion" />' /></td>
+								readonly value='<bean:write name="vPropiedades" property="direccion" />' /></td>
 						</tr>
 						<tr>
 							<td>Nombre Constructora</td>
 							<td><input type="text" id="txtNombreConstructora"
-								value='<bean:write name="vPropiedades" property="nombreConstructora" />' />
+								readonly value='<bean:write name="vPropiedades" property="nombreConstructora" />' />
 							</td>
 						</tr>
 						<tr>
 							<td>Precio</td>
 							<td><input type="text" id="txtPrecio"
-								value='<bean:write name="vPropiedades" property="precioUF" format="#"/>' /></td>
+								readonly value='<bean:write name="vPropiedades" property="precioUF" format="#"/>' /></td>
 						</tr>
 						<tr>
 							<td>Disponible</td>
 							<td><input type="text" id="txtDisponible"
-								value='<bean:write name="vPropiedades" property="disponible" />' /></td>
+								readonly value='<bean:write name="vPropiedades" property="disponible" />' /></td>
 						</tr>
 						<tr>
 							<logic:present name="vPropiedades" property="bannos">
 								<td>Baño</td>
 								<td><input type="text" id="txtBano"
-									value='<bean:write name="vPropiedades" property="bannos" format="#" />' /></td>
+									readonly value='<bean:write name="vPropiedades" property="bannos" format="#" />' /></td>
 							</logic:present>
 							<logic:notPresent name="vPropiedades" property="bannos">
 								<td>-</td>
@@ -194,7 +216,7 @@ a:HOVER {
 							<logic:present name="vPropiedades" property="conjunto">
 								<td>Conjunto</td>
 								<td><input type="text" id="txtConjunto"
-									value='<bean:write name="vPropiedades" property="conjunto" />' /></td>
+									readonly value='<bean:write name="vPropiedades" property="conjunto" />' /></td>
 							</logic:present>
 							<logic:notPresent name="vPropiedades" property="conjunto">
 								<td>-</td>
@@ -205,7 +227,7 @@ a:HOVER {
 							<logic:present name="vPropiedades" property="nivel">
 								<td>Nivel</td>
 								<td><input type="text" id="txtNivel"
-									value='<bean:write name="vPropiedades" property="nivel" format="#" />' /></td>
+									readonly value='<bean:write name="vPropiedades" property="nivel" format="#" />' /></td>
 							</logic:present>
 							<logic:notPresent name="vPropiedades" property="nivel">
 								<td>-</td>
@@ -257,17 +279,7 @@ a:HOVER {
 							<td><input type="text" id="txtTelefono"
 								value='<bean:write name="cliente" property="telefono" />' /></td>
 						</tr>
-						<tr>
-							<td>Región</td>
-							<td><html:select name="formularioReservaFB"
-									property="regionSelect.codigoRegion">
-									<html:option value="0">Region</html:option>
-									<html:optionsCollection name="formularioReservaFB"
-										property="listRegiones" label="nombreRegion"
-										value="codigoRegion" />
-								</html:select>
-							<td>
-						</tr>
+						
 
 					</table>
 				</td>
@@ -280,7 +292,7 @@ a:HOVER {
 						</tr>
 						<tr>
 							<td>Fecha Nacimiento</td>
-							<td><input type="date" id="txtFechaNacimiento"
+							<td><input type="text" id="txtFechaNacimiento"
 								value='<bean:write name="cliente" property="fechaNacimientoString" />' /></td>
 						</tr>
 						<tr>
@@ -296,16 +308,7 @@ a:HOVER {
 							<td>Repita Clave</td>
 							<td><input type="password" id="txtPassIngreso" /></td>
 						</tr>
-						<tr>
-							<td>Comuna</td>
-							<td><html:select name="formularioReservaFB"
-									property="comunaSelect.codigoComuna">
-									<html:option value="0">Region</html:option>
-									<html:optionsCollection name="formularioReservaFB"
-										property="listComunas" label="nombreComuna"
-										value="codigoComuna" />
-								</html:select></td>
-						</tr>
+						
 					</table>
 				</td>
 			</tr>
@@ -317,8 +320,7 @@ a:HOVER {
 		<br>
 		<!-- INICIO TERMINO Y CONDICIONES DE USO -->
 		<div class="terminos">
-			<a href="#" id="txtCondicionesDeUso">Click para ir a Terminos y
-				condiciones de uso.</a>
+			<input type="button" value="Reservar" onclick="reservar();"> 
 		</div>
 		<!-- FIN TERMINO Y CONDICIONES DE USO -->
 	</form>

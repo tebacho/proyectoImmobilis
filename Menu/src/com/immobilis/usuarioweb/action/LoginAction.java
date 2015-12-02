@@ -1,5 +1,7 @@
 package com.immobilis.usuarioweb.action;
 
+import java.util.HashMap;
+
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +41,8 @@ public class LoginAction extends DispatchAction {
 			try {
 				if (cliente != null) {
 					
-					HttpSession sesion = request.getSession();
+					HttpSession sesion = request.getSession(true);
+
 					sesion.setAttribute("cliente", cliente);
 					resp = cliente.getNombre() + "," + cliente.getPassword()
 							+ "," + cliente.getRut();
@@ -80,9 +83,28 @@ public class LoginAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
-		HttpSession sesion = request.getSession();
-		sesion.setAttribute("cliente",null);
-		return mapping.findForward("principal");
+		String resp;
+
+		try {
+			HttpSession sesion = request.getSession();
+			sesion.removeAttribute("cliente");
+			 resp = "Session Cerrada";
+		} catch (Exception e) {
+			resp = "";
+		}
+		try {
+			response.setContentType("application/json");
+			ServletOutputStream o = response.getOutputStream();
+
+			String json = (new Gson()).toJson(resp);
+			o.print(json.toString());
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+
+
+	return null;
 	}
 
 }

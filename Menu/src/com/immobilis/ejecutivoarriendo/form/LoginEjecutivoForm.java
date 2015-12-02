@@ -3,6 +3,7 @@ package com.immobilis.ejecutivoarriendo.form;
 import org.apache.struts.action.ActionForm;
 
 import com.immobilis.vo.ClienteVO;
+import com.immobilis.vo.EmpleadoVO;
 
 /**
  * @author Rodolfo
@@ -14,13 +15,18 @@ public class LoginEjecutivoForm extends ActionForm {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8533308518165349116L;
-	private ClienteVO cliente;
-	public ClienteVO getCliente() {
-		return cliente;
+	private static final long serialVersionUID = 4865726777173726304L;
+	/**
+	 * 
+	 */
+
+	private EmpleadoVO ejecutivo;
+	public EmpleadoVO getEjecutivo() {
+		return ejecutivo;
 	}
-	public void setCliente(ClienteVO cliente) {
-		this.cliente = cliente;
+	public void setEjecutivo(EmpleadoVO ejecutivo) {
+		this.ejecutivo = ejecutivo;
 	}
+	
 	
 }

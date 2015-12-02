@@ -87,7 +87,7 @@ public class BusquedaAction extends DispatchAction {
 		ReservaVO reserva = new ReservaVO();
 		reserva.setApellidoUsuario(request.getParameter("apellido"));
 		reserva.setFechaCreacion(new Date());
-		reserva.setIdReserva("");
+		reserva.setIdReserva(0);
 		reserva.setMailContacto(request.getParameter("MailContacto"));
 		reserva.setNombreUsuario(request.getParameter("nombre"));
 		reserva.setNumeroContacto(request.getParameter("numeroContacto"));

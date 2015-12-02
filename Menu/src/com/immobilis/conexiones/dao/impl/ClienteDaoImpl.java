@@ -93,7 +93,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		Connection con = null;
 		Map<String,ClienteVO> clientes = null;
 		try {
-			String cifSpActEstadoMacQuery = "{call PKG_CLIENTE.SP_BUSCAR_USUARIO_WEB(?,?,?,?)}";
+			String cifSpActEstadoMacQuery = "{call PKG_CLIENTE.SP_BUSCAR_CLIENTE(?,?,?,?)}";
 			con = ConnectionDAO.establecerConexion();
 			CallableStatement callableStatement = con
 					.prepareCall(cifSpActEstadoMacQuery);
@@ -103,16 +103,16 @@ public class ClienteDaoImpl implements ClienteDao {
 			callableStatement.setString(4, rut);
 			
 			callableStatement.execute();
-			String msg = callableStatement.getString(3);
-			BigDecimal dm = callableStatement.getBigDecimal(2);
+			String msg = callableStatement.getString(2);
+			BigDecimal dm = callableStatement.getBigDecimal(1);
 
 			if (dm.intValue() == 0) {
 				ResultSet rsClientes = (ResultSet) callableStatement
-						.getObject(4);
+						.getObject(3);
 				clientes = rsIntoMapClienteVO(rsClientes);
 			}
 		} catch (SQLException sqle) {
-
+			System.out.println(sqle.getMessage());
 		} finally {
 			long t2 = System.currentTimeMillis();
 			System.out.println("[buscarUsuarioWeb]TIEMPO EJECUCION "
@@ -261,7 +261,8 @@ public class ClienteDaoImpl implements ClienteDao {
 				cliente.seteMail(rsUsuarioWeb.getString("MAIL"));
 				cliente.setFechaIngreso(rsUsuarioWeb.getDate("FECHA_INGRESO"));
 				cliente.setTelefono(rsUsuarioWeb.getString("TELEFONO"));
-				cliente.setPassword(rsUsuarioWeb.getString("PASSWORD"));		
+				cliente.setPassword(rsUsuarioWeb.getString("PASSWORD"));
+				clientes.put(cliente.getRut(),cliente);
 			}
 		}
 		return clientes;
@@ -306,10 +307,11 @@ public class ClienteDaoImpl implements ClienteDao {
 			callableStatement.setString(13, password);
 			callableStatement.setString(14, passwordNuevo);
 			callableStatement.execute();
-			String msg = callableStatement.getString(11);
+			estado=callableStatement.getBigDecimal(1);
+			String msg = callableStatement.getString(2);
 
 		} catch (SQLException sqle) {
-
+			System.out.println(sqle.getMessage());
 		} finally {
 			long t2 = System.currentTimeMillis();
 			System.out.println("[ingresarNuevoUsuario]TIEMPO EJECUCION "
@@ -322,7 +324,7 @@ public class ClienteDaoImpl implements ClienteDao {
 				}
 			}
 		}
-		if (estado.intValue() == 0) {
+		if (estado.intValue() != 0) {
 			return null;
 		}
 		return clienteVO;

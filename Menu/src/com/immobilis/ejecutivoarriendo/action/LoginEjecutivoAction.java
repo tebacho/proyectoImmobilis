@@ -11,6 +11,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import com.google.gson.Gson;
+import com.immobilis.ejecutivoarriendo.form.LoginEjecutivoForm;
 import com.immobilis.ejecutivoarriendo.manager.LoginEjecutivoManager;
 import com.immobilis.usuarioweb.form.LoginForm;
 import com.immobilis.vo.EmpleadoVO;
@@ -27,7 +28,7 @@ public class LoginEjecutivoAction extends DispatchAction {
 	public ActionForward loginEjecutivo(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		if (form instanceof LoginForm) {
+		if (form instanceof LoginEjecutivoForm) {
 
 			LoginEjecutivoManager manager = new LoginEjecutivoManager();
 			EmpleadoVO ejecutivo = recibirParametros(request);
@@ -78,9 +79,31 @@ public class LoginEjecutivoAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
-		HttpSession sesion = request.getSession();
-		sesion.setAttribute("cliente",null);
-		return mapping.findForward("principal");
+		
+		
+		String resp;
+
+		try {
+			HttpSession sesion = request.getSession();
+			sesion.setAttribute("ejecutivo",null);
+			 resp = "Session Cerrada";
+		} catch (Exception e) {
+			resp = "";
+		}
+		try {
+			response.setContentType("application/json");
+			ServletOutputStream o = response.getOutputStream();
+
+			String json = (new Gson()).toJson(resp);
+			o.print(json.toString());
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+
+
+	return null;
 	}
 
-}
+	}
+
