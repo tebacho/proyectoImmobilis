@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     29-11-2015 2:45:15                           */
+/* Created on:     01-12-2015 2:52:00                           */
 /*==============================================================*/
 
 
@@ -373,6 +373,7 @@ CREATE TABLE IMMOBILIS.EMPLEADO
 (
    RUT                  VARCHAR2(12 BYTE)    NOT NULL,
    CARGO                VARCHAR2(12 BYTE),
+   PASSWORD             VARCHAR(8)           NOT NULL,
    CONSTRAINT PK_EMPLEADO PRIMARY KEY (RUT)
          USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
         STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645

@@ -116,8 +116,8 @@ VALUES ('146039022', 5, 'EFECTIVO');
 /*==============================================================*/
 /* Generate test data for the table "EMPLEADO".                 */
 /*==============================================================*/
-INSERT INTO EMPLEADO (RUT, CARGO) 
-VALUES ('63868175', 'EJECUTIVO');
+INSERT INTO EMPLEADO (RUT, CARGO, PASSWORD) 
+VALUES ('63868175', 'EJECUTIVO', '6386');
 
 /*==============================================================*/
 /* Generate test data for the table "PROPIEDAD".                */
